@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 15: Thermochemistry — Complete Study Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#090b10;--bg2:#0e1118;--card:rgba(255,255,255,0.022);--bdr:rgba(255,255,255,0.055);--txt:#dfe6f0;--mut:#8a95a8;--dim:#5a6478;--prp:#7c6bf0;--pl:#b4a5fa;--pg:rgba(124,107,240,0.09);--grn:#2dd4a0;--gb:rgba(45,212,160,0.04);--gbd:rgba(45,212,160,0.18);--red:#f06b6b;--rb:rgba(240,107,107,0.04);--rbd:rgba(240,107,107,0.18);--ylw:#eab308;--blu:#58a6ff;--cyn:#20d3e8;--org:#f59e0b;--m:'JetBrains Mono',monospace;--s:'Instrument Serif',Georgia,serif;--f:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+input[type=text],textarea{-webkit-appearance:none;appearance:none}
+.hdr{padding:16px 22px 12px;border-bottom:1px solid var(--bdr);background:linear-gradient(180deg,rgba(245,158,11,0.025) 0%,transparent 100%)}
+.hdr-in{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-lab{font:700 9px/1 var(--m);letter-spacing:.2em;color:var(--org);margin-bottom:2px;text-transform:uppercase}
+.hdr-t{font:400 22px/1.2 var(--s);color:var(--txt)}.hdr-t i{font-style:italic;color:var(--org)}
+.hdr-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:12px;align-items:center}
+.stat-box{text-align:center}.stat-n{font:700 16px/1 var(--m);color:var(--txt)}.stat-l{font:500 8px/1 var(--m);color:var(--dim);margin-top:2px;letter-spacing:.08em;text-transform:uppercase}
+.streak-n{color:var(--ylw)}.pct-n{color:var(--cyn)}
+.btn-r{background:rgba(240,107,107,0.06);border:1px solid rgba(240,107,107,0.15);color:var(--red);padding:6px 12px;border-radius:8px;font:600 10px var(--f);cursor:pointer}
+.modes{display:flex;gap:4px;padding:10px 22px;border-bottom:1px solid rgba(255,255,255,0.03);max-width:900px;margin:0 auto}
+.mode-btn{flex:1;padding:10px 8px;border-radius:10px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.01);color:var(--dim);font:600 12px var(--f);cursor:pointer;transition:all .2s;outline:none;text-align:center}
+.mode-btn.on{border-color:rgba(245,158,11,0.35);background:rgba(245,158,11,0.06);color:var(--org)}
+.mode-ico{display:block;font-size:18px;margin-bottom:3px}
+.toolbar{padding:8px 22px;border-bottom:1px solid rgba(255,255,255,0.02);max-width:900px;margin:0 auto;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.cl{font:600 9px var(--m);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-right:3px}
+.cb{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--bdr);background:rgba(255,255,255,0.012);color:var(--dim);font:600 11px var(--f);cursor:pointer;white-space:nowrap;transition:all .2s;outline:none}
+.cb:hover{border-color:rgba(245,158,11,0.15);color:var(--mut)}.cb.on{border-color:rgba(245,158,11,0.28);background:rgba(245,158,11,0.07);color:var(--org)}
+.tg{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.015);color:var(--dim);font:600 10px var(--f);cursor:pointer;transition:all .2s;outline:none;user-select:none}
+.tg.on{border-color:rgba(240,107,107,0.3);background:rgba(240,107,107,0.06);color:var(--org)}
+.tg-dot{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--dim);transition:all .2s}.tg.on .tg-dot{background:var(--org);border-color:var(--org)}
+.cnt{max-width:740px;width:100%;margin:0 auto;padding:16px 22px 80px;flex:1}
+.pc{border-radius:14px;padding:24px;margin-bottom:16px;transition:all .3s;animation:fadeUp .3s ease;background:var(--card);border:1px solid var(--bdr)}.pc.ok{background:var(--gb);border-color:var(--gbd)}.pc.no{background:var(--rb);border-color:var(--rbd)}
+.pc-top{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.bg{font:700 10px var(--m);padding:4px 8px;border-radius:6px;letter-spacing:.05em}.bg-q{background:var(--pg);color:#9d8df5}.bg-ok{background:rgba(45,212,160,0.1);color:var(--grn)}.bg-no{background:rgba(240,107,107,0.1);color:var(--red)}.bg-ty{background:rgba(32,211,232,0.06);color:var(--cyn);font-size:9px;letter-spacing:.08em}.bg-hard{background:rgba(240,107,107,0.08);color:var(--org);font-size:9px}
+.q-txt{color:var(--txt);font:400 15px/1.8 var(--s);margin-bottom:2px}.q-txt b{font-weight:700;color:#fff}
+.ir{display:flex;gap:6px;margin:12px 0 0;flex-wrap:wrap}
+.ib{flex:1;min-width:110px;padding:9px 12px;border-radius:8px;font:400 11px/1.7 var(--m)}.ib-g{background:rgba(124,107,240,0.05);border:1px solid rgba(124,107,240,0.09);color:var(--pl)}.ib-f{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.08);color:var(--cyn)}.ib-w{background:rgba(234,179,8,0.04);border:1px solid rgba(234,179,8,0.08);color:var(--ylw)}.ib-l{font:700 8px var(--m);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;display:block;opacity:.5}
+.aa{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}.aw{flex:1;min-width:160px;position:relative}
+.ai{width:100%;padding:12px 14px;padding-right:50px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:500 15px var(--m);outline:none;transition:all .25s}.ai:focus{border-color:rgba(245,158,11,0.45)}.ai.v-ok{border-color:var(--grn);background:rgba(45,212,160,0.05)}.ai.v-no{border-color:var(--red);background:rgba(240,107,107,0.05);animation:shake .35s}.ai::placeholder{color:rgba(255,255,255,0.12);font-weight:400;font-size:12px}
+.au{position:absolute;right:12px;top:50%;transform:translateY(-50%);font:500 11px var(--m);color:var(--dim);pointer-events:none}
+.ab{padding:12px 22px;border-radius:10px;border:1.5px solid rgba(245,158,11,0.25);background:rgba(245,158,11,0.08);color:var(--org);font:700 13px var(--f);cursor:pointer;transition:all .2s;white-space:nowrap}.ab:hover{background:rgba(245,158,11,0.16)}
+.fb{margin-top:5px;font:600 12px var(--m)}.fb-ok{color:var(--grn)}.fb-no{color:var(--red)}.fb-v{font:400 11px var(--m);color:var(--dim);margin-top:2px}
+.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn-sh{padding:7px 14px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:500 11px var(--f);cursor:pointer;transition:all .2s}.btn-sh:hover{color:var(--txt)}
+.btn-nx{padding:8px 20px;border-radius:8px;border:1.5px solid rgba(245,158,11,0.25);background:rgba(245,158,11,0.08);color:var(--org);font:700 12px var(--f);cursor:pointer;transition:all .2s}.btn-nx:hover{background:rgba(245,158,11,0.15)}
+.sol{margin-top:14px;padding:16px;border-radius:10px;animation:fadeUp .25s;border:1px solid rgba(245,158,11,0.1);background:rgba(245,158,11,0.02)}.sol-tag{font:700 9px var(--m);letter-spacing:.12em;color:var(--org);margin-bottom:8px;text-transform:uppercase}
+.stp{font:400 12px/2 var(--m);color:var(--pl)}.stp .lb{color:rgba(180,165,250,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.stp .ans{color:var(--grn);font-weight:700;font-size:13px}
+.sol-note{margin-top:10px;padding:10px 12px;background:rgba(255,255,255,0.015);border:1px solid var(--bdr);border-radius:8px;font:400 12px/1.7 var(--f);color:var(--mut)}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;cursor:pointer;color:#b0bec5;font:400 13px/1.5 var(--f);transition:all .2s;outline:none;width:100%;text-align:left;margin-bottom:6px}.opt:not(.done):hover{background:rgba(245,158,11,0.06);border-color:rgba(245,158,11,0.25)}.opt.done{cursor:default}.opt.c-ok{background:rgba(45,212,160,0.08);border-color:rgba(45,212,160,0.3);color:var(--grn)}.opt.c-no{background:rgba(240,107,107,0.08);border-color:rgba(240,107,107,0.3);color:var(--red)}
+.opt-ltr{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font:700 11px var(--m);flex-shrink:0;background:rgba(255,255,255,0.04);color:var(--dim)}.opt.c-ok .opt-ltr{background:rgba(45,212,160,0.15);color:var(--grn)}.opt.c-no .opt-ltr{background:rgba(240,107,107,0.15);color:var(--red)}
+.opts{display:flex;flex-direction:column;margin-top:14px}
+textarea.v-ta{width:100%;padding:12px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:400 14px var(--f);outline:none;resize:vertical;min-height:70px;line-height:1.6}
+.cs-sec{font:700 11px var(--m);letter-spacing:.1em;color:var(--org);text-transform:uppercase;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(245,158,11,0.15)}
+.cs-card{border-radius:10px;padding:16px;margin-bottom:10px;background:var(--card);border:1px solid var(--bdr);animation:fadeUp .3s}
+.cs-title{font:700 13px var(--f);color:var(--txt);margin-bottom:6px}
+.cs-fm{background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:8px;padding:10px 14px;font:500 12.5px/1.8 var(--m);color:var(--org);margin-bottom:8px}
+.cs-lb{font:700 8px var(--m);letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin:8px 0 4px}
+.cs-vr{font:400 11.5px/1.8 var(--m);color:var(--mut);margin-bottom:6px}.cs-vr b{color:var(--cyn);font-weight:600}
+.cs-ex{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.1);border-radius:8px;padding:10px 12px;font:400 12px/1.9 var(--m);color:var(--grn)}.cs-ex .lb{color:rgba(45,212,160,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:600px){.hdr{padding:14px 12px 10px}.modes{padding:8px 12px}.toolbar{padding:6px 12px}.cnt{padding:12px 12px 70px}.pc{padding:18px 14px}.ir{flex-direction:column}.aa{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="hdr-in">
+<div><div class="hdr-lab">Chapter 15 · Complete Study Tool</div><h1 class="hdr-t"><i>Thermochemistry</i> — Practice & Review</h1></div>
+<div class="hdr-r"><div class="stats">
+<div class="stat-box"><div class="stat-n" id="sC">0</div><div class="stat-l">Correct</div></div>
+<div class="stat-box"><div class="stat-n" id="sA">0</div><div class="stat-l">Attempted</div></div>
+<div class="stat-box"><div class="stat-n pct-n" id="sP">—</div><div class="stat-l">Accuracy</div></div>
+<div class="stat-box"><div class="stat-n streak-n" id="sS"><span id="fire">🔥</span> 0</div><div class="stat-l">Streak</div></div>
+</div><button class="btn-r" onclick="resetStats()">Reset</button></div>
+</div></div>
+<div id="modeBar" class="modes"></div>
+<div id="ctrlBar" class="toolbar"></div>
+<div class="cnt" id="main"></div>
+
+<script>
+function R(a,b,d){d=d||0;const f=Math.pow(10,d);return Math.round((Math.random()*(b-a)+a)*f)/f}
+function rd(v,d){return Math.round(v*Math.pow(10,d))/Math.pow(10,d)}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+// ========== VOCAB (15 terms from PDF) ==========
+const VOCAB=[
+{t:"thermochemistry",d:"the branch of science that studies the transfer of energy during phase or chemical changes"},
+{t:"thermal energy",d:"the total kinetic energy of the particles within a substance"},
+{t:"temperature",d:"the average kinetic energy in the particles of a sample; measured in °C or K"},
+{t:"heat",d:"the amount of thermal energy transferred from one substance to another; measured in joules (J)"},
+{t:"enthalpy",d:"the thermal energy content of a system at a constant pressure; symbol H"},
+{t:"calorimeter",d:"an insulated container in which a thermometer detects the temperature change during a chemical reaction"},
+{t:"sensible heat",d:"the transfer of thermal energy that produces a temperature change in a substance"},
+{t:"latent heat",d:"the transfer of thermal energy that produces a phase change without producing a temperature change"},
+{t:"molar enthalpy of fusion",d:"the quantity of energy required to melt one mole of a solid to a liquid with no temperature change; symbol ΔHfus"},
+{t:"molar enthalpy of vaporization",d:"the quantity of energy required to vaporize one mole of a liquid to a gas with no temperature change; symbol ΔHvap"},
+{t:"specific heat",d:"the amount of thermal energy required to raise the temperature of 1 g of a substance by 1 °C; symbol csp; units J/(g·°C)"},
+{t:"enthalpy of reaction",d:"the change in enthalpy that occurs during a reaction; symbol ΔHr; positive = endothermic, negative = exothermic"},
+{t:"thermochemical equation",d:"a chemical equation that shows reactants, products, and the amount of energy released or absorbed as heat"},
+{t:"standard molar enthalpy of formation",d:"the enthalpy change to produce 1 mol of a compound in its standard state from its elements in their standard states; symbol ΔH°f"},
+{t:"standard molar enthalpy of combustion",d:"the thermal energy released by the complete burning of 1 mol of a substance at standard conditions; symbol ΔH°c"},
+{t:"Hess's law",d:"the enthalpy change of a reaction equals the sum of the enthalpy changes for each step of the process"},
+{t:"entropy",d:"a measure of the dispersal of energy in a system; symbol S; positive ΔS = more favorable"},
+{t:"Gibbs free energy",d:"combines ΔH and ΔS to determine spontaneity; ΔG = ΔH − TΔS; negative ΔG = spontaneous"}
+];
+
+// ========== SUBSTANCE DATABASE ==========
+const SUBS=[
+{name:"water",f:"H₂O",mw:18.02,csp:4.18,dhfus:6.01,dhvap:40.7},
+{name:"ethanol",f:"C₂H₅OH",mw:46.07,csp:2.44,dhfus:4.93,dhvap:38.6},
+{name:"methanol",f:"CH₃OH",mw:32.04,csp:2.53,dhfus:3.22,dhvap:35.3},
+{name:"silver",f:"Ag",mw:107.87,csp:0.23,dhfus:11.3,dhvap:250.6},
+{name:"copper",f:"Cu",mw:63.55,csp:0.39,dhfus:13.1,dhvap:300.3},
+{name:"iron",f:"Fe",mw:55.85,csp:0.45,dhfus:13.8,dhvap:340.0},
+{name:"aluminum",f:"Al",mw:26.98,csp:0.90,dhfus:10.7,dhvap:293.0},
+{name:"gold",f:"Au",mw:196.97,csp:0.13,dhfus:12.6,dhvap:324.0},
+{name:"lead",f:"Pb",mw:207.2,csp:0.13,dhfus:4.77,dhvap:179.5}
+];
+function rSub(){return pick(SUBS)}
+function rMetal(){return pick(SUBS.filter(s=>s.csp<2))}
+
+// ========== Hess's Law / ΔH°f DATA ==========
+const RXNS=[
+{name:"combustion of methane",eq:"CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l)",hf_prod:[{n:"CO₂",v:-393.5,coef:1},{n:"H₂O(l)",v:-285.8,coef:2}],hf_react:[{n:"CH₄",v:-74.6,coef:1},{n:"O₂",v:0,coef:2}]},
+{name:"formation of ammonia",eq:"N₂(g) + 3H₂(g) → 2NH₃(g)",hf_prod:[{n:"NH₃",v:-45.9,coef:2}],hf_react:[{n:"N₂",v:0,coef:1},{n:"H₂",v:0,coef:3}]},
+{name:"decomposition of calcium hydroxide",eq:"Ca(OH)₂(s) → CaO(s) + H₂O(g)",hf_prod:[{n:"CaO",v:-634.9,coef:1},{n:"H₂O(g)",v:-241.8,coef:1}],hf_react:[{n:"Ca(OH)₂",v:-985.2,coef:1}]},
+{name:"formation of water",eq:"2H₂(g) + O₂(g) → 2H₂O(l)",hf_prod:[{n:"H₂O(l)",v:-285.8,coef:2}],hf_react:[{n:"H₂",v:0,coef:2},{n:"O₂",v:0,coef:1}]}
+];
+
+// ========== Gibbs free energy DATA ==========
+const GIBBS=[
+{eq:"2Ag(s)+S(s)→Ag₂S(s)",dh:-32.6,sp:[{n:"Ag₂S",v:144.0}],sr:[{n:"Ag",v:42.6,c:2},{n:"S",v:32.1,c:1}],T:298},
+{eq:"2C(s)+H₂(g)→C₂H₂(g)",dh:227.4,sp:[{n:"C₂H₂",v:200.9}],sr:[{n:"C",v:5.7,c:2},{n:"H₂",v:130.7,c:1}],T:298},
+{eq:"2C(s)+2H₂(g)→C₂H₄(g)",dh:52.4,sp:[{n:"C₂H₄",v:219.3}],sr:[{n:"C",v:5.7,c:2},{n:"H₂",v:130.7,c:2}],T:298}
+];
+
+// ========== SECTIONS ==========
+const SEC=[
+{id:"specific_heat",title:"Specific Heat",icon:"🔥",types:[{id:"find_Q",name:"Find Q"},{id:"find_Tf",name:"Find Tf"},{id:"find_m_from_Q",name:"Find mass"},{id:"find_csp",name:"Find csp"}]},
+{id:"enthalpy",title:"Enthalpy (Fusion/Vap)",icon:"🧊",types:[{id:"melt_energy",name:"Energy to melt"},{id:"boil_energy",name:"Energy to boil"},{id:"heating_curve",name:"Full heating curve"}]},
+{id:"hess",title:"Hess's Law (ΔH°r)",icon:"⚗️",types:[{id:"hess_calc",name:"ΔH°r from ΔH°f"}]},
+{id:"gibbs",title:"Entropy & Gibbs",icon:"⚡",types:[{id:"entropy_calc",name:"Calculate ΔS°"},{id:"gibbs_calc",name:"Calculate ΔG"}]}
+];
+
+// ========== GENERATORS ==========
+const G={
+// --- SPECIFIC HEAT: Q = csp × m × ΔT ---
+find_Q(){
+  const s=rMetal(),m=R(10,200,1),ti=R(10,40,1),tf=R(50,200,1),dt=rd(tf-ti,1),Q=rd(s.csp*m*dt,1);
+  return{ref:"Ex 15-2",q:`A <b>${m} g</b> sample of ${s.name} (${s.f}) is heated from <b>${ti} °C</b> to <b>${tf} °C</b>. How many joules were added? (c_sp = ${s.csp} J/g·°C)`,gv:`m = ${m} g\nT_i = ${ti} °C, T_f = ${tf} °C\nc_sp = ${s.csp} J/g·°C`,fm:`Q = c_sp × m × ΔT`,fi:`Q = ? J`,u:"J",a:Q,tol:Math.max(Math.abs(Q)*0.02,1),
+  st:[`<span class='lb'>ΔT</span> = ${tf} − ${ti} = ${dt} °C`,`<span class='lb'>Q</span> = ${s.csp} × ${m} × ${dt}`,`<span class='lb'>ANSWER</span> <span class='ans'>Q = ${Q} J</span>`],nt:`Q = c_sp × m × ΔT. Negative Q means heat is lost.`}
+},
+find_Tf(){
+  const s=pick([SUBS[0],SUBS[1]]),m=R(20,200,1),ti=R(15,35,1),Q=R(200,5000,0),dt=rd(Q/(s.csp*m),1),tf=rd(ti+dt,1);
+  return{ref:"Ex 15-3",q:`If <b>${Q} J</b> of thermal energy is added to <b>${m} g</b> of ${s.name} at <b>${ti} °C</b>, what is the final temperature? (c_sp = ${s.csp} J/g·°C)`,gv:`Q = ${Q} J\nc_sp = ${s.csp}, m = ${m} g\nT_i = ${ti} °C`,fm:`Q = c_sp × m × ΔT\nΔT = Q / (c_sp × m)\nT_f = T_i + ΔT`,fi:`T_f = ? °C`,u:"°C",a:tf,tol:Math.max(Math.abs(tf)*0.02,0.3),
+  st:[`<span class='lb'>ΔT</span> = ${Q} / (${s.csp} × ${m}) = ${Q} / ${rd(s.csp*m,2)} = ${dt} °C`,`<span class='lb'>T_f</span> = ${ti} + ${dt} = <span class='ans'>${tf} °C</span>`],nt:`Rearrange Q = c_sp·m·ΔT → ΔT = Q/(c_sp·m), then add to T_i.`}
+},
+find_m_from_Q(){
+  const s=rMetal(),Q=R(500,8000,0),ti=R(20,40,1),tf=R(60,150,1),dt=rd(tf-ti,1),m=rd(Q/(s.csp*dt),1);
+  return{ref:"Reverse Ex 15-2",q:`A sample of ${s.name} (c_sp = ${s.csp} J/g·°C) absorbs <b>${Q} J</b> as it heats from <b>${ti} °C</b> to <b>${tf} °C</b>. What is the mass of the sample?`,gv:`Q = ${Q} J\nc_sp = ${s.csp}\nT_i = ${ti}, T_f = ${tf} °C`,fm:`Q = c_sp × m × ΔT\nm = Q / (c_sp × ΔT)`,fi:`m = ? g`,u:"g",a:m,tol:Math.max(m*0.02,0.5),
+  st:[`<span class='lb'>ΔT</span> = ${tf} − ${ti} = ${dt} °C`,`<span class='lb'>m</span> = ${Q} / (${s.csp} × ${dt}) = ${Q} / ${rd(s.csp*dt,2)}`,`<span class='lb'>ANSWER</span> <span class='ans'>m = ${m} g</span>`],nt:`m = Q / (c_sp × ΔT)`}
+},
+find_csp(){
+  const s=rMetal(),m=R(15,100,1),ti=R(15,30,1),tf=R(50,120,1),dt=rd(tf-ti,1),Q=rd(s.csp*m*dt,0),csp=rd(Q/(m*dt),2);
+  return{ref:"Reverse",q:`A <b>${m} g</b> metal sample absorbs <b>${Q} J</b> going from <b>${ti} °C</b> to <b>${tf} °C</b>. What is its specific heat?`,gv:`m = ${m} g, Q = ${Q} J\nT_i = ${ti}, T_f = ${tf} °C`,fm:`c_sp = Q / (m × ΔT)`,fi:`c_sp = ? J/g·°C`,u:"J/g·°C",a:csp,tol:Math.max(csp*0.03,0.01),
+  st:[`<span class='lb'>ΔT</span> = ${tf} − ${ti} = ${dt} °C`,`<span class='lb'>c_sp</span> = ${Q} / (${m} × ${dt})`,`<span class='lb'>ANSWER</span> <span class='ans'>c_sp = ${csp} J/g·°C</span>`],nt:`c_sp = Q / (m × ΔT)`}
+},
+
+// --- ENTHALPY OF PHASE CHANGES ---
+melt_energy(){
+  const s=pick([SUBS[0],SUBS[1],SUBS[2]]),massG=R(50,5000,0),n=rd(massG/s.mw,3),Q=rd(n*s.dhfus,1);
+  return{ref:"Ex 15-1",q:`How much energy (in <b>kJ</b>) is required to melt <b>${massG} g</b> of ${s.name} (${s.f}) at its melting point? (ΔH_fus = ${s.dhfus} kJ/mol, M = ${s.mw} g/mol)`,gv:`m = ${massG} g\nM = ${s.mw} g/mol\nΔH_fus = ${s.dhfus} kJ/mol`,fm:`n = m / M\nQ = n × ΔH_fus`,fi:`Q = ? kJ`,u:"kJ",a:Q,tol:Math.max(Math.abs(Q)*0.02,0.3),
+  st:[`<span class='lb'>MOLES</span> n = ${massG} / ${s.mw} = ${rd(n,3)} mol`,`<span class='lb'>ENERGY</span> Q = ${rd(n,3)} × ${s.dhfus} = <span class='ans'>${Q} kJ</span>`],nt:`Convert grams → moles, then multiply by ΔH_fus.`}
+},
+boil_energy(){
+  const s=pick([SUBS[0],SUBS[1],SUBS[2]]),massG=R(50,3000,0),n=rd(massG/s.mw,3),Q=rd(n*s.dhvap,1);
+  return{ref:"Ex 15-1 (vap)",q:`How much energy (in <b>kJ</b>) is needed to vaporize <b>${massG} g</b> of ${s.name} (${s.f}) at its boiling point? (ΔH_vap = ${s.dhvap} kJ/mol, M = ${s.mw} g/mol)`,gv:`m = ${massG} g\nM = ${s.mw} g/mol\nΔH_vap = ${s.dhvap} kJ/mol`,fm:`n = m / M\nQ = n × ΔH_vap`,fi:`Q = ? kJ`,u:"kJ",a:Q,tol:Math.max(Math.abs(Q)*0.02,0.5),
+  st:[`<span class='lb'>MOLES</span> n = ${massG} / ${s.mw} = ${rd(n,3)} mol`,`<span class='lb'>ENERGY</span> Q = ${rd(n,3)} × ${s.dhvap} = <span class='ans'>${Q} kJ</span>`],nt:`Same pattern: grams → moles → multiply by ΔH_vap.`}
+},
+heating_curve(){
+  // Ex 15-4: ice at 0°C → steam at 100°C (water only)
+  const s=SUBS[0],massG=R(2,50,1);
+  const n=rd(massG/s.mw,4);
+  const q1=rd(n*s.dhfus,2); // melt
+  const q2=rd(s.csp*massG*100,1); // heat water 0→100
+  const q3=rd(n*s.dhvap,2); // boil
+  const total=rd((q1+q2/1000+q3),1); // q2 is in J, convert
+  const q2kj=rd(q2/1000,2);
+  const ans=rd(q1+q2kj+q3,1);
+  return{ref:"Ex 15-4",q:`Convert <b>${massG} g</b> of ice at <b>0 °C</b> to steam at <b>100 °C</b>. How much total energy (in <b>kJ</b>) is needed?<br><span style="color:var(--dim);font-size:13px">(ΔH_fus=6.01 kJ/mol, c_sp=4.18 J/g·°C, ΔH_vap=40.7 kJ/mol, M=18.02)</span>`,gv:`m = ${massG} g, M = 18.02\nΔH_fus = 6.01, ΔH_vap = 40.7\nc_sp = 4.18 J/g·°C`,fm:`Seg 1: Q₁ = n × ΔH_fus\nSeg 2: Q₂ = c_sp × m × ΔT\nSeg 3: Q₃ = n × ΔH_vap\nQ_total = Q₁ + Q₂ + Q₃`,fi:`Q_total = ? kJ`,u:"kJ",a:ans,tol:Math.max(Math.abs(ans)*0.03,0.3),
+  st:[`<span class='lb'>MOLES</span> n = ${massG}/18.02 = ${rd(n,4)} mol`,`<span class='lb'>SEG 1 (MELT)</span> Q₁ = ${rd(n,4)} × 6.01 = ${q1} kJ`,`<span class='lb'>SEG 2 (HEAT)</span> Q₂ = 4.18 × ${massG} × 100 = ${q2} J = ${q2kj} kJ`,`<span class='lb'>SEG 3 (BOIL)</span> Q₃ = ${rd(n,4)} × 40.7 = ${q3} kJ`,`<span class='lb'>TOTAL</span> Q = ${q1} + ${q2kj} + ${q3} = <span class='ans'>${ans} kJ</span>`],nt:`Three segments: melt + heat liquid + boil. Convert Q₂ from J to kJ!`}
+},
+
+// --- HESS'S LAW ---
+hess_calc(){
+  const r=pick(RXNS);
+  const sumProd=rd(r.hf_prod.reduce((s,p)=>s+p.v*p.coef,0),1);
+  const sumReact=rd(r.hf_react.reduce((s,p)=>s+p.v*p.coef,0),1);
+  const dhr=rd(sumProd-sumReact,1);
+  const prodStr=r.hf_prod.map(p=>`${p.coef>1?p.coef+'×':''}ΔH°f(${p.n})=${p.coef>1?p.coef+'×':''}(${p.v})`).join(' + ');
+  const reactStr=r.hf_react.map(p=>`${p.coef>1?p.coef+'×':''}ΔH°f(${p.n})=${p.coef>1?p.coef+'×':''}(${p.v})`).join(' + ');
+  return{ref:"Ex 15-6",q:`Calculate ΔH°r for the ${r.name}:<br><b>${r.eq}</b><br><span style="color:var(--dim);font-size:12px">${r.hf_prod.map(p=>`ΔH°f(${p.n})=${p.v}`).join(', ')}, ${r.hf_react.map(p=>`ΔH°f(${p.n})=${p.v}`).join(', ')} kJ/mol</span>`,gv:r.hf_prod.map(p=>`ΔH°f(${p.n})=${p.v}`).join('\n')+'\n'+r.hf_react.map(p=>`ΔH°f(${p.n})=${p.v}`).join('\n'),fm:`ΔH°r = ΣΔH°f(products) − ΣΔH°f(reactants)`,fi:`ΔH°r = ? kJ`,u:"kJ",a:dhr,tol:Math.max(Math.abs(dhr)*0.02,0.5),
+  st:[`<span class='lb'>PRODUCTS</span> ${prodStr} = ${sumProd} kJ`,`<span class='lb'>REACTANTS</span> ${reactStr} = ${sumReact} kJ`,`<span class='lb'>ΔH°r</span> = ${sumProd} − (${sumReact}) = <span class='ans'>${dhr} kJ</span>`,`<span class='lb'>TYPE</span> ${dhr<0?'Exothermic (−)':'Endothermic (+)'}`],nt:`ΔH°r = ΣΔH°f(products) − ΣΔH°f(reactants). Elements in standard state have ΔH°f = 0.`}
+},
+
+// --- ENTROPY & GIBBS ---
+entropy_calc(){
+  const g=pick(GIBBS);
+  const sp=g.sp.reduce((s,p)=>s+p.v,0);
+  const sr=g.sr.reduce((s,p)=>s+p.v*p.c,0);
+  const ds=rd(sp-sr,1);
+  return{ref:"Ex 15-7",q:`Calculate ΔS° for: <b>${g.eq}</b><br><span style="color:var(--dim);font-size:12px">${g.sp.map(p=>`S°(${p.n})=${p.v}`).join(', ')}, ${g.sr.map(p=>`S°(${p.n})=${p.v}`).join(', ')} J/mol·K</span>`,gv:g.sp.map(p=>`S°(${p.n})=${p.v}`).join('\n')+'\n'+g.sr.map(p=>`S°(${p.n})=${p.v}`).join('\n'),fm:`ΔS° = ΣS°(products) − ΣS°(reactants)`,fi:`ΔS° = ? J/K`,u:"J/K",a:ds,tol:Math.max(Math.abs(ds)*0.02,0.5),
+  st:[`<span class='lb'>PRODUCTS</span> ${sp} J/K`,`<span class='lb'>REACTANTS</span> ${g.sr.map(p=>`${p.c}×${p.v}`).join(' + ')} = ${rd(sr,1)} J/K`,`<span class='lb'>ΔS°</span> = ${sp} − ${rd(sr,1)} = <span class='ans'>${ds} J/K</span>`,`<span class='lb'>TENDENCY</span> ${ds>0?'Favorable (+ΔS)':'Unfavorable (−ΔS)'}`],nt:`ΔS = products − reactants. +ΔS is favorable.`}
+},
+gibbs_calc(){
+  const g=pick(GIBBS);
+  const sp=g.sp.reduce((s,p)=>s+p.v,0);
+  const sr=g.sr.reduce((s,p)=>s+p.v*p.c,0);
+  const ds=rd(sp-sr,1); // J/K
+  const dsKj=rd(ds/1000,4); // kJ/K
+  const dg=rd(g.dh-g.T*dsKj,1); // kJ
+  return{ref:"Ex 15-8",q:`Calculate ΔG° at ${g.T} K for: <b>${g.eq}</b><br><span style="color:var(--dim);font-size:12px">ΔH°=${g.dh} kJ, ${g.sp.map(p=>`S°(${p.n})=${p.v}`).join(', ')}, ${g.sr.map(p=>`S°(${p.n})=${p.v}`).join(', ')} J/mol·K</span>`,gv:`ΔH° = ${g.dh} kJ\nΔS° = ${ds} J/K = ${dsKj} kJ/K\nT = ${g.T} K`,fm:`ΔG = ΔH − TΔS`,fi:`ΔG = ? kJ`,u:"kJ",a:dg,tol:Math.max(Math.abs(dg)*0.03,0.5),
+  st:[`<span class='lb'>ΔS°</span> = ${sp} − ${rd(sr,1)} = ${ds} J/K = ${dsKj} kJ/K`,`<span class='lb'>ΔG</span> = ΔH − TΔS = ${g.dh} − (${g.T} × ${dsKj})`,`<span class='lb'>ΔG</span> = ${g.dh} − ${rd(g.T*dsKj,1)} = <span class='ans'>${dg} kJ</span>`,`<span class='lb'>RESULT</span> ${dg<0?'Spontaneous (−ΔG)':'Nonspontaneous (+ΔG)'}`],nt:`ΔG = ΔH − TΔS. Convert ΔS from J/K to kJ/K first! Negative ΔG = spontaneous.`}
+}
+};
+
+// ========== CHEATSHEET ==========
+const CS=[
+{title:"Specific Heat (Q = c_sp × m × ΔT)",fm:["Q = c_sp × m × ΔT","ΔT = Q / (c_sp × m)","m = Q / (c_sp × ΔT)","c_sp = Q / (m × ΔT)"],vr:"<b>Q</b> = thermal energy (J)\n<b>c_sp</b> = specific heat (J/g·°C)\n<b>m</b> = mass (g)\n<b>ΔT</b> = T_f − T_i (°C)\nHigh c_sp = slow temp change\nLow c_sp = fast temp change",ex:{q:"28.35 g silver heated from 15.2 °C to 85.6 °C (c_sp = 0.23)",st:["ΔT = 85.6 − 15.2 = 70.4 °C","Q = 0.23 × 28.35 × 70.4","Q = 459 J"]}},
+{title:"Molar Enthalpy of Fusion (ΔH_fus)",fm:["n = m / M","Q = n × ΔH_fus"],vr:"<b>ΔH_fus</b> = energy to melt 1 mol (kJ/mol)\nWater: ΔH_fus = 6.01 kJ/mol\nSame energy released when freezing",ex:{q:"Melt 3.54 kg of ice at 0 °C",st:["n = 3540 / 18.02 = 196.4 mol","Q = 196.4 × 6.01 = 1180 kJ"]}},
+{title:"Molar Enthalpy of Vaporization (ΔH_vap)",fm:["n = m / M","Q = n × ΔH_vap"],vr:"<b>ΔH_vap</b> = energy to vaporize 1 mol (kJ/mol)\nWater: ΔH_vap = 40.7 kJ/mol\nΔH_condensation = −ΔH_vap",ex:{q:"Vaporize 515 g methanol (ΔH_vap = 35.3, M = 32.04)",st:["n = 515 / 32.04 = 16.07 mol","Q = 16.07 × 35.3 = 567 kJ"]}},
+{title:"Multi-Segment Heating Curve (Ex 15-4)",fm:["Seg 1: Q₁ = n × ΔH_fus (melt)","Seg 2: Q₂ = c_sp × m × ΔT (heat liquid)","Seg 3: Q₃ = n × ΔH_vap (boil)","Q_total = Q₁ + Q₂ + Q₃"],vr:"Three segments for solid→gas:\n1. Latent heat to melt (no temp change)\n2. Sensible heat to warm liquid\n3. Latent heat to boil (no temp change)\n<b>Convert J↔kJ when adding!</b>",ex:{q:"5.00 g ice at 0 °C → steam at 100 °C",st:["n = 5.00/18.02 = 0.2775 mol","Q₁ = 0.2775 × 6.01 = 1.67 kJ","Q₂ = 4.18 × 5.00 × 100 = 2090 J = 2.09 kJ","Q₃ = 0.2775 × 40.7 = 11.3 kJ","Total = 1.67 + 2.09 + 11.3 = 15.1 kJ"]}},
+{title:"Enthalpy of Reaction / Hess's Law",fm:["ΔH°r = ΣΔH°f(products) − ΣΔH°f(reactants)","Elements in standard state: ΔH°f = 0"],vr:"<b>ΔH°r</b> = enthalpy of reaction (kJ)\n<b>ΔH°f</b> = standard enthalpy of formation (kJ/mol)\nNegative ΔH°r = exothermic\nPositive ΔH°r = endothermic\nMultiply ΔH°f by coefficient!",ex:{q:"CH₄ + 2O₂ → CO₂ + 2H₂O(l)",st:["Products: −393.5 + 2(−285.8) = −965.1","Reactants: −74.6 + 2(0) = −74.6","ΔH°r = −965.1 − (−74.6) = −890.5 kJ","Exothermic"]}},
+{title:"Entropy Change (ΔS°)",fm:["ΔS° = ΣS°(products) − ΣS°(reactants)"],vr:"<b>S°</b> = standard entropy (J/mol·K)\n<b>+ΔS</b> = entropy increases (favorable)\n<b>−ΔS</b> = entropy decreases (less favorable)\nGases > liquids > solids in entropy",ex:{q:"NH₃(g)+HCl(g)→NH₄Cl(s)",st:["S° products = 94.6","S° reactants = 192.8 + 186.9 = 379.7","ΔS° = 94.6 − 379.7 = −285.1 J/K","Entropy decreases (2 gases → 1 solid)"]}},
+{title:"Gibbs Free Energy (ΔG = ΔH − TΔS)",fm:["ΔG = ΔH − TΔS"],vr:"<b>ΔG</b> = free energy change (J or kJ)\n<b>ΔH</b> = enthalpy change\n<b>T</b> = temperature (K)\n<b>ΔS</b> = entropy change\n<b>−ΔG = spontaneous</b>\n+ΔG = nonspontaneous\n⚠️ Units: match ΔH and TΔS (both J or both kJ)",ex:{q:"Ex 15-8: 2Ag(s)+S(s)→Ag₂S(s) at 298 K\nΔH°=−32.6 kJ, S°(Ag₂S)=144.0, S°(Ag)=42.6, S°(S)=32.1 J/mol·K",st:["ΔS° = 144.0 − [2(42.6) + 1(32.1)] = 144.0 − 117.3 = +26.7 J/K","ΔS° = +26.7 J/K = +0.0267 kJ/K","ΔG = −32.6 − (298)(+0.0267)","ΔG = −32.6 − 7.96 = −40.6 kJ","Spontaneous (−ΔG) ✓"]}},
+{title:"ΔG Sign Rules",fm:["−ΔH, +ΔS → always spontaneous","−ΔH, −ΔS → spontaneous at LOW T","+ ΔH, +ΔS → spontaneous at HIGH T","+ΔH, −ΔS → never spontaneous"],vr:"The four combinations:\nExo + entropy↑ = always go\nExo + entropy↓ = depends on T\nEndo + entropy↑ = depends on T\nEndo + entropy↓ = never go",ex:{q:"Predict spontaneity",st:["−ΔH, +ΔS: ΔG always negative ✓","−ΔH, −ΔS: low T makes TΔS small","+ ΔH, +ΔS: high T makes TΔS large","+ ΔH, −ΔS: ΔG always positive ✗"]}}
+];
+
+// ========== STATE ==========
+let mode="problems",active="specific_heat",subType=null,prob=null,answered=false,solShown=false,userVal="";
+let nC=0,nA=0,streak=0;
+let hide={given:false,formula:false,find:false};
+let vMode="mc",vQ=null,vAns=false,vUA=null;
+
+function updS(){document.getElementById("sC").textContent=nC;document.getElementById("sA").textContent=nA;document.getElementById("sP").textContent=nA>0?rd(nC/nA*100,0)+"%":"—";document.getElementById("sS").innerHTML=`<span id="fire">🔥</span> ${streak}`}
+function resetStats(){nC=0;nA=0;streak=0;updS();if(mode==="problems")genP();else if(mode==="vocab")genV();else renderCS()}
+
+function renderModes(){document.getElementById("modeBar").innerHTML=[{id:"problems",l:"🔥 Problems"},{id:"vocab",l:"📖 Vocab"},{id:"cheatsheet",l:"📋 Cheatsheet"}].map(m=>`<button class="mode-btn${mode===m.id?" on":""}" onclick="switchMode('${m.id}')">${m.l}</button>`).join("")}
+function switchMode(m){mode=m;renderModes();renderCtrls();if(m==="problems")genP();else if(m==="vocab")genV();else renderCS()}
+
+function renderCtrls(){
+  const el=document.getElementById("ctrlBar");
+  if(mode==="problems"){
+    let h=SEC.map(s=>`<button class="cb${active===s.id?" on":""}" onclick="active='${s.id}';subType=null;genP()">${s.icon} ${s.title}</button>`).join("");
+    h+=`<span style="width:6px"></span><span class="cl">Hide:</span>`;
+    h+=`<button class="tg${hide.given?" on":""}" id="tg-given" onclick="tglH('given')"><span class="tg-dot"></span>Givens</button>`;
+    h+=`<button class="tg${hide.formula?" on":""}" id="tg-formula" onclick="tglH('formula')"><span class="tg-dot"></span>Formulas</button>`;
+    h+=`<button class="tg${hide.find?" on":""}" id="tg-find" onclick="tglH('find')"><span class="tg-dot"></span>Solve-For</button>`;
+    el.innerHTML=h;
+  } else if(mode==="vocab"){
+    el.innerHTML=`<span class="cl">Format:</span><button class="cb${vMode==="mc"?" on":""}" onclick="vMode='mc';genV()">Multiple Choice</button><button class="cb${vMode==="written"?" on":""}" onclick="vMode='written';genV()">Written</button><button class="cb${vMode==="tf"?" on":""}" onclick="vMode='tf';genV()">True / False</button>`;
+  } else {el.innerHTML=`<span class="cl">Formula reference & worked examples from Chapter 15</span>`}
+}
+
+function tglH(k){hide[k]=!hide[k];var b=document.getElementById("tg-"+k);if(b){if(hide[k])b.classList.add("on");else b.classList.remove("on")}renderProb()}
+
+// PROBLEMS
+function genP(){const sec=SEC.find(s=>s.id===active),tid=subType||pick(sec.types).id;prob=G[tid]();answered=false;solShown=false;userVal="";renderCtrls();renderProb()}
+function chkP(){if(answered)return;const inp=document.getElementById("inp"),v=parseFloat(inp.value.replace(/,/g,""));if(isNaN(v)){inp.classList.add("v-no");setTimeout(()=>{const e=document.getElementById("inp");if(e)e.classList.remove("v-no")},400);return}userVal=inp.value;answered=true;nA++;if(Math.abs(v-prob.a)<=prob.tol){nC++;streak++}else streak=0;updS();renderProb()}
+function showPS(){userVal=document.getElementById("inp")?document.getElementById("inp").value:"";solShown=true;if(!answered){answered=true;nA++;streak=0;updS()}renderProb()}
+
+function renderProb(){
+  const el=document.getElementById("main"),p=prob;if(!p){el.innerHTML="";return}
+  let isOk=false;if(answered){const v=parseFloat(userVal.replace(/,/g,""));isOk=!isNaN(v)&&Math.abs(v-p.a)<=p.tol}
+  const cc=answered?(isOk?"ok":"no"):"",bc=answered?(isOk?"bg-ok":"bg-no"):"bg-q",sec=SEC.find(s=>s.id===active);
+  const hc=(hide.given?1:0)+(hide.formula?1:0)+(hide.find?1:0),dl=hc===3?"EXAM MODE":hc>=2?"HARD+":hc===1?"HARD":"";
+  let h=`<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px"><button class="cb${!subType?" on":""}" onclick="subType=null;genP()">Random</button>`;
+  sec.types.forEach(t=>{h+=`<button class="cb${subType===t.id?" on":""}" onclick="subType='${t.id}';genP()">${t.name}</button>`});h+=`</div>`;
+  h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${bc}">${answered?(isOk?"✓ Correct":"✗ Incorrect"):"Problem"}</span><span class="bg bg-ty">${p.ref}</span>${dl?`<span class="bg bg-hard">${dl}</span>`:""}</div><div class="q-txt">${p.q}</div>`;
+  const gH=hide.given&&!answered&&!solShown,fH=hide.formula&&!answered&&!solShown,wH=hide.find&&!answered&&!solShown;
+  if(!gH||!fH||!wH){h+=`<div class="ir">`;if(!gH)h+=`<div class="ib ib-g"><span class="ib-l">Given</span>${p.gv.replace(/\n/g,"<br>")}</div>`;if(!fH)h+=`<div class="ib ib-f"><span class="ib-l">Formula</span>${p.fm.replace(/\n/g,"<br>")}</div>`;if(!wH)h+=`<div class="ib ib-w"><span class="ib-l">Solve For</span>${p.fi.replace(/\n/g,"<br>")}</div>`;h+=`</div>`}
+  if(!answered){h+=`<div class="aa"><div class="aw"><input class="ai" id="inp" type="text" inputmode="decimal" placeholder="Enter answer…" value="${userVal}" onkeydown="if(event.key==='Enter')chkP()"><span class="au">${p.u}</span></div><button class="ab" onclick="chkP()">Check</button></div><div class="btn-row"><button class="btn-sh" onclick="showPS()">Show Solution</button></div>`}
+  else{h+=`<div class="aa"><div class="aw"><input class="ai ${isOk?"v-ok":"v-no"}" value="${userVal}" disabled><span class="au">${p.u}</span></div></div><div class="fb ${isOk?"fb-ok":"fb-no"}">${isOk?`✓ Correct! Streak: ${streak} 🔥`:"✗ Not quite"}</div>`;if(!isOk)h+=`<div class="fb-v">Answer: ${p.a} ${p.u}</div>`}
+  if(answered||solShown){h+=`<div class="sol"><div class="sol-tag">Solution</div>`;p.st.forEach(s=>{h+=`<div class="stp">${s}</div>`});h+=`<div class="sol-note">${p.nt}</div></div>`}
+  if(answered)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genP()">Next →</button></div>`;
+  h+=`</div>`;el.innerHTML=h;if(!answered){const i=document.getElementById("inp");if(i)setTimeout(()=>i.focus(),50)}
+}
+
+// VOCAB
+function genV(){vAns=false;vUA=null;if(vMode==="mc")genVMC();else if(vMode==="tf")genVTF();else genVW();renderCtrls();renderVocab()}
+function genVMC(){const c=pick(VOCAB),wr=shuffle(VOCAB.filter(v=>v.t!==c.t)).slice(0,3),askT=Math.random()<0.5,opts=shuffle([c,...wr]);vQ={type:"mc",c,opts,askT,ci:opts.indexOf(c)}}
+function genVTF(){const c=pick(VOCAB),isT=Math.random()<0.5;let sd;if(isT)sd=c.d;else{sd=pick(VOCAB.filter(v=>v.t!==c.t)).d}vQ={type:"tf",t:c.t,sd,isT,cd:c.d}}
+function genVW(){const c=pick(VOCAB),askT=Math.random()<0.5;vQ={type:"written",c,askT}}
+function chkVMC(i){if(vAns)return;vAns=true;vUA=i;nA++;if(i===vQ.ci){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVTF(a){if(vAns)return;vAns=true;vUA=a;nA++;if(a===vQ.isT){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVW(){if(vAns)return;const inp=document.getElementById("vi");if(!inp||!inp.value.trim())return;vAns=true;const u=inp.value.trim().toLowerCase(),tgt=vQ.askT?vQ.c.d.toLowerCase():vQ.c.t.toLowerCase(),tw=tgt.split(/\s+/).filter(w=>w.length>3),mc=tw.filter(w=>u.includes(w)).length,ok=tw.length>0&&(mc/tw.length>=0.45);vUA=ok;nA++;if(ok){nC++;streak++}else streak=0;updS();renderVocab()}
+
+function renderVocab(){
+  const el=document.getElementById("main"),q=vQ;if(!q){el.innerHTML="";return}let h="";
+  if(q.type==="mc"){
+    const ok=vAns&&vUA===q.ci,cc=vAns?(ok?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">Multiple Choice</span></div>`;
+    if(q.askT){h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}const l=vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i);return`<button class="${c}" onclick="chkVMC(${i})"><span class="opt-ltr">${l}</span><span>${o.d}</span></button>`}).join("")}</div>`}
+    else{h+=`<div class="q-txt">Which term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}const l=vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i);return`<button class="${c}" onclick="chkVMC(${i})"><span class="opt-ltr">${l}</span><span>${o.t}</span></button>`}).join("")}</div>`}
+    if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`;
+  } else if(q.type==="tf"){
+    const ok=vAns&&vUA===q.isT,cc=vAns?(ok?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">True / False</span></div>`;
+    h+=`<div class="q-txt"><b>${q.t}</b> — <span style="color:var(--cyn);font-style:italic">"${q.sd}"</span></div><div style="margin-top:10px;font:400 13px var(--s);color:var(--mut)">Is this definition correct?</div>`;
+    h+=`<div class="opts" style="margin-top:8px;flex-direction:row;gap:8px">`;
+    ["True","False"].forEach(l=>{const v=l==="True";let c="opt";if(vAns){c+=" done";if(v===q.isT)c+=" c-ok";else if(v===vUA)c+=" c-no"}h+=`<button class="${c}" style="flex:1;justify-content:center" onclick="chkVTF(${v})">${l}</button>`});h+=`</div>`;
+    if(vAns&&!ok)h+=`<div class="sol" style="margin-top:12px"><div class="sol-tag">Correct Definition</div><div class="stp">${q.cd}</div></div>`;
+    if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`;
+  } else {
+    const cc=vAns?(vUA?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(vUA?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">Written</span></div>`;
+    if(q.askT)h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div>`;else h+=`<div class="q-txt">What term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div>`;
+    if(!vAns){h+=`<div style="margin-top:12px"><textarea class="v-ta" id="vi" placeholder="${q.askT?"Type definition…":"Type the term…"}" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chkVW()}"></textarea></div><div class="btn-row"><button class="ab" onclick="chkVW()">Check</button></div>`}
+    else{h+=`<div class="fb ${vUA?"fb-ok":"fb-no"}" style="margin-top:8px">${vUA?"✓ Key concepts matched!":"✗ Review below"}</div><div class="sol" style="margin-top:10px"><div class="sol-tag">Answer</div>`;if(q.askT)h+=`<div class="stp">${q.c.d}</div>`;else h+=`<div class="stp" style="font-size:14px;font-weight:600">${q.c.t}</div>`;h+=`</div><div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`}
+    h+=`</div>`;
+  }
+  el.innerHTML=h;
+}
+
+// CHEATSHEET
+function renderCS(){
+  renderCtrls();let h="";
+  h+=`<div class="cs-sec">🔥 All Formulas & Worked Examples</div>`;
+  CS.forEach(c=>{h+=`<div class="cs-card"><div class="cs-title">${c.title}</div><div class="cs-fm">${c.fm.join("<br>")}</div><div class="cs-lb">Variables</div><div class="cs-vr">${c.vr.replace(/\n/g,"<br>")}</div><div class="cs-lb">Worked Example</div><div class="cs-ex"><div style="font:400 12px/1.5 var(--f);color:var(--mut);margin-bottom:4px">${c.ex.q}</div>${c.ex.st.map(s=>`<div class="stp">${s}</div>`).join("")}</div></div>`});
+  h+=`<div class="cs-sec">📖 All ${VOCAB.length} Vocabulary Terms</div>`;
+  VOCAB.forEach((v,i)=>{h+=`<div class="cs-card" style="padding:10px 12px;margin-bottom:5px"><span style="font:700 10px var(--m);color:var(--org);margin-right:6px">${i+1}.</span><b>${v.t}</b><span style="margin:0 6px;color:var(--dim)">—</span><span style="color:var(--mut);font-size:12px">${v.d}</span></div>`});
+  document.getElementById("main").innerHTML=h;
+}
+
+renderModes();renderCtrls();genP();genV();updS();
+</script>
+</body>
+</html>
