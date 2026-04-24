@@ -1,0 +1,377 @@
+﻿Chemistry Chapter 16 In-class Review        Name _________________________________
+
+
+Station 1: Big Ideas (Kinetics vs Thermodynamics): Check the correct box for each statement. Write a summary sentence for kinetics and for thermodynamics.
+
+
+Statement
+	K
+	T
+	Determines if a reaction occurs
+	☐
+	☐
+	Determines how fast a reaction occurs
+	☐
+	☐
+	Path-independent
+	☐
+	☐
+	Path-dependent
+	☐
+	☐
+	Depends on activation energy
+	☐
+	☐
+	Based on ΔG
+	☐
+	☐
+	Summary sentence: ________________________________________________________ __________________________________________________________________________ __________________________________________________________________________
+Station 2: Reaction Pathway Graphs
+Draw a reaction pathway graph.
+* Label activation energy
+* Identify activated complex
+* Determine exothermic vs endothermic
+* Compare with/without catalyst
+
+
+
+
+
+
+
+
+
+
+
+
+Station 3: Collision Theory Challenge
+Students explain why the reaction fails or succeeds. Students must identify the 3 requirements for effective collisions: (1) Collide; (2) Correct orientation; (3) Sufficient energy (≥ activation energy). Decide if a reaction is likely to occur. Circle the number of the scenario if it is likely to occur and put an X on the scenario number if unlikely to occur. After each statement, identify which requirement(s) (1, 2, 3 as described above) are met in the first blank and those not met in the second blank. 
+1. Molecules collide but bounce off        ___________        ___________
+2. Low temperature reaction                ___________                ___________
+3. Incorrect alignment                        ___________                ___________
+4. Two molecules collide at low temperature and bounce apart ___________ ___________
+5. Molecules collide with high energy but in the wrong orientation__________ __________
+6. Molecules are in a sealed container but rarely collide        ___________  ___________
+7. Temperature is increased significantly        ___________                ___________
+8. A catalyst is added to the reaction                ___________                ___________
+9. Concentration is doubled, but temperature is decreased ___________    ___________
+10. Pressure is increased for a gas-phase reaction        ___________                ___________
+11. Solid reactant is crushed into powder                ___________                ___________
+12. A catalyst is added, but concentration is cut in half        ___________                ___________
+13. Temperature increases, but an inhibitor is added        ___________                ___________
+14. Molecules collide very frequently but still do not react        ___________         ___________
+15. A reaction has very high activation energy                ___________                ___________
+16. Molecules are perfectly oriented but moving very slowly        ___________  ___________
+17. A reaction is thermodynamically favorable but extremely slow __________ __________
+18. Increasing concentration does not change reaction rate        ___________  ___________
+19. Food spoils faster when left out of the fridge                ___________                ___________
+20. A campfire burns faster when wood is broken into smaller pieces_________ _________
+21. A catalytic converter speeds up reactions in a car exhaust system________  ________
+22. Enzymes stop working at very high temperatures        ___________                ___________
+23. Spraying a liquid fuel makes it burn faster than a puddle        ___________  ___________
+
+
+
+
+
+
+Station 4: Factors Affecting Rate
+For each scenario:
+* Predict direction (increase, decrease, no change)
+* Explain using collision theory or rate law reasoning
+1. Concentration is doubled
+Prediction: ☐ Increase ☐ Decrease ☐ No Change
+Explanation:
+________________
+
+
+________________
+
+
+2. Temperature increases
+Prediction: ☐ Increase ☐ Decrease ☐ No Change
+Explanation:
+________________
+
+
+________________
+
+
+3. Surface area increases
+Prediction: ☐ Increase ☐ Decrease ☐ No Change
+Explanation:
+________________
+
+
+________________
+
+
+4. Catalyst added
+Prediction: ☐ Increase ☐ Decrease ☐ No Change
+Explanation:
+________________
+
+
+________________
+
+
+
+
+Station 6: Catalysts / Enzymes / Inhibitors:
+In the table below, write a notable characteristic of each: 
+Homogeneous Catalyst
+	
+
+
+
+	Heterogeneous Catalyst
+	
+
+
+
+	Enzyme
+	
+
+
+
+	Inhibitor
+	
+
+
+
+	Adsorption
+
+
+	
+
+	Absorption
+
+
+	
+
+	
+
+Station 6: Reaction Mechanisms
+Mechanism Set 1: Nitrogen Dioxide Dimerization Pathway
+Step 1:
+2 NO₂(g) → NO(g) + NO3(g) (slow step)
+Step 2:
+NO3(g) + CO(g) → NO₂(g) + CO₂(g) (fast step)
+1. Identify the intermediate AND justify.                ___________________________________
+2. Write the net reaction AND show what cancels.        _____________________________
+3. What is the rate-determining step?                 ___________________________________
+Mechanism Set 2: Hydrogen Peroxide Decomposition (Catalyzed)
+Step 1 (fast equilibrium):
+H₂O₂(aq) + I⁻(aq) → H₂O(l) + IO⁻(aq)
+Step 2 (slow):
+H₂O₂(aq) + IO⁻(aq) → H₂O(l) + O₂(g) + I⁻(aq)
+4. Identify the intermediate AND justify.                ___________________________________
+5. Write the net reaction AND show what cancels.        _____________________________
+6. What is the rate-determining step?                 ___________________________________
+Mechanism Set 3: Ozone Decomposition in Atmosphere
+Step 1 (slow):
+O₃(g) + Cl(g) → ClO(g) + O₂(g)
+Step 2 (fast):
+ClO(g) + O₃(g) → Cl(g) + 2O₂(g)
+7. Identify the intermediate AND justify.                ___________________________________
+8. Write the net reaction AND show what cancels.        _____________________________
+9. What is the rate-determining step?                 ___________________________________
+Mechanism Set 4: Nitric Oxide + Ozone Reaction
+Step 1 (slow):
+NO(g) + O₃(g) → NO₂(g) + O₂(g)
+Step 2 (fast):
+NO₂(g) + O(g) → NO(g) + O₂(g)
+10. Identify the intermediate AND justify.                ___________________________________
+11. Write the net reaction AND show what cancels.        _____________________________
+12. What is the rate-determining step?                 ___________________________________
+Mechanism Set 5: Hydrogen + Bromine Reaction (Classic Kinetics System)
+Step 1 (slow):
+Br₂(g) ⇌ 2Br(g)
+Step 2 (fast):
+Br(g) + H₂(g) → HBr(g) + H(g)
+Step 3 (fast):
+H(g) + Br₂(g) → HBr(g) + Br(g)
+13. Identify the intermediate AND justify.                ___________________________________
+14. Write the net reaction AND show what cancels.        _____________________________
+15. What is the rate-determining step?                 ___________________________________
+Mechanism Set 6: Carbon Monoxide Oxidation
+Step 1 (slow):
+O₂(g) → 2O(g)
+Step 2 (fast): 
+CO(g) + O(g) → CO₂(g)
+Step 3 (fast): 
+CO(g) + O(g) → CO₂(g)
+16. Identify the intermediate AND justify.                ___________________________________
+17. Write the net reaction AND show what cancels.        _____________________________
+18. What is the rate-determining step?                 ___________________________________
+
+
+Station 7: General Rate Law Information 
+1. How are rate laws determined?        ___________________________________
+2. What do the square brackets represent?        ___________________________________
+3. How many trials do you compare at a time?        ___________________________________
+4. What are you looking for in the numbers of the trials? ___________________________
+5. If the reaction rate does not change, the rate order = ________.
+Station 8: Rate Laws
+For each set, state which trials you compared. In the explanation, give the reason for the rate change mathematically. Give the order of each reactant, and then write the rate law equation.
+Set A
+Trial
+	[A] (M)
+	[B] (M)
+	Initial Rate (M/s)
+	1
+	0.10
+	0.10
+	0.020
+	2
+	0.20
+	0.10
+	0.040
+	3
+	0.10
+	0.20
+	0.020
+	Order of A
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Order of B
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Write the rate law
+Answer: __________________________
+What would happen to the rate if the concentration of B is doubled?
+Answer: __________________________
+Set B
+
+
+Trial
+	[A] (M)
+	[B] (M)
+	Initial Rate (M/s)
+	1
+	0.10
+	0.10
+	0.020
+	2
+	0.30
+	0.10
+	0.180
+	3
+	0.10
+	0.20
+	0.040
+	
+
+Order of A
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Order of B
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Write the rate law
+Answer: __________________________
+What would happen to the rate if the concentration of B is doubled?
+Answer: __________________________
+
+
+
+
+
+
+
+
+
+
+Set C
+Trial
+	[A] (M)
+	[B] (M)
+	Initial Rate (M/s)
+	1
+	0.20
+	0.10
+	0.008
+	2
+	0.20
+	0.30
+	0.072
+	3
+	0.40
+	0.10
+	0.032
+	Order of A
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Order of B
+Trials used: __________________
+Explanation:
+________________
+________________
+
+
+Write the rate law
+Answer: __________________________
+What would happen to the rate if the concentration of A is doubled?
+Answer: __________________________
+
+
+
+
+Station 9  : Vocabulary terms/definitions/examples: Cut out, mix each column up, hand out to students. Find the other two cards to match the set until all nine sets are completed. Write a sentence for each grouping of cards.
+
+
+Activation Energy
+	Minimum energy required to start a reaction; the peak in an energy diagram
+	Energy barrier shown on a reaction graph
+	Activated Complex
+	Temporary unstable arrangement of atoms at highest energy
+	Peak of a reaction pathway diagram
+
+
+	Catalyst
+	Substance that speeds up a reaction without being consumed
+	Platinum used in catalytic converters
+
+
+	Enzyme
+	Biological catalyst
+	Amylase breaking down starch
+	Inhibitor
+	Substance that slows a reaction
+
+
+	A substance blocking an enzyme’s active site
+	Rate-Determining Step
+	Slowest step in a mechanism
+	Step 2 in a mechanism labeled “slow”
+
+
+	Intermediate
+	Substance formed and then used up
+	A molecule produced in step 1 and used in step 2
+	Adsorption
+	Sticking to a surface
+	Gas molecules sticking to metal surface
+	Absorption
+	Dissolving throughout a material 
+	Sugar dissolving in water
