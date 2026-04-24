@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 17: Equilibrium (17.1 & 17.2) — Complete Study Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#090b10;--card:rgba(255,255,255,0.022);--bdr:rgba(255,255,255,0.055);--txt:#dfe6f0;--mut:#8a95a8;--dim:#5a6478;--prp:#7c6bf0;--pl:#b4a5fa;--pg:rgba(124,107,240,0.09);--grn:#2dd4a0;--gb:rgba(45,212,160,0.04);--gbd:rgba(45,212,160,0.18);--red:#f06b6b;--rb:rgba(240,107,107,0.04);--rbd:rgba(240,107,107,0.18);--ylw:#eab308;--blu:#58a6ff;--cyn:#20d3e8;--org:#f59e0b;--pink:#ec4899;--m:'JetBrains Mono',monospace;--s:'Instrument Serif',Georgia,serif;--f:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+input[type=text],textarea{-webkit-appearance:none;appearance:none}
+.hdr{padding:16px 22px 12px;border-bottom:1px solid var(--bdr);background:linear-gradient(180deg,rgba(236,72,153,0.025) 0%,transparent 100%)}
+.hdr-in{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-lab{font:700 9px/1 var(--m);letter-spacing:.2em;color:var(--pink);margin-bottom:2px;text-transform:uppercase}
+.hdr-t{font:400 22px/1.2 var(--s);color:var(--txt)}.hdr-t i{font-style:italic;color:var(--pink)}
+.hdr-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:12px;align-items:center}.stat-box{text-align:center}.stat-n{font:700 16px/1 var(--m);color:var(--txt)}.stat-l{font:500 8px/1 var(--m);color:var(--dim);margin-top:2px;letter-spacing:.08em;text-transform:uppercase}
+.streak-n{color:var(--ylw)}.pct-n{color:var(--cyn)}
+.btn-r{background:rgba(240,107,107,0.06);border:1px solid rgba(240,107,107,0.15);color:var(--red);padding:6px 12px;border-radius:8px;font:600 10px var(--f);cursor:pointer}
+.modes{display:flex;gap:4px;padding:10px 22px;border-bottom:1px solid rgba(255,255,255,0.03);max-width:900px;margin:0 auto;overflow-x:auto}
+.mode-btn{flex:1;min-width:110px;padding:10px 8px;border-radius:10px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.01);color:var(--dim);font:600 12px var(--f);cursor:pointer;transition:all .2s;outline:none;text-align:center}
+.mode-btn.on{border-color:rgba(236,72,153,0.35);background:rgba(236,72,153,0.06);color:var(--pink)}
+.mode-ico{display:block;font-size:18px;margin-bottom:3px}
+.toolbar{padding:8px 22px;border-bottom:1px solid rgba(255,255,255,0.02);max-width:900px;margin:0 auto;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.cl{font:600 9px var(--m);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-right:3px}
+.cb{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--bdr);background:rgba(255,255,255,0.012);color:var(--dim);font:600 11px var(--f);cursor:pointer;white-space:nowrap;transition:all .2s;outline:none}
+.cb:hover{border-color:rgba(236,72,153,0.15);color:var(--mut)}.cb.on{border-color:rgba(236,72,153,0.28);background:rgba(236,72,153,0.07);color:var(--pink)}
+.cnt{max-width:740px;width:100%;margin:0 auto;padding:16px 22px 80px;flex:1}
+.pc{border-radius:14px;padding:24px;margin-bottom:16px;transition:all .3s;animation:fadeUp .3s ease;background:var(--card);border:1px solid var(--bdr)}.pc.ok{background:var(--gb);border-color:var(--gbd)}.pc.no{background:var(--rb);border-color:var(--rbd)}
+.pc-top{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.bg{font:700 10px var(--m);padding:4px 8px;border-radius:6px;letter-spacing:.05em}.bg-q{background:var(--pg);color:#9d8df5}.bg-ok{background:rgba(45,212,160,0.1);color:var(--grn)}.bg-no{background:rgba(240,107,107,0.1);color:var(--red)}.bg-ty{background:rgba(236,72,153,0.08);color:var(--pink);font-size:9px;letter-spacing:.08em}
+.q-txt{color:var(--txt);font:400 15px/1.8 var(--s);margin-bottom:2px}.q-txt b{font-weight:700;color:#fff}
+.ir{display:flex;gap:6px;margin:12px 0 0;flex-wrap:wrap}
+.ib{flex:1;min-width:110px;padding:9px 12px;border-radius:8px;font:400 11px/1.7 var(--m)}.ib-g{background:rgba(124,107,240,0.05);border:1px solid rgba(124,107,240,0.09);color:var(--pl)}.ib-f{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.08);color:var(--cyn)}.ib-w{background:rgba(234,179,8,0.04);border:1px solid rgba(234,179,8,0.08);color:var(--ylw)}.ib-l{font:700 8px var(--m);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;display:block;opacity:.5}
+.aa{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}.aw{flex:1;min-width:160px;position:relative}
+.ai{width:100%;padding:12px 14px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:500 15px var(--m);outline:none;transition:all .25s}.ai:focus{border-color:rgba(236,72,153,0.45)}.ai.v-ok{border-color:var(--grn);background:rgba(45,212,160,0.05)}.ai.v-no{border-color:var(--red);background:rgba(240,107,107,0.05);animation:shake .35s}.ai::placeholder{color:rgba(255,255,255,0.12);font-weight:400;font-size:12px}
+.ab{padding:12px 22px;border-radius:10px;border:1.5px solid rgba(236,72,153,0.25);background:rgba(236,72,153,0.08);color:var(--pink);font:700 13px var(--f);cursor:pointer;transition:all .2s;white-space:nowrap}.ab:hover{background:rgba(236,72,153,0.16)}
+.fb{margin-top:5px;font:600 12px var(--m)}.fb-ok{color:var(--grn)}.fb-no{color:var(--red)}.fb-v{font:400 11px var(--m);color:var(--dim);margin-top:2px}
+.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn-sh{padding:7px 14px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:500 11px var(--f);cursor:pointer;transition:all .2s}.btn-sh:hover{color:var(--txt)}
+.btn-nx{padding:8px 20px;border-radius:8px;border:1.5px solid rgba(236,72,153,0.25);background:rgba(236,72,153,0.08);color:var(--pink);font:700 12px var(--f);cursor:pointer;transition:all .2s}.btn-nx:hover{background:rgba(236,72,153,0.15)}
+.sol{margin-top:14px;padding:16px;border-radius:10px;animation:fadeUp .25s;border:1px solid rgba(236,72,153,0.1);background:rgba(236,72,153,0.02)}.sol-tag{font:700 9px var(--m);letter-spacing:.12em;color:var(--pink);margin-bottom:8px;text-transform:uppercase}
+.stp{font:400 12px/2 var(--m);color:var(--pl)}.stp .lb{color:rgba(180,165,250,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.stp .ans{color:var(--grn);font-weight:700;font-size:13px}
+.sol-note{margin-top:10px;padding:10px 12px;background:rgba(255,255,255,0.015);border:1px solid var(--bdr);border-radius:8px;font:400 12px/1.7 var(--f);color:var(--mut)}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;cursor:pointer;color:#b0bec5;font:400 13px/1.5 var(--f);transition:all .2s;outline:none;width:100%;text-align:left;margin-bottom:6px}.opt:not(.done):hover{background:rgba(236,72,153,0.06);border-color:rgba(236,72,153,0.25)}.opt.done{cursor:default}.opt.c-ok{background:rgba(45,212,160,0.08);border-color:rgba(45,212,160,0.3);color:var(--grn)}.opt.c-no{background:rgba(240,107,107,0.08);border-color:rgba(240,107,107,0.3);color:var(--red)}
+.opt-ltr{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font:700 11px var(--m);flex-shrink:0;background:rgba(255,255,255,0.04);color:var(--dim)}.opt.c-ok .opt-ltr{background:rgba(45,212,160,0.15);color:var(--grn)}.opt.c-no .opt-ltr{background:rgba(240,107,107,0.15);color:var(--red)}
+.opts{display:flex;flex-direction:column;margin-top:14px}
+textarea.v-ta{width:100%;padding:12px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:400 14px var(--f);outline:none;resize:vertical;min-height:70px;line-height:1.6}
+/* CHEATSHEET */
+.cs-sec{font:700 11px var(--m);letter-spacing:.1em;color:var(--pink);text-transform:uppercase;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(236,72,153,0.15)}
+.cs-card{border-radius:10px;padding:16px;margin-bottom:10px;background:var(--card);border:1px solid var(--bdr);animation:fadeUp .3s}
+.cs-title{font:700 13px var(--f);color:var(--txt);margin-bottom:6px}
+.cs-fm{background:rgba(236,72,153,0.05);border:1px solid rgba(236,72,153,0.1);border-radius:8px;padding:10px 14px;font:500 12.5px/1.8 var(--m);color:var(--pink);margin-bottom:8px}
+.cs-lb{font:700 8px var(--m);letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin:8px 0 4px}
+.cs-vr{font:400 11.5px/1.8 var(--m);color:var(--mut);margin-bottom:6px}.cs-vr b{color:var(--cyn);font-weight:600}
+.cs-ex{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.1);border-radius:8px;padding:10px 12px;font:400 12px/1.9 var(--m);color:var(--grn)}.cs-ex .lb{color:rgba(45,212,160,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+/* LEARNING MODE */
+.lesson-wrap{max-width:700px;margin:0 auto}
+.lesson-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;padding:12px 16px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;flex-wrap:wrap}
+.lesson-prog{font:700 11px var(--m);color:var(--dim);letter-spacing:.08em}
+.prog-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-top:6px;width:200px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--org));transition:width .4s ease}
+.lesson-card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:28px;animation:fadeUp .3s ease}
+.lesson-type{font:700 9px var(--m);letter-spacing:.15em;color:var(--pink);text-transform:uppercase;margin-bottom:14px}
+.lesson-title{font:400 22px/1.3 var(--s);color:var(--txt);margin-bottom:14px}.lesson-title i{color:var(--pink);font-style:italic}
+.lesson-body{font:400 15px/1.9 var(--s);color:var(--mut);margin-bottom:14px}
+.lesson-body b{color:#fff;font-weight:600}.lesson-body em{color:var(--cyn);font-style:italic;font-weight:500}
+.lesson-def{background:rgba(124,107,240,0.05);border-left:3px solid var(--prp);padding:14px 18px;margin:12px 0;border-radius:6px}
+.lesson-def-t{font:700 10px var(--m);letter-spacing:.1em;color:var(--prp);text-transform:uppercase;margin-bottom:4px}
+.lesson-def-b{font:400 14px/1.7 var(--s);color:var(--pl)}
+.lesson-eq{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.1);border-radius:8px;padding:14px 18px;margin:12px 0;font:500 14px/1.9 var(--m);color:var(--cyn);text-align:center}
+.lesson-worked{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.12);border-radius:10px;padding:14px 18px;margin:12px 0}
+.lesson-worked-t{font:700 10px var(--m);letter-spacing:.1em;color:var(--grn);text-transform:uppercase;margin-bottom:6px}
+.lesson-worked-q{font:400 13px/1.7 var(--s);color:var(--txt);margin-bottom:10px;font-style:italic}
+.lesson-worked-s{font:400 12px/1.9 var(--m);color:var(--grn);padding:2px 0}.lesson-worked-s .lb{color:rgba(45,212,160,0.5);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lesson-checkpoint{background:rgba(236,72,153,0.04);border:1.5px solid rgba(236,72,153,0.2);border-radius:12px;padding:20px 22px;margin:18px 0}
+.lesson-cp-t{font:700 10px var(--m);letter-spacing:.12em;color:var(--pink);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.lesson-cp-t::before{content:'✓';font-size:14px}
+.lesson-cp-q{font:400 15px/1.7 var(--s);color:var(--txt);margin-bottom:14px}.lesson-cp-q b{color:#fff}
+.hint-box{margin-top:10px;padding:12px 14px;background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.2);border-radius:8px;font:400 13px/1.7 var(--f);color:var(--ylw);animation:fadeUp .3s}
+.hint-box .hint-t{font:700 9px var(--m);letter-spacing:.12em;color:var(--ylw);text-transform:uppercase;margin-bottom:4px}
+.nav-btn{padding:9px 18px;border-radius:9px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:600 12px var(--f);cursor:pointer;transition:all .2s}
+.nav-btn:hover:not(:disabled){background:rgba(255,255,255,0.05);color:var(--txt)}.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-btn.primary{border-color:rgba(236,72,153,0.3);background:rgba(236,72,153,0.08);color:var(--pink)}.nav-btn.primary:hover{background:rgba(236,72,153,0.15)}
+.lesson-intro{text-align:center;padding:40px 24px}
+.lesson-intro-icon{font-size:44px;margin-bottom:12px}
+.lesson-intro-t{font:400 24px/1.3 var(--s);color:var(--txt);margin-bottom:8px}
+.lesson-intro-s{font:400 14px/1.6 var(--f);color:var(--mut);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto}
+.topic-picker{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:500px;margin:0 auto}
+@media(max-width:500px){.topic-picker{grid-template-columns:1fr}}
+.topic-btn{padding:20px 14px;border-radius:12px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.02);color:var(--txt);font:400 15px var(--s);cursor:pointer;transition:all .2s;text-align:left}
+.topic-btn:hover{border-color:rgba(236,72,153,0.3);background:rgba(236,72,153,0.05)}
+.topic-ico{font-size:24px;margin-bottom:6px;display:block}
+.topic-sub{font:400 11px var(--f);color:var(--dim);margin-top:4px;letter-spacing:.04em}
+.quiz-header{text-align:center;padding:20px 0 10px}
+.quiz-score{font:700 32px var(--m);color:var(--pink);margin:12px 0}.quiz-score.ok{color:var(--grn)}
+@media(max-width:600px){.hdr{padding:14px 12px 10px}.modes{padding:8px 12px}.toolbar{padding:6px 12px}.cnt{padding:12px 12px 70px}.pc{padding:18px 14px}.aa{flex-direction:column}.lesson-card{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="hdr-in">
+<div><div class="hdr-lab">Chapter 17 · Sections 17.1 &amp; 17.2</div><h1 class="hdr-t"><i>Chemical Equilibrium</i> — Complete Study Tool</h1></div>
+<div class="hdr-r"><div class="stats">
+<div class="stat-box"><div class="stat-n" id="sC">0</div><div class="stat-l">Correct</div></div>
+<div class="stat-box"><div class="stat-n" id="sA">0</div><div class="stat-l">Attempted</div></div>
+<div class="stat-box"><div class="stat-n pct-n" id="sP">—</div><div class="stat-l">Accuracy</div></div>
+<div class="stat-box"><div class="stat-n streak-n" id="sS"><span id="fire">🔥</span> 0</div><div class="stat-l">Streak</div></div>
+</div><button class="btn-r" onclick="resetStats()">Reset</button></div>
+</div></div>
+<div id="modeBar" class="modes"></div>
+<div id="ctrlBar" class="toolbar"></div>
+<div class="cnt" id="main"></div>
+
+<script>
+function R(a,b,d){d=d||0;const f=Math.pow(10,d);return Math.round((Math.random()*(b-a)+a)*f)/f}
+function rd(v,d){return Math.round(v*Math.pow(10,d))/Math.pow(10,d)}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+// ========== VOCAB ==========
+const VOCAB=[
+{t:"reversible reaction",d:"a reaction that can occur in both the forward and the reverse directions"},
+{t:"irreversible reaction",d:"a reaction that can occur only in the forward direction"},
+{t:"chemical equilibrium",d:"the state in a reversible chemical reaction in which the forward and reverse reaction rates are equal and the concentrations are stable"},
+{t:"equilibrium position",d:"the concentrations of the substances at equilibrium; depends on the conditions at equilibrium"},
+{t:"equilibrium constant",d:"a numerical expression of the ratio of product equilibrium concentrations to reactant equilibrium concentrations; symbol Keq"},
+{t:"law of chemical equilibrium",d:"at a specific temperature, a chemical system may reach a point at which the ratio of products to reactants is constant"},
+{t:"homogeneous equilibrium",d:"the state of equilibrium between substances that are all in the same state of matter"},
+{t:"heterogeneous equilibrium",d:"the state of equilibrium between substances that are in different states of matter"},
+{t:"Le Châtelier's principle",d:"when a stress is placed on a reversible process, it will proceed in the direction that relieves that stress"},
+{t:"stress",d:"a change in conditions (concentration, pressure, or temperature) that disturbs a chemical equilibrium"},
+{t:"catalyst",d:"a substance that changes the rate of a reaction without undergoing any permanent change itself; does not affect equilibrium concentrations or Keq"}
+];
+
+// ========== REACTION DATABASE ==========
+// For Keq expressions: homogeneous (all gas/aq) and heterogeneous
+const RXNS_HOMO=[
+{eq:"3H₂(g) + N₂(g) ⇌ 2NH₃(g)",p:[{s:"NH₃",c:2}],r:[{s:"H₂",c:3},{s:"N₂",c:1}]},
+{eq:"2NO(g) + O₂(g) ⇌ 2NO₂(g)",p:[{s:"NO₂",c:2}],r:[{s:"NO",c:2},{s:"O₂",c:1}]},
+{eq:"H₂(g) + I₂(g) ⇌ 2HI(g)",p:[{s:"HI",c:2}],r:[{s:"H₂",c:1},{s:"I₂",c:1}]},
+{eq:"2SO₂(g) + O₂(g) ⇌ 2SO₃(g)",p:[{s:"SO₃",c:2}],r:[{s:"SO₂",c:2},{s:"O₂",c:1}]},
+{eq:"N₂O₄(g) ⇌ 2NO₂(g)",p:[{s:"NO₂",c:2}],r:[{s:"N₂O₄",c:1}]},
+{eq:"PCl₅(g) ⇌ PCl₃(g) + Cl₂(g)",p:[{s:"PCl₃",c:1},{s:"Cl₂",c:1}],r:[{s:"PCl₅",c:1}]},
+{eq:"CO(g) + 2H₂(g) ⇌ CH₃OH(g)",p:[{s:"CH₃OH",c:1}],r:[{s:"CO",c:1},{s:"H₂",c:2}]},
+{eq:"CO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g)",p:[{s:"CO₂",c:1},{s:"H₂",c:1}],r:[{s:"CO",c:1},{s:"H₂O",c:1}]}
+];
+// Heterogeneous: solids/liquids excluded
+const RXNS_HET=[
+{eq:"CaCO₃(s) ⇌ CaO(s) + CO₂(g)",p:[{s:"CO₂",c:1,keep:true}],r:[{s:"CaCO₃",c:1,keep:false}]},
+{eq:"2NaOH(aq) + ZnCl₂(aq) ⇌ 2NaCl(aq) + Zn(OH)₂(s)",p:[{s:"NaCl",c:2,keep:true},{s:"Zn(OH)₂",c:1,keep:false}],r:[{s:"NaOH",c:2,keep:true},{s:"ZnCl₂",c:1,keep:true}]},
+{eq:"CaF₂(s) ⇌ Ca²⁺(aq) + 2F⁻(aq)",p:[{s:"Ca²⁺",c:1,keep:true},{s:"F⁻",c:2,keep:true}],r:[{s:"CaF₂",c:1,keep:false}]},
+{eq:"Mg(s) + 2HCl(aq) ⇌ MgCl₂(aq) + H₂(g)",p:[{s:"MgCl₂",c:1,keep:true},{s:"H₂",c:1,keep:true}],r:[{s:"Mg",c:1,keep:false},{s:"HCl",c:2,keep:true}]}
+];
+
+// ========== Le Châtelier SCENARIOS ==========
+const LECH=[
+// concentration
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"increase [N₂]",shift:"right",keq:"no change",expl:"Adding reactant shifts equilibrium away from that side (toward products). Keq is unchanged by concentration."},
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"increase [NH₃]",shift:"left",keq:"no change",expl:"Adding product shifts equilibrium away from product side (back toward reactants). Keq unchanged."},
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"remove NH₃",shift:"right",keq:"no change",expl:"Removing product shifts equilibrium toward the product side to replace it. Keq unchanged."},
+{rxn:"H₂(g) + I₂(g) ⇌ 2HI(g)",stress:"decrease [H₂]",shift:"left",keq:"no change",expl:"Removing reactant shifts equilibrium to produce more reactant. Keq unchanged."},
+// pressure
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"increase pressure",shift:"right",keq:"no change",expl:"4 mol gas on left vs 2 mol on right. Increasing pressure shifts toward the side with FEWER moles of gas — right."},
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"decrease pressure",shift:"left",keq:"no change",expl:"Decreasing pressure shifts toward the side with MORE moles of gas — left (4 mol)."},
+{rxn:"2SO₂(g) + O₂(g) ⇌ 2SO₃(g)",stress:"increase pressure",shift:"right",keq:"no change",expl:"3 mol reactants vs 2 mol products. Higher pressure shifts to the side with fewer moles of gas — right."},
+{rxn:"H₂(g) + I₂(g) ⇌ 2HI(g)",stress:"increase pressure",shift:"no change",keq:"no change",expl:"Equal moles of gas on both sides (2 and 2). Pressure changes have no effect when gas moles are equal."},
+// temperature (exothermic reactions — heat is a product)
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g) + heat (exothermic)",stress:"increase temperature",shift:"left",keq:"decreases",expl:"Exothermic: heat is a 'product'. Adding heat shifts equilibrium away from products (left). Keq decreases."},
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g) + heat (exothermic)",stress:"decrease temperature",shift:"right",keq:"increases",expl:"Removing heat from an exothermic reaction shifts equilibrium toward products (right). Keq increases."},
+// temperature (endothermic — heat is a reactant)
+{rxn:"N₂O₄(g) + heat ⇌ 2NO₂(g) (endothermic)",stress:"increase temperature",shift:"right",keq:"increases",expl:"Endothermic: heat is a 'reactant'. Adding heat shifts toward products (right). Keq increases."},
+{rxn:"N₂O₄(g) + heat ⇌ 2NO₂(g) (endothermic)",stress:"decrease temperature",shift:"left",keq:"decreases",expl:"Removing heat from an endothermic reaction shifts toward reactants (left). Keq decreases."},
+// catalyst
+{rxn:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",stress:"add catalyst",shift:"no change",keq:"no change",expl:"Catalysts speed up forward AND reverse reactions equally. Equilibrium is reached faster but the position and Keq are unchanged."},
+// solid/liquid
+{rxn:"CaF₂(s) ⇌ Ca²⁺(aq) + 2F⁻(aq)",stress:"add CaF₂(s)",shift:"no change",keq:"no change",expl:"CaF₂ is a solid — it does not appear in the equilibrium expression. Adding more solid has no effect."},
+{rxn:"CaF₂(s) ⇌ Ca²⁺(aq) + 2F⁻(aq)",stress:"add Ca²⁺ ions",shift:"left",keq:"no change",expl:"Adding product Ca²⁺ shifts equilibrium to the left (toward reactants)."},
+{rxn:"CaF₂(s) ⇌ Ca²⁺(aq) + 2F⁻(aq)",stress:"remove F⁻ ions",shift:"right",keq:"no change",expl:"Removing product F⁻ shifts equilibrium to the right to replace them."}
+];
+
+// ========== SECTIONS ==========
+const SEC=[
+{id:"keq_write",title:"Write Keq Expression",icon:"✍️",types:[{id:"keq_homo",name:"Homogeneous"},{id:"keq_het",name:"Heterogeneous"}]},
+{id:"keq_calc",title:"Calculate Keq",icon:"🧮",types:[{id:"calc_keq",name:"Given all concs"},{id:"calc_missing",name:"Find missing conc"}]},
+{id:"interpret",title:"Interpret Keq",icon:"🎯",types:[{id:"interp_mc",name:"Products vs reactants"}]},
+{id:"lechatelier",title:"Le Châtelier",icon:"⚖️",types:[{id:"shift_mc",name:"Shift direction"},{id:"keq_effect_mc",name:"Effect on Keq"}]}
+];
+
+// ========== GENERATORS ==========
+
+// Helper: build Keq expression string from rxn
+function buildKeq(rxn,het){
+  let num="",den="";
+  (rxn.p||[]).forEach(p=>{if(het&&!p.keep)return;num+=`[${p.s}]${p.c>1?p.c:""}`});
+  (rxn.r||[]).forEach(p=>{if(het&&!p.keep)return;den+=`[${p.s}]${p.c>1?p.c:""}`});
+  if(!num)num="1";if(!den)den="1";
+  return {num,den,full:`${num} / ${den}`};
+}
+
+const G={
+keq_homo(){
+  const r=pick(RXNS_HOMO);
+  const kq=buildKeq(r,false);
+  return{ref:"Ex 17-1",q:`Write the equilibrium constant expression for:<br><b>${r.eq}</b><br><br><span style="color:var(--dim);font-size:12px">Type as: [products]/[reactants] — use coefficients as exponents after brackets (e.g. [NH₃]2 for [NH₃]²)</span>`,gv:`Reaction shown above`,fm:`Keq = [products]^coefficients / [reactants]^coefficients`,fi:`Keq = ?`,u:"",a:kq.full,tol:0,isText:true,
+  st:[`<span class='lb'>NUMERATOR</span> products with coefficients as exponents: <span class='ans'>${kq.num}</span>`,`<span class='lb'>DENOMINATOR</span> reactants with coefficients as exponents: <span class='ans'>${kq.den}</span>`,`<span class='lb'>Keq</span> = <span class='ans'>${kq.full}</span>`],nt:`All species are gases (homogeneous), so all are included. Balance coefficients become exponents.`}
+},
+keq_het(){
+  const r=pick(RXNS_HET);
+  const kq=buildKeq(r,true);
+  const excluded=[...(r.r||[]),...(r.p||[])].filter(s=>!s.keep).map(s=>s.s).join(", ");
+  return{ref:"Ex 17-2",q:`Write the equilibrium constant expression for:<br><b>${r.eq}</b><br><br><span style="color:var(--dim);font-size:12px">Remember: pure solids and liquids are NOT included in Keq.<br>Type as: [products]/[reactants]</span>`,gv:`Reaction shown above`,fm:`Keq excludes pure solids (s) and liquids (l)`,fi:`Keq = ?`,u:"",a:kq.full,tol:0,isText:true,
+  st:[`<span class='lb'>EXCLUDE</span> pure solids/liquids: ${excluded||"none"}`,`<span class='lb'>NUMERATOR</span> <span class='ans'>${kq.num}</span>`,`<span class='lb'>DENOMINATOR</span> <span class='ans'>${kq.den}</span>`,`<span class='lb'>Keq</span> = <span class='ans'>${kq.full}</span>`],nt:`Pure solids and liquids have defined "concentration" = 1, so they cancel out of the expression.`}
+},
+calc_keq(){
+  const r=pick(RXNS_HOMO);
+  const concs={};
+  r.r.forEach(s=>{concs[s.s]=R(0.05,3.0,3)});
+  r.p.forEach(s=>{concs[s.s]=R(0.05,3.0,3)});
+  let num=1,numStr="",den=1,denStr="";
+  r.p.forEach(s=>{num*=Math.pow(concs[s.s],s.c);numStr+=`[${s.s}]${s.c>1?'^'+s.c:""}`+(r.p.length>1?" · ":"")});
+  r.r.forEach(s=>{den*=Math.pow(concs[s.s],s.c);denStr+=`[${s.s}]${s.c>1?'^'+s.c:""}`+(r.r.length>1?" · ":"")});
+  numStr=numStr.replace(/ · $/,"");denStr=denStr.replace(/ · $/,"");
+  const keq=rd(num/den,3);
+  const concsStr=Object.entries(concs).map(([k,v])=>`[${k}] = ${v} M`).join(', ');
+  return{ref:"Ex 17-3",q:`Calculate Keq for:<br><b>${r.eq}</b><br><br>At equilibrium: ${concsStr}`,gv:Object.entries(concs).map(([k,v])=>`[${k}] = ${v} M`).join('\n'),fm:`Keq = ${numStr} / ${denStr}`,fi:`Keq = ?`,u:"",a:keq,tol:Math.max(Math.abs(keq)*0.03,0.005),
+  st:[`<span class='lb'>NUMERATOR</span> = ${r.p.map(s=>`(${concs[s.s]})${s.c>1?'^'+s.c:""}`).join(' × ')} = ${rd(num,3)}`,`<span class='lb'>DENOMINATOR</span> = ${r.r.map(s=>`(${concs[s.s]})${s.c>1?'^'+s.c:""}`).join(' × ')} = ${rd(den,3)}`,`<span class='lb'>Keq</span> = ${rd(num,3)} / ${rd(den,3)} = <span class='ans'>${keq}</span>`],nt:`Raise each concentration to its coefficient power, then divide products ÷ reactants.`}
+},
+calc_missing(){
+  // Give Keq and all concentrations except one, find the missing one
+  const r=pick(RXNS_HOMO);
+  const concs={};
+  [...r.r,...r.p].forEach(s=>{concs[s.s]=R(0.1,2.5,3)});
+  // Pick target (a product typically)
+  const target=pick(r.p);
+  const targetVal=concs[target.s];
+  // Calculate Keq
+  let num=1,den=1;
+  r.p.forEach(s=>{num*=Math.pow(concs[s.s],s.c)});
+  r.r.forEach(s=>{den*=Math.pow(concs[s.s],s.c)});
+  const keq=rd(num/den,4);
+  // Now hide target and ask student to find it
+  // Keq = (target^c_target × other_products) / reactants
+  // target^c_target = Keq × reactants / other_products
+  let otherProd=1;r.p.forEach(s=>{if(s.s!==target.s)otherProd*=Math.pow(concs[s.s],s.c)});
+  const rhs=keq*den/otherProd;
+  const ans=rd(Math.pow(rhs,1/target.c),3);
+  const concList=Object.entries(concs).filter(([k])=>k!==target.s).map(([k,v])=>`[${k}] = ${v} M`).join(', ');
+  return{ref:"Review 8b",q:`For the reaction: <b>${r.eq}</b><br><br>If Keq = ${keq} and at equilibrium ${concList}, what is <b>[${target.s}]</b>?`,gv:`Keq = ${keq}\n${concList}`,fm:`Keq = [products]^c / [reactants]^c\nSolve for unknown concentration`,fi:`[${target.s}] = ? M`,u:"M",a:ans,tol:Math.max(Math.abs(ans)*0.04,0.005),
+  st:[`<span class='lb'>SET UP</span> Keq = ${keq}`,`<span class='lb'>REARRANGE</span> [${target.s}]^${target.c} = Keq × denom / (other numerators)`,`<span class='lb'>SOLVE</span> [${target.s}]^${target.c} = ${rd(rhs,3)}`,`<span class='lb'>ANSWER</span> [${target.s}] = <span class='ans'>${ans} M</span>`],nt:`Rearrange the Keq expression to isolate the unknown concentration. Remember to take the ${target.c===1?"":target.c+'th '}root if the coefficient is greater than 1.`}
+},
+interp_mc(){
+  const isLarge=Math.random()<0.5;
+  const keq=isLarge?rd(R(10,10000,0),0):rd(R(0.0001,0.1,4),4);
+  const q=`At equilibrium, a reaction has Keq = ${keq}. Which statement best describes this system?`;
+  const opts=shuffle([
+    {t:"Products predominate; equilibrium lies to the right",ok:isLarge},
+    {t:"Reactants predominate; equilibrium lies to the left",ok:!isLarge},
+    {t:"The forward and reverse reactions have stopped",ok:false},
+    {t:"Concentrations of products and reactants are equal",ok:false}
+  ]);
+  const ci=opts.findIndex(o=>o.ok);
+  return{ref:"Keq Interpretation",q,opts,ci,isMC:true,
+  st:[`<span class='lb'>KEQ</span> ${keq} is ${isLarge?'greater':'less'} than 1`,`<span class='lb'>MEANING</span> ${isLarge?'Forward reaction predominates — more products than reactants':'Reverse reaction predominates — more reactants than products'}`,`<span class='ans'>${isLarge?'Equilibrium lies to the right (products favored)':'Equilibrium lies to the left (reactants favored)'}</span>`],nt:`Keq > 1: products favored, equilibrium to the right. Keq < 1: reactants favored, equilibrium to the left. Keq = 1 means equal amounts.`}
+},
+shift_mc(){
+  const s=pick(LECH);
+  const opts=shuffle([
+    {t:"Shifts to the right (toward products)",ok:s.shift==="right"},
+    {t:"Shifts to the left (toward reactants)",ok:s.shift==="left"},
+    {t:"No shift in equilibrium",ok:s.shift==="no change"},
+    {t:"Both forward and reverse reactions stop",ok:false}
+  ]);
+  const ci=opts.findIndex(o=>o.ok);
+  return{ref:"Le Châtelier",q:`For the equilibrium:<br><b>${s.rxn}</b><br><br>If you <b>${s.stress}</b>, what happens to the equilibrium?`,opts,ci,isMC:true,
+  st:[`<span class='lb'>STRESS</span> ${s.stress}`,`<span class='lb'>SHIFT</span> <span class='ans'>${s.shift==="no change"?"No change":"Shifts "+s.shift}</span>`,`<span class='lb'>KEQ EFFECT</span> ${s.keq}`],nt:s.expl}
+},
+keq_effect_mc(){
+  const s=pick(LECH);
+  const opts=shuffle([
+    {t:"Increases",ok:s.keq==="increases"},
+    {t:"Decreases",ok:s.keq==="decreases"},
+    {t:"No change",ok:s.keq==="no change"}
+  ]);
+  const ci=opts.findIndex(o=>o.ok);
+  return{ref:"Le Châtelier",q:`For the equilibrium:<br><b>${s.rxn}</b><br><br>If you <b>${s.stress}</b>, what happens to the <b>value of Keq</b>?`,opts,ci,isMC:true,
+  st:[`<span class='lb'>ANSWER</span> Keq <span class='ans'>${s.keq}</span>`,`<span class='lb'>WHY</span> ${s.expl}`,`<span class='lb'>RULE</span> Only temperature changes Keq. Concentration and pressure changes shift the position but do NOT change Keq. Catalysts also don't change Keq.`],nt:`KEY RULE: Only changes in TEMPERATURE affect the value of Keq. Concentration changes, pressure changes, and catalysts do NOT change Keq — they only shift the equilibrium position (if at all).`}
+}
+};
+
+// ========== CHEATSHEET ==========
+const CS=[
+{title:"Chemical Equilibrium — Core Concepts",fm:["Forward rate = Reverse rate","Concentrations become constant (not necessarily equal)","Reaction does NOT stop — it's dynamic"],vr:"<b>Reversible reaction</b>: goes both directions (⇌)\n<b>Equilibrium position</b>: the specific set of concentrations at equilibrium\nBoth reactants AND products exist in the mixture",ex:{q:"What does equilibrium mean?",st:["Forward and reverse rates are equal","Concentrations stop changing","But reactions keep happening (dynamic balance)"]}},
+{title:"Writing Keq — General Formula",fm:["aA + bB ⇌ cC + dD","Keq = [C]^c [D]^d / [A]^a [B]^b"],vr:"<b>Coefficients become exponents</b>\nOnly gases and aqueous species appear\nPure solids and liquids: excluded (their 'concentration' = 1)",ex:{q:"3H₂(g) + N₂(g) ⇌ 2NH₃(g)",st:["Products: [NH₃]²","Reactants: [H₂]³ [N₂]","Keq = [NH₃]² / ([H₂]³ [N₂])"]}},
+{title:"Heterogeneous Equilibrium",fm:["Pure solids: EXCLUDED from Keq","Pure liquids: EXCLUDED from Keq","Gases (g) and aqueous (aq): INCLUDED"],vr:"Pure solids/liquids have constant 'activity' of 1\nThey still participate in the reaction — just not in the math",ex:{q:"CaCO₃(s) ⇌ CaO(s) + CO₂(g)",st:["CaCO₃(s): excluded","CaO(s): excluded","CO₂(g): included","Keq = [CO₂]"]}},
+{title:"Calculating Keq from Concentrations (Ex 17-3)",fm:["Plug equilibrium [ ] into the Keq expression","Raise each to its coefficient","Divide products / reactants"],vr:"All concentrations must be in mol/L\nTemperature must be specified (Keq changes with T)",ex:{q:"H₂ + N₂ ⇌ 2NH₃ where [N₂]=0.045, [H₂]=0.055, [NH₃]=52 M",st:["Numerator: (52)² = 2704","Denominator: (0.055)³ × (0.045) = 7.49e-6","Keq = 2704 / 7.49e-6 ≈ 3.6 × 10⁸","Keq is HUGE → products predominate"]}},
+{title:"Interpreting Keq Value",fm:["Keq > 1: products predominate (right-favored)","Keq < 1: reactants predominate (left-favored)","Keq ≈ 1: roughly equal amounts"],vr:"Keq tells you WHERE equilibrium lies, not HOW FAST it's reached\nLarge Keq = reaction 'goes to completion' essentially\nSmall Keq = reaction barely proceeds",ex:{q:"Keq = 3.6 × 10⁸ vs Keq = 1.8 × 10⁻⁵",st:["3.6 × 10⁸: very product-favored","1.8 × 10⁻⁵: very reactant-favored","Both are equilibria, just at different positions"]}},
+{title:"Le Châtelier's Principle",fm:["Stress applied → system shifts to RELIEVE the stress","3 stresses: concentration, pressure, temperature"],vr:"Analogy: push a swing — it moves away from the push\nAdd more of something → shift AWAY from that side\nRemove something → shift TOWARD that side to replace it",ex:{q:"N₂ + 3H₂ ⇌ 2NH₃",st:["Add N₂ → shifts right (away from N₂)","Remove NH₃ → shifts right (to make more)","Add NH₃ → shifts left"]}},
+{title:"Stress: Concentration",fm:["Add reactant → shift RIGHT (makes more products)","Add product → shift LEFT (makes more reactants)","Remove reactant → shift LEFT","Remove product → shift RIGHT","Keq: NO CHANGE"],vr:"Concentration changes only shift the position\n<b>Keq is unchanged</b>\nOnly applies to species in the Keq expression (no solids/liquids)",ex:{q:"Industrial tip",st:["Continuously remove product","Forces reaction to keep producing more","This is used in the Haber process (NH₃)"]}},
+{title:"Stress: Pressure (gases only)",fm:["Increase P → shift toward FEWER moles of gas","Decrease P → shift toward MORE moles of gas","Equal moles both sides: no effect","Keq: NO CHANGE"],vr:"Count only gases\nSolids, liquids, aqueous don't count for pressure\nMore gas particles = more pressure",ex:{q:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",st:["Left: 4 mol gas","Right: 2 mol gas","Increase P → shift RIGHT (fewer moles)","Industry uses HIGH pressure to maximize NH₃"]}},
+{title:"Stress: Temperature (ONLY one that changes Keq!)",fm:["Exothermic (ΔH<0): heat is a PRODUCT","  Increase T → shift LEFT, Keq DECREASES","  Decrease T → shift RIGHT, Keq INCREASES","Endothermic (ΔH>0): heat is a REACTANT","  Increase T → shift RIGHT, Keq INCREASES","  Decrease T → shift LEFT, Keq DECREASES"],vr:"<b>Treat heat like a reactant/product</b>\nTemperature is the ONLY stress that changes Keq's value\nWhy? Because it changes rate constants for forward and reverse unequally.",ex:{q:"N₂ + 3H₂ ⇌ 2NH₃ + heat (exothermic)",st:["Increase T → adding heat to product side","Shifts LEFT (away from products)","Less NH₃ forms, Keq decreases","Industry: use LOW T to favor product (trade-off with rate!)"]}},
+{title:"Catalysts & Equilibrium",fm:["Catalysts lower Ea for BOTH directions","Equilibrium reached FASTER","Equilibrium position: NO CHANGE","Keq: NO CHANGE"],vr:"A catalyst is a shortcut — it doesn't change destination\nSpeeds up getting TO equilibrium\nBut doesn't change WHERE equilibrium sits",ex:{q:"Why add a catalyst then?",st:["Industrial reactions are too slow without them","Catalyst lets you reach equilibrium in seconds","Without: might take hours or days"]}}
+];
+
+// ========== LEARNING MODE LESSONS ==========
+// Two topics: Equilibrium & Keq (17.1) and Le Châtelier (17.2)
+// Each topic is an array of cards with types: "teach", "definition", "equation", "worked", "checkpoint"
+
+const LESSONS={
+equilibrium:{
+  title:"Chemical Equilibrium & Keq",
+  icon:"⚖️",
+  cards:[
+    {type:"teach",title:"Welcome to Equilibrium",body:"Let's learn about one of the most important ideas in chemistry: <b>chemical equilibrium</b>.<br><br>Most of your life, you've thought of chemical reactions as going one direction: reactants → products. The reactants get used up, products form, and that's that.<br><br>But here's the truth — <em>most real reactions don't work that way</em>. They're <b>reversible</b>. Products can turn back into reactants. And when those two processes happen at the same rate, something really interesting happens."},
+    {type:"definition",title:"Reversible vs. Irreversible",term:"irreversible reaction",def:"a reaction that can occur only in the forward direction",extra:"A <b>reversible reaction</b> (⇌) can go both ways — forward AND backward. The Haber process (making ammonia from N₂ and H₂) is the classic example."},
+    {type:"teach",title:"Imagine a Beaker",body:"Picture a beaker with just H₂ and N₂ gas inside at the start.<br><br>Initially, only the <b>forward reaction</b> can happen (H₂ + N₂ → NH₃) because no product exists yet. The forward rate is at its maximum.<br><br>As the forward reaction produces NH₃, those product molecules start colliding with each other and <b>reverse</b> back into H₂ and N₂. At first, the reverse rate is tiny — but as more NH₃ builds up, the reverse rate grows.<br><br>Meanwhile, reactants are getting used up, so the forward rate slows down. Eventually… the two rates become <em>equal</em>."},
+    {type:"definition",title:"Chemical Equilibrium",term:"chemical equilibrium",def:"the state in a reversible chemical reaction in which the forward and reverse reaction rates are equal and the concentrations are stable",extra:"Important: equilibrium doesn't mean the reactions STOP. They keep going — but the forward and reverse happen at the same speed, so the concentrations don't change anymore. It's a <em>dynamic</em> balance."},
+    {type:"checkpoint",q:"At chemical equilibrium, what is true about the concentrations of reactants and products?",opts:[{t:"They are always equal",ok:false},{t:"They are constant (stable) but not necessarily equal",ok:true},{t:"All reactants are consumed",ok:false},{t:"The reactions have stopped",ok:false}],hint:"Re-read the definition: 'concentrations are STABLE' — stable means unchanging, but not equal! And the reactions never stop, they just happen at equal rates.",expl:"Correct — at equilibrium, concentrations are constant (stable), but they're usually NOT equal. The reactions are still happening; they're just happening at the same rate in both directions."},
+    {type:"teach",title:"The Equilibrium Constant",body:"Now here's the powerful part. Even though the equilibrium concentrations of H₂, N₂, and NH₃ can be different in different setups, there's a specific <em>ratio</em> between them that's always the same at a given temperature.<br><br>We call that ratio <b>Keq</b> — the <b>equilibrium constant</b>."},
+    {type:"equation",title:"The Keq Formula",eq:"aA + bB  ⇌  cC + dD<br><br>Keq = [C]ᶜ [D]ᵈ / [A]ᵃ [B]ᵇ",note:"<b>Products on top, reactants on bottom.</b><br><b>Coefficients become exponents.</b>"},
+    {type:"worked",title:"Worked Example — Writing Keq",q:"Write the equilibrium constant expression for the formation of ammonia: 3H₂(g) + N₂(g) ⇌ 2NH₃(g)",steps:[{l:"IDENTIFY",v:"Products: NH₃ (coefficient 2)"},{l:"IDENTIFY",v:"Reactants: H₂ (coefficient 3), N₂ (coefficient 1)"},{l:"NUMERATOR",v:"[NH₃]²"},{l:"DENOMINATOR",v:"[H₂]³[N₂]"},{l:"KEQ",v:"Keq = [NH₃]² / ([H₂]³[N₂])"}]},
+    {type:"checkpoint",q:"Write Keq for: 2SO₂(g) + O₂(g) ⇌ 2SO₃(g)<br><br>Type as [products]/[reactants]",type_input:"text",a:"[SO₃]2/[SO₂]2[O₂]",hint:"Products: [SO₃]² (coefficient 2 becomes exponent). Reactants: [SO₂]² × [O₂] (coefficient 2 on SO₂ becomes exponent, O₂ has coefficient 1 so no exponent shown).",expl:"Perfect! Keq = [SO₃]² / ([SO₂]² [O₂]). Coefficients always become exponents."},
+    {type:"teach",title:"Heterogeneous Equilibrium",body:"Here's a wrinkle. When a reaction involves <b>pure solids</b> or <b>pure liquids</b>, we leave them OUT of the Keq expression.<br><br>Why? Because a pure solid or liquid has an essentially constant 'activity' (set to 1 by convention). Their amount doesn't change the equilibrium position — adding more CaCO₃(s) to a pile doesn't do anything to the equilibrium.<br><br><b>Only gases (g) and aqueous (aq) species appear in Keq.</b>"},
+    {type:"worked",title:"Worked Example — Heterogeneous",q:"Write Keq for: CaCO₃(s) ⇌ CaO(s) + CO₂(g)",steps:[{l:"IDENTIFY",v:"CaCO₃(s) — solid, EXCLUDE"},{l:"IDENTIFY",v:"CaO(s) — solid, EXCLUDE"},{l:"IDENTIFY",v:"CO₂(g) — gas, INCLUDE"},{l:"RESULT",v:"Keq = [CO₂]"},{l:"NOTE",v:"Only one term! Both solids are left out."}]},
+    {type:"checkpoint",q:"Which species would NOT appear in the Keq expression for:<br>Mg(s) + 2HCl(aq) ⇌ MgCl₂(aq) + H₂(g)",opts:[{t:"Mg(s)",ok:true},{t:"HCl(aq)",ok:false},{t:"MgCl₂(aq)",ok:false},{t:"H₂(g)",ok:false}],hint:"Pure solids and pure liquids are excluded from Keq. Which of these is labeled (s)?",expl:"Exactly! Mg(s) is a pure solid, so it's excluded. All the aqueous and gas species ARE included. Keq = [MgCl₂][H₂] / [HCl]²"},
+    {type:"teach",title:"What the Number Means",body:"Once you calculate Keq, its value tells you where equilibrium sits:<br><br>🔹 <b>Keq &gt; 1</b>: Products are larger than reactants. The reaction favors products. <em>Equilibrium lies to the right.</em><br><br>🔹 <b>Keq &lt; 1</b>: Reactants are larger than products. The reaction favors reactants. <em>Equilibrium lies to the left.</em><br><br>🔹 <b>Keq ≈ 1</b>: Roughly equal — neither side dominates."},
+    {type:"worked",title:"Worked Example — Calculating Keq (Ex 17-3)",q:"At equilibrium: [N₂] = 0.045 M, [H₂] = 0.055 M, [NH₃] = 52 M. Find Keq for 3H₂ + N₂ ⇌ 2NH₃.",steps:[{l:"FORMULA",v:"Keq = [NH₃]² / ([H₂]³[N₂])"},{l:"NUMERATOR",v:"(52)² = 2704"},{l:"DENOMINATOR",v:"(0.055)³ × (0.045) = 1.664e-4 × 0.045 ≈ 7.49e-6"},{l:"KEQ",v:"Keq = 2704 / 7.49e-6 ≈ 3.6 × 10⁸"},{l:"MEANING",v:"Keq is HUGE — reaction strongly favors products"}]},
+    {type:"checkpoint",q:"A reaction has Keq = 0.0023 at room temperature. What does this tell you?",opts:[{t:"The reaction goes to completion quickly",ok:false},{t:"Products are favored at equilibrium",ok:false},{t:"Reactants are favored; very little product forms",ok:true},{t:"The reaction is at exactly equal amounts",ok:false}],hint:"Keq = 0.0023 is much less than 1. When Keq is small, what does that mean about the products vs. reactants?",expl:"Right! Keq &lt; 1 means reactants are favored. Equilibrium lies to the left — not much product forms."},
+    {type:"teach",title:"You've Got the Foundations!",body:"Let's summarize what you've learned:<br><br>✓ Equilibrium = forward and reverse rates equal<br>✓ Concentrations constant (but usually not equal)<br>✓ Keq = products / reactants, raised to coefficients<br>✓ Pure solids and liquids are excluded from Keq<br>✓ Keq &gt; 1 means products favored, Keq &lt; 1 means reactants favored<br><br>Now let's take an end-of-lesson quiz to lock it in!"}
+  ],
+  quiz:[
+    {q:"What does 'chemical equilibrium' mean?",opts:[{t:"Both reactions have stopped",ok:false},{t:"Forward and reverse rates are equal; concentrations are stable",ok:true},{t:"All reactants have been consumed",ok:false},{t:"Products and reactants are present in equal amounts",ok:false}]},
+    {q:"Write Keq for: CO(g) + 2H₂(g) ⇌ CH₃OH(g)",opts:[{t:"Keq = [CH₃OH] / [CO][H₂]²",ok:true},{t:"Keq = [CO][H₂]² / [CH₃OH]",ok:false},{t:"Keq = [CH₃OH] / [CO][H₂]",ok:false},{t:"Keq = [CH₃OH]² / [CO][H₂]²",ok:false}]},
+    {q:"For CaCO₃(s) ⇌ CaO(s) + CO₂(g), what is Keq?",opts:[{t:"Keq = [CaO][CO₂] / [CaCO₃]",ok:false},{t:"Keq = [CO₂]",ok:true},{t:"Keq = [CaO][CO₂]",ok:false},{t:"Keq = 1 / [CO₂]",ok:false}]},
+    {q:"A reaction has Keq = 3.8 × 10⁶. What does this tell you?",opts:[{t:"Equilibrium is roughly balanced",ok:false},{t:"Reactants are strongly favored",ok:false},{t:"Products are strongly favored; reaction goes nearly to completion",ok:true},{t:"The reaction is too slow to measure",ok:false}]},
+    {q:"For 2NO(g) + O₂(g) ⇌ 2NO₂(g), at equilibrium [NO]=0.5, [O₂]=0.2, [NO₂]=0.3. Keq = ?",opts:[{t:"Keq = 1.8",ok:true},{t:"Keq = 0.6",ok:false},{t:"Keq = 3.0",ok:false},{t:"Keq = 0.36",ok:false}],expl:"Keq = [NO₂]² / ([NO]² × [O₂]) = (0.3)² / ((0.5)² × 0.2) = 0.09 / 0.05 = 1.8"}
+  ]
+},
+lechatelier:{
+  title:"Le Châtelier's Principle",
+  icon:"⚖️",
+  cards:[
+    {type:"teach",title:"Meet Le Châtelier",body:"In 1884, French chemist Henri Louis Le Châtelier figured out something elegant about equilibrium systems.<br><br>If you <b>stress</b> an equilibrium — change the conditions in some way — the system doesn't just sit there. It shifts. It <em>adjusts</em>. And it does so in a very specific, predictable way: it moves in whatever direction will <b>relieve the stress</b>.<br><br>Think of it like a seesaw with weight on each side. Push down on one side, and the seesaw tilts to compensate."},
+    {type:"definition",title:"Le Châtelier's Principle",term:"Le Châtelier's principle",def:"when a stress is placed on a reversible process, it will proceed in the direction that relieves that stress",extra:"There are three kinds of stresses that affect equilibrium: <b>concentration</b>, <b>pressure</b>, and <b>temperature</b>."},
+    {type:"teach",title:"Stress #1: Concentration",body:"When you add more of a chemical to an equilibrium mixture, the system shifts <em>away from that side</em> (to use up what you added).<br><br>When you remove some of a chemical, the system shifts <em>toward that side</em> (to replace what you took).<br><br>Intuition: imagine a crowded room. If you squeeze more people in on one side, they'll spread out to the other side to relieve the crowding."},
+    {type:"equation",title:"Concentration Rules",eq:"N₂ + 3H₂  ⇌  2NH₃<br><br>ADD reactant   → shift RIGHT<br>ADD product    → shift LEFT<br>REMOVE reactant → shift LEFT<br>REMOVE product  → shift RIGHT",note:"<b>Keq value: NO CHANGE</b> for concentration stresses!"},
+    {type:"checkpoint",q:"For H₂(g) + I₂(g) ⇌ 2HI(g), if you add more I₂, what happens to the equilibrium?",opts:[{t:"Shifts right (toward HI)",ok:true},{t:"Shifts left (toward H₂)",ok:false},{t:"No change occurs",ok:false},{t:"Keq value increases",ok:false}],hint:"You added a reactant (I₂). The system shifts AWAY from the side where you added — which direction is that?",expl:"Right! Adding I₂ (a reactant) shifts equilibrium AWAY from reactants → to the right (toward HI). Keq does NOT change."},
+    {type:"teach",title:"Stress #2: Pressure",body:"Pressure changes only affect reactions with <b>gases</b>, and only if the number of moles of gas is different on each side.<br><br><b>Increase pressure</b> → system shifts toward the side with <em>fewer moles of gas</em><br><b>Decrease pressure</b> → system shifts toward the side with <em>more moles of gas</em><br><br>Why? Because fewer gas molecules = less pressure. The system moves to relieve the pressure change.<br><br>⚠️ If both sides have the same number of moles of gas, pressure has no effect!"},
+    {type:"worked",title:"Worked Example — Pressure (Ex 17-4)",q:"For 3H₂(g) + N₂(g) ⇌ 2NH₃(g), should you increase or decrease pressure to make more NH₃?",steps:[{l:"COUNT MOLES",v:"Left side: 3 + 1 = 4 mol gas"},{l:"COUNT MOLES",v:"Right side: 2 mol gas"},{l:"RULE",v:"Higher pressure shifts toward FEWER moles of gas"},{l:"DIRECTION",v:"Right side has fewer moles → increase pressure to shift RIGHT"},{l:"CONCLUSION",v:"Increase pressure to favor NH₃ production"}]},
+    {type:"checkpoint",q:"For H₂(g) + I₂(g) ⇌ 2HI(g), what happens if you increase pressure?",opts:[{t:"Shifts right",ok:false},{t:"Shifts left",ok:false},{t:"No change — equal moles of gas on both sides",ok:true},{t:"Keq decreases",ok:false}],hint:"Count the moles of gas on each side. Left: 1 + 1 = 2. Right: 2. Are they equal?",expl:"Correct! Both sides have 2 moles of gas. Pressure changes have no effect when the moles are equal."},
+    {type:"teach",title:"Stress #3: Temperature — The Special One!",body:"Here's the big one. Temperature is the <b>only</b> stress that actually <em>changes the value of Keq</em>.<br><br>To predict what temperature does, treat <b>heat as a reactant or product</b>:<br><br>🔥 <b>Exothermic reactions</b> RELEASE heat → treat heat as a <em>product</em><br>❄️ <b>Endothermic reactions</b> ABSORB heat → treat heat as a <em>reactant</em><br><br>Then apply the same 'add/remove' logic as concentration!"},
+    {type:"equation",title:"Temperature Rules",eq:"EXOTHERMIC (heat = product):<br>• Increase T → shift LEFT, Keq DECREASES<br>• Decrease T → shift RIGHT, Keq INCREASES<br><br>ENDOTHERMIC (heat = reactant):<br>• Increase T → shift RIGHT, Keq INCREASES<br>• Decrease T → shift LEFT, Keq DECREASES"},
+    {type:"worked",title:"Worked Example — Temperature (Ex 17-5)",q:"The formation of ammonia (N₂ + 3H₂ ⇌ 2NH₃) is exothermic. What happens to Keq if you increase temperature?",steps:[{l:"TYPE",v:"Exothermic → heat is a PRODUCT"},{l:"STRESS",v:"Add heat (increase T) = adding product"},{l:"SHIFT",v:"Adding product shifts equilibrium LEFT (away from products)"},{l:"RESULT",v:"Less NH₃, more N₂ and H₂ at equilibrium"},{l:"KEQ",v:"Keq DECREASES"}]},
+    {type:"checkpoint",q:"For an endothermic reaction at equilibrium, what happens to Keq if you decrease temperature?",opts:[{t:"Keq increases",ok:false},{t:"Keq decreases",ok:true},{t:"Keq stays the same",ok:false},{t:"The reaction stops",ok:false}],hint:"Endothermic → heat is a REACTANT. Decreasing temperature means REMOVING heat (a reactant). What does removing a reactant do?",expl:"Right! Endothermic means heat is on the reactant side. Removing heat (decreasing T) shifts equilibrium to the LEFT. Less product, so Keq decreases."},
+    {type:"teach",title:"Catalysts — The Exception",body:"What about catalysts? They speed up reactions, right?<br><br>Yes — but they speed up the <b>forward AND reverse reactions equally</b>. So while equilibrium is reached <em>faster</em> with a catalyst, the <b>equilibrium position doesn't shift</b>, and <b>Keq doesn't change</b>.<br><br>A catalyst is like a faster elevator — you get to the same floor sooner, but the destination is the same."},
+    {type:"checkpoint",q:"Which of the following is NOT affected by adding a catalyst to an equilibrium system?",opts:[{t:"The rate of the forward reaction",ok:false},{t:"The rate of the reverse reaction",ok:false},{t:"The time needed to reach equilibrium",ok:false},{t:"The equilibrium position and Keq value",ok:true}],hint:"Catalysts speed up BOTH directions equally. So something DOES speed up. But does the final balance change?",expl:"Correct! Catalysts speed up both forward and reverse, so equilibrium is reached faster — but the position and Keq are unchanged."},
+    {type:"teach",title:"The Big Summary Table",body:"Here's everything on one screen:<br><br><b>CONCENTRATION</b><br>Add/remove → shift away from/toward that side. <em>Keq unchanged.</em><br><br><b>PRESSURE</b> (gases only)<br>Increase → fewer moles gas side. Decrease → more moles gas side. <em>Keq unchanged.</em><br><br><b>TEMPERATURE</b> (the special one!)<br>Treat heat as product (exo) or reactant (endo). <em>Keq DOES change.</em><br><br><b>CATALYSTS</b><br>Speed up both directions equally. <em>No shift. Keq unchanged.</em><br><br>Ready for the quiz?"}
+  ],
+  quiz:[
+    {q:"For N₂(g) + 3H₂(g) ⇌ 2NH₃(g), what happens when you increase pressure?",opts:[{t:"Shifts left (4 mol gas side)",ok:false},{t:"Shifts right (toward 2 mol gas side)",ok:true},{t:"No change",ok:false},{t:"Keq increases",ok:false}]},
+    {q:"The formation of ammonia is exothermic. Increasing temperature will:",opts:[{t:"Favor products; Keq increases",ok:false},{t:"Favor reactants; Keq decreases",ok:true},{t:"Have no effect on Keq",ok:false},{t:"Stop the reaction",ok:false}]},
+    {q:"Which stress will NOT change the value of Keq?",opts:[{t:"Change concentration",ok:false},{t:"Change pressure",ok:false},{t:"Add a catalyst",ok:false},{t:"All of the above leave Keq unchanged",ok:true}]},
+    {q:"For CaF₂(s) ⇌ Ca²⁺(aq) + 2F⁻(aq), what happens if you add more CaF₂ solid?",opts:[{t:"Shifts right, producing more ions",ok:false},{t:"Shifts left",ok:false},{t:"No change — solids don't appear in Keq",ok:true},{t:"Keq increases",ok:false}]},
+    {q:"An endothermic reaction at equilibrium — which action favors more product?",opts:[{t:"Decrease temperature",ok:false},{t:"Increase temperature",ok:true},{t:"Add a catalyst",ok:false},{t:"Decrease pressure",ok:false}]}
+  ]
+}
+};
+
+// ========== STATE ==========
+let mode="problems",active="keq_write",subType=null,prob=null,answered=false,solShown=false,userVal="";
+let nC=0,nA=0,streak=0;
+let vMode="mc",vQ=null,vAns=false,vUA=null;
+// Learning mode state
+let lTopic=null,lIdx=0,lCPAnswered=false,lCPUA=null,lCPHint=false;
+let quizMode=false,quizIdx=0,quizAnswered=false,quizUA=null,quizScore=0;
+
+function updS(){document.getElementById("sC").textContent=nC;document.getElementById("sA").textContent=nA;document.getElementById("sP").textContent=nA>0?rd(nC/nA*100,0)+"%":"—";document.getElementById("sS").innerHTML=`<span id="fire">🔥</span> ${streak}`}
+function resetStats(){nC=0;nA=0;streak=0;updS();if(mode==="problems")genP();else if(mode==="vocab")genV();else if(mode==="learn")renderLearn();else renderCS()}
+
+function renderModes(){
+  document.getElementById("modeBar").innerHTML=[
+    {id:"problems",l:"⚡ Problems"},
+    {id:"learn",l:"🎓 Learn"},
+    {id:"vocab",l:"📖 Vocab"},
+    {id:"cheatsheet",l:"📋 Cheatsheet"}
+  ].map(m=>`<button class="mode-btn${mode===m.id?" on":""}" onclick="switchMode('${m.id}')">${m.l}</button>`).join("");
+}
+function switchMode(m){
+  mode=m;renderModes();renderCtrls();
+  if(m==="problems")genP();
+  else if(m==="vocab")genV();
+  else if(m==="learn"){lTopic=null;renderLearn()}
+  else renderCS();
+}
+
+function renderCtrls(){
+  const el=document.getElementById("ctrlBar");
+  if(mode==="problems"){
+    el.innerHTML=SEC.map(s=>`<button class="cb${active===s.id?" on":""}" onclick="active='${s.id}';subType=null;genP()">${s.icon} ${s.title}</button>`).join("");
+  } else if(mode==="vocab"){
+    el.innerHTML=`<span class="cl">Format:</span><button class="cb${vMode==="mc"?" on":""}" onclick="vMode='mc';genV()">Multiple Choice</button><button class="cb${vMode==="written"?" on":""}" onclick="vMode='written';genV()">Written</button><button class="cb${vMode==="tf"?" on":""}" onclick="vMode='tf';genV()">True / False</button>`;
+  } else if(mode==="learn"){
+    el.innerHTML=`<span class="cl">Guided lesson — learn like a textbook with worked examples and end-of-lesson quiz</span>`;
+  } else {el.innerHTML=`<span class="cl">All formulas, rules, and worked examples — Chapter 17.1 &amp; 17.2</span>`}
+}
+
+// ========== PROBLEMS ==========
+function genP(){const sec=SEC.find(s=>s.id===active),tid=subType||pick(sec.types).id;prob=G[tid]();answered=false;solShown=false;userVal="";renderCtrls();renderProb()}
+function chkP(){
+  if(answered)return;
+  if(prob.isMC)return;
+  const inp=document.getElementById("inp");if(!inp)return;
+  const raw=inp.value.trim();if(!raw)return;
+  userVal=raw;answered=true;nA++;
+  let ok=false;
+  if(prob.isText){
+    const norm=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[₂₃₄⁻⁺]/g,c=>({'₂':'2','₃':'3','₄':'4','⁻':'-','⁺':'+'}[c]||c)).replace(/\^/g,'').replace(/\//g,'/').replace(/·/g,'');
+    ok=norm(raw)===norm(prob.a);
+  } else {
+    const v=parseFloat(raw.replace(/,/g,""));
+    if(isNaN(v)){inp.classList.add("v-no");setTimeout(()=>{const e=document.getElementById("inp");if(e)e.classList.remove("v-no")},400);return}
+    ok=Math.abs(v-prob.a)<=prob.tol;
+  }
+  if(ok){nC++;streak++}else streak=0;updS();renderProb();
+}
+function chkMC(i){if(answered)return;answered=true;userVal=i;nA++;if(i===prob.ci){nC++;streak++}else streak=0;updS();renderProb()}
+function showPS(){userVal=document.getElementById("inp")?document.getElementById("inp").value:"";solShown=true;if(!answered){answered=true;nA++;streak=0;updS()}renderProb()}
+
+function renderProb(){
+  const el=document.getElementById("main"),p=prob;if(!p){el.innerHTML="";return}
+  let isOk=false;
+  if(answered){
+    if(p.isMC)isOk=userVal===p.ci;
+    else if(p.isText){const norm=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[₂₃₄⁻⁺]/g,c=>({'₂':'2','₃':'3','₄':'4','⁻':'-','⁺':'+'}[c]||c)).replace(/\^/g,'').replace(/·/g,'');isOk=norm(String(userVal))===norm(p.a)}
+    else{const v=parseFloat(String(userVal).replace(/,/g,""));isOk=!isNaN(v)&&Math.abs(v-p.a)<=p.tol}
+  }
+  const cc=answered?(isOk?"ok":"no"):"",bc=answered?(isOk?"bg-ok":"bg-no"):"bg-q";
+  const sec=SEC.find(s=>s.id===active);
+  let h=`<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px"><button class="cb${!subType?" on":""}" onclick="subType=null;genP()">Random</button>`;
+  sec.types.forEach(t=>{h+=`<button class="cb${subType===t.id?" on":""}" onclick="subType='${t.id}';genP()">${t.name}</button>`});h+=`</div>`;
+  h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${bc}">${answered?(isOk?"✓ Correct":"✗ Incorrect"):"Problem"}</span><span class="bg bg-ty">${p.ref}</span></div><div class="q-txt">${p.q}</div>`;
+  if(p.isMC){
+    h+=`<div class="opts">`;
+    p.opts.forEach((o,i)=>{let cls="opt";if(answered){cls+=" done";if(i===p.ci)cls+=" c-ok";else if(i===userVal)cls+=" c-no"}const ltr=answered&&i===p.ci?"✓":answered&&i===userVal?"✗":String.fromCharCode(65+i);h+=`<button class="${cls}" onclick="chkMC(${i})"><span class="opt-ltr">${ltr}</span><span>${o.t}</span></button>`});
+    h+=`</div>`;
+  } else {
+    if(p.gv){h+=`<div class="ir">`;h+=`<div class="ib ib-g"><span class="ib-l">Given</span>${p.gv.replace(/\n/g,"<br>")}</div>`;if(p.fm)h+=`<div class="ib ib-f"><span class="ib-l">Formula</span>${p.fm.replace(/\n/g,"<br>")}</div>`;if(p.fi)h+=`<div class="ib ib-w"><span class="ib-l">Solve For</span>${p.fi.replace(/\n/g,"<br>")}</div>`;h+=`</div>`}
+    if(!answered)h+=`<div class="aa"><div class="aw"><input class="ai" id="inp" type="text" placeholder="Type answer…" value="${userVal}" onkeydown="if(event.key==='Enter')chkP()"></div><button class="ab" onclick="chkP()">Check</button></div><div class="btn-row"><button class="btn-sh" onclick="showPS()">Show Solution</button></div>`;
+    else{h+=`<div class="aa"><div class="aw"><input class="ai ${isOk?"v-ok":"v-no"}" value="${userVal}" disabled></div></div><div class="fb ${isOk?"fb-ok":"fb-no"}">${isOk?`✓ Correct! Streak: ${streak} 🔥`:"✗ Not quite"}</div>`;if(!isOk)h+=`<div class="fb-v">Answer: ${p.a} ${p.u||''}</div>`}
+  }
+  if(answered||solShown){h+=`<div class="sol"><div class="sol-tag">Solution</div>`;p.st.forEach(s=>{h+=`<div class="stp">${s}</div>`});h+=`<div class="sol-note">${p.nt}</div></div>`}
+  if(answered)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genP()">Next →</button></div>`;
+  h+=`</div>`;el.innerHTML=h;
+  if(!answered&&!p.isMC){const i=document.getElementById("inp");if(i)setTimeout(()=>i.focus(),50)}
+}
+
+// ========== VOCAB ==========
+function genV(){vAns=false;vUA=null;if(vMode==="mc")genVMC();else if(vMode==="tf")genVTF();else genVW();renderCtrls();renderVocab()}
+function genVMC(){const c=pick(VOCAB),wr=shuffle(VOCAB.filter(v=>v.t!==c.t)).slice(0,3),askT=Math.random()<0.5,opts=shuffle([c,...wr]);vQ={type:"mc",c,opts,askT,ci:opts.indexOf(c)}}
+function genVTF(){const c=pick(VOCAB),isT=Math.random()<0.5;let sd=isT?c.d:pick(VOCAB.filter(v=>v.t!==c.t)).d;vQ={type:"tf",t:c.t,sd,isT,cd:c.d}}
+function genVW(){const c=pick(VOCAB),askT=Math.random()<0.5;vQ={type:"written",c,askT}}
+function chkVMC(i){if(vAns)return;vAns=true;vUA=i;nA++;if(i===vQ.ci){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVTF(a){if(vAns)return;vAns=true;vUA=a;nA++;if(a===vQ.isT){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVW(){if(vAns)return;const inp=document.getElementById("vi");if(!inp||!inp.value.trim())return;vAns=true;const u=inp.value.trim().toLowerCase(),tgt=vQ.askT?vQ.c.d.toLowerCase():vQ.c.t.toLowerCase(),tw=tgt.split(/\s+/).filter(w=>w.length>3),mc=tw.filter(w=>u.includes(w)).length,ok=tw.length>0&&(mc/tw.length>=0.45);vUA=ok;nA++;if(ok){nC++;streak++}else streak=0;updS();renderVocab()}
+
+function renderVocab(){
+  const el=document.getElementById("main"),q=vQ;if(!q){el.innerHTML="";return}let h="";
+  if(q.type==="mc"){
+    const ok=vAns&&vUA===q.ci,cc=vAns?(ok?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">MC</span></div>`;
+    if(q.askT){h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}const l=vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i);return`<button class="${c}" onclick="chkVMC(${i})"><span class="opt-ltr">${l}</span><span>${o.d}</span></button>`}).join("")}</div>`}
+    else{h+=`<div class="q-txt">Which term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}const l=vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i);return`<button class="${c}" onclick="chkVMC(${i})"><span class="opt-ltr">${l}</span><span>${o.t}</span></button>`}).join("")}</div>`}
+    if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`;
+  } else if(q.type==="tf"){
+    const ok=vAns&&vUA===q.isT,cc=vAns?(ok?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">T/F</span></div>`;
+    h+=`<div class="q-txt"><b>${q.t}</b> — <span style="color:var(--cyn);font-style:italic">"${q.sd}"</span></div><div style="margin-top:10px;color:var(--mut);font-size:13px">Is this definition correct?</div>`;
+    h+=`<div class="opts" style="flex-direction:row;gap:8px;margin-top:8px">`;
+    ["True","False"].forEach(l=>{const v=l==="True";let c="opt";if(vAns){c+=" done";if(v===q.isT)c+=" c-ok";else if(v===vUA)c+=" c-no"}h+=`<button class="${c}" style="flex:1;justify-content:center" onclick="chkVTF(${v})">${l}</button>`});h+=`</div>`;
+    if(vAns&&!ok)h+=`<div class="sol" style="margin-top:12px"><div class="sol-tag">Correct</div><div class="stp">${q.cd}</div></div>`;
+    if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`;
+  } else {
+    const cc=vAns?(vUA?"ok":"no"):"";
+    h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(vUA?"bg-ok":"bg-no"):"bg-q"}">Vocab</span><span class="bg bg-ty">Written</span></div>`;
+    if(q.askT)h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div>`;else h+=`<div class="q-txt">What term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div>`;
+    if(!vAns){h+=`<div style="margin-top:12px"><textarea class="v-ta" id="vi" placeholder="${q.askT?"Type definition…":"Type the term…"}" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chkVW()}"></textarea></div><div class="btn-row"><button class="ab" onclick="chkVW()">Check</button></div>`}
+    else{h+=`<div class="fb ${vUA?"fb-ok":"fb-no"}" style="margin-top:8px">${vUA?"✓ Key concepts matched!":"✗ Review below"}</div><div class="sol" style="margin-top:10px"><div class="sol-tag">Answer</div>`;if(q.askT)h+=`<div class="stp">${q.c.d}</div>`;else h+=`<div class="stp" style="font-size:14px;font-weight:600">${q.c.t}</div>`;h+=`</div><div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`}
+    h+=`</div>`;
+  }
+  el.innerHTML=h;
+}
+
+// ========== LEARNING MODE ==========
+function startLesson(topicId){lTopic=topicId;lIdx=0;lCPAnswered=false;lCPUA=null;lCPHint=false;quizMode=false;quizIdx=0;quizScore=0;quizAnswered=false;quizUA=null;renderLearn()}
+function exitLesson(){lTopic=null;quizMode=false;renderLearn()}
+function nextCard(){lIdx++;lCPAnswered=false;lCPUA=null;lCPHint=false;if(lIdx>=LESSONS[lTopic].cards.length){quizMode=true;quizIdx=0;quizScore=0;quizAnswered=false;quizUA=null}renderLearn()}
+function prevCard(){if(lIdx>0){lIdx--;lCPAnswered=false;lCPUA=null;lCPHint=false}renderLearn()}
+function chkCP(i){
+  const card=LESSONS[lTopic].cards[lIdx];
+  if(lCPAnswered&&(card.opts?lCPUA===card.opts.findIndex(o=>o.ok):true))return;
+  if(card.opts){
+    lCPUA=i;
+    const correct=card.opts[i].ok;
+    if(correct){lCPAnswered=true;lCPHint=false;nA++;nC++;streak++;updS()}
+    else{lCPHint=true;nA++;streak=0;updS()}
+  }
+  renderLearn();
+}
+function chkCPText(){
+  const card=LESSONS[lTopic].cards[lIdx];
+  const inp=document.getElementById("cpinp");if(!inp)return;
+  const raw=inp.value.trim();if(!raw)return;
+  const norm=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[₂₃₄⁻⁺]/g,c=>({'₂':'2','₃':'3','₄':'4','⁻':'-','⁺':'+'}[c]||c));
+  const ok=norm(raw)===norm(card.a);
+  lCPUA=raw;
+  if(ok){lCPAnswered=true;lCPHint=false;nA++;nC++;streak++}
+  else{lCPHint=true;nA++;streak=0}
+  updS();renderLearn();
+}
+function retryCP(){lCPHint=false;lCPUA=null;renderLearn()}
+
+// Quiz functions
+function chkQuiz(i){if(quizAnswered)return;quizAnswered=true;quizUA=i;nA++;const q=LESSONS[lTopic].quiz[quizIdx];if(q.opts[i].ok){quizScore++;nC++;streak++}else streak=0;updS();renderLearn()}
+function nextQuiz(){quizIdx++;quizAnswered=false;quizUA=null;renderLearn()}
+function restartLesson(){startLesson(lTopic)}
+
+function renderLearn(){
+  const el=document.getElementById("main");
+  // If no topic, show picker
+  if(!lTopic){
+    el.innerHTML=`<div class="lesson-intro">
+      <div class="lesson-intro-icon">🎓</div>
+      <div class="lesson-intro-t">Welcome to Learning Mode</div>
+      <div class="lesson-intro-s">Pick a topic below. I'll guide you through the concepts like a teacher, with worked examples and checkpoints. End with a quiz to lock it in!</div>
+      <div class="topic-picker">
+        <button class="topic-btn" onclick="startLesson('equilibrium')">
+          <span class="topic-ico">${LESSONS.equilibrium.icon}</span>
+          <b>${LESSONS.equilibrium.title}</b>
+          <div class="topic-sub">Section 17.1 · ${LESSONS.equilibrium.cards.length} cards + ${LESSONS.equilibrium.quiz.length}-question quiz</div>
+        </button>
+        <button class="topic-btn" onclick="startLesson('lechatelier')">
+          <span class="topic-ico">${LESSONS.lechatelier.icon}</span>
+          <b>${LESSONS.lechatelier.title}</b>
+          <div class="topic-sub">Section 17.2 · ${LESSONS.lechatelier.cards.length} cards + ${LESSONS.lechatelier.quiz.length}-question quiz</div>
+        </button>
+      </div>
+    </div>`;
+    return;
+  }
+  // Quiz mode
+  if(quizMode){
+    const quiz=LESSONS[lTopic].quiz;
+    if(quizIdx>=quiz.length){
+      // Show final score
+      const pct=Math.round((quizScore/quiz.length)*100);
+      const isOk=pct>=70;
+      el.innerHTML=`<div class="lesson-wrap">
+        <div class="lesson-card">
+          <div class="quiz-header">
+            <div style="font:700 10px var(--m);letter-spacing:.15em;color:var(--pink);text-transform:uppercase">Lesson Complete</div>
+            <div class="quiz-score ${isOk?'ok':''}">${quizScore} / ${quiz.length}</div>
+            <div style="font:400 14px var(--f);color:var(--mut)">${pct}% · ${isOk?"Great work! 🎉":"Keep studying — you've got this 💪"}</div>
+          </div>
+          <div class="btn-row" style="justify-content:center;margin-top:20px">
+            <button class="nav-btn" onclick="restartLesson()">🔁 Restart Lesson</button>
+            <button class="nav-btn primary" onclick="exitLesson()">← Pick Another Topic</button>
+          </div>
+        </div>
+      </div>`;
+      return;
+    }
+    const q=quiz[quizIdx];
+    const prog=((quizIdx+(quizAnswered?1:0))/quiz.length)*100;
+    let h=`<div class="lesson-wrap">
+      <div class="lesson-nav">
+        <button class="nav-btn" onclick="exitLesson()">← Exit</button>
+        <div>
+          <div class="lesson-prog">End-of-Lesson Quiz · Question ${quizIdx+1} of ${quiz.length}</div>
+          <div class="prog-bar"><div class="prog-fill" style="width:${prog}%"></div></div>
+        </div>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-type">🎯 Quiz Question</div>
+        <div class="lesson-cp-q">${q.q}</div>
+        <div class="opts">`;
+    q.opts.forEach((o,i)=>{let c="opt";if(quizAnswered){c+=" done";if(o.ok)c+=" c-ok";else if(i===quizUA)c+=" c-no"}const l=quizAnswered&&o.ok?"✓":quizAnswered&&i===quizUA?"✗":String.fromCharCode(65+i);h+=`<button class="${c}" onclick="chkQuiz(${i})"><span class="opt-ltr">${l}</span><span>${o.t}</span></button>`});
+    h+=`</div>`;
+    if(quizAnswered){
+      const isOk=q.opts[quizUA].ok;
+      h+=`<div class="fb ${isOk?"fb-ok":"fb-no"}" style="margin-top:10px">${isOk?"✓ Correct!":"✗ The correct answer is highlighted above"}</div>`;
+      if(q.expl)h+=`<div class="sol" style="margin-top:10px"><div class="sol-tag">Explanation</div><div class="stp">${q.expl}</div></div>`;
+      h+=`<div class="btn-row" style="margin-top:12px;justify-content:flex-end"><button class="nav-btn primary" onclick="nextQuiz()">${quizIdx+1>=quiz.length?"See Results →":"Next Question →"}</button></div>`;
+    }
+    h+=`</div></div>`;
+    el.innerHTML=h;return;
+  }
+  // Regular card mode
+  const lesson=LESSONS[lTopic];
+  const card=lesson.cards[lIdx];
+  const prog=((lIdx+1)/lesson.cards.length)*100;
+  let h=`<div class="lesson-wrap">
+    <div class="lesson-nav">
+      <button class="nav-btn" onclick="exitLesson()">← Exit</button>
+      <div style="text-align:center">
+        <div class="lesson-prog">${lesson.icon} ${lesson.title}</div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${prog}%"></div></div>
+      </div>
+      <div style="min-width:60px;text-align:right"><span class="lesson-prog">${lIdx+1}/${lesson.cards.length}</span></div>
+    </div>
+    <div class="lesson-card">`;
+
+  if(card.type==="teach"){
+    h+=`<div class="lesson-type">📖 Lesson</div><div class="lesson-title">${card.title}</div><div class="lesson-body">${card.body}</div>`;
+  } else if(card.type==="definition"){
+    h+=`<div class="lesson-type">📚 Definition</div><div class="lesson-title">${card.title}</div>`;
+    h+=`<div class="lesson-def"><div class="lesson-def-t">${card.term}</div><div class="lesson-def-b">${card.def}</div></div>`;
+    if(card.extra)h+=`<div class="lesson-body">${card.extra}</div>`;
+  } else if(card.type==="equation"){
+    h+=`<div class="lesson-type">🔢 Key Equation</div><div class="lesson-title">${card.title}</div>`;
+    h+=`<div class="lesson-eq">${card.eq}</div>`;
+    if(card.note)h+=`<div class="lesson-body">${card.note}</div>`;
+  } else if(card.type==="worked"){
+    h+=`<div class="lesson-type">✏️ Worked Example</div><div class="lesson-title">${card.title}</div>`;
+    h+=`<div class="lesson-worked"><div class="lesson-worked-q">${card.q}</div>`;
+    card.steps.forEach(s=>{h+=`<div class="lesson-worked-s"><span class="lb">${s.l}</span> ${s.v}</div>`});
+    h+=`</div>`;
+  } else if(card.type==="checkpoint"){
+    h+=`<div class="lesson-type">✓ Checkpoint — Try It!</div>`;
+    h+=`<div class="lesson-checkpoint"><div class="lesson-cp-t">Quick check</div><div class="lesson-cp-q">${card.q}</div>`;
+    if(card.opts){
+      h+=`<div class="opts">`;
+      card.opts.forEach((o,i)=>{
+        let c="opt";
+        if(lCPAnswered&&o.ok)c+=" done c-ok";
+        else if(lCPUA===i&&!o.ok&&lCPHint)c+=" c-no";
+        else if(lCPAnswered)c+=" done";
+        const l=lCPAnswered&&o.ok?"✓":lCPUA===i&&!o.ok&&lCPHint?"✗":String.fromCharCode(65+i);
+        h+=`<button class="${c}" onclick="chkCP(${i})"><span class="opt-ltr">${l}</span><span>${o.t}</span></button>`;
+      });
+      h+=`</div>`;
+    } else if(card.type_input==="text"){
+      if(!lCPAnswered){
+        h+=`<div class="aa"><div class="aw"><input class="ai" id="cpinp" type="text" placeholder="Type answer…" value="${lCPUA||''}" onkeydown="if(event.key==='Enter')chkCPText()"></div><button class="ab" onclick="chkCPText()">Check</button></div>`;
+      } else {
+        h+=`<div class="aa"><div class="aw"><input class="ai v-ok" value="${lCPUA}" disabled></div></div>`;
+      }
+    }
+    if(lCPHint&&!lCPAnswered){
+      h+=`<div class="hint-box"><div class="hint-t">💡 Hint</div>${card.hint}</div>`;
+      h+=`<div class="btn-row"><button class="nav-btn" onclick="retryCP()">Try Again</button></div>`;
+    }
+    if(lCPAnswered){
+      h+=`<div class="fb fb-ok" style="margin-top:12px">✓ Nice work!</div>`;
+      if(card.expl)h+=`<div class="sol" style="margin-top:8px"><div class="sol-tag">Why?</div><div class="stp">${card.expl}</div></div>`;
+    }
+    h+=`</div>`;
+  }
+
+  h+=`<div class="btn-row" style="justify-content:space-between;margin-top:20px">
+    <button class="nav-btn" onclick="prevCard()" ${lIdx===0?'disabled':''}>← Previous</button>`;
+  // On checkpoint: can only proceed if answered correctly
+  if(card.type==="checkpoint"&&!lCPAnswered){
+    h+=`<span style="font:400 11px var(--f);color:var(--dim);align-self:center">Answer the checkpoint to continue</span>`;
+  } else {
+    h+=`<button class="nav-btn primary" onclick="nextCard()">${lIdx+1>=lesson.cards.length?"Start End-of-Lesson Quiz →":"Continue →"}</button>`;
+  }
+  h+=`</div></div></div>`;
+  el.innerHTML=h;
+  if(card.type==="checkpoint"&&card.type_input==="text"&&!lCPAnswered){const i=document.getElementById("cpinp");if(i)setTimeout(()=>i.focus(),50)}
+}
+
+// ========== CHEATSHEET ==========
+function renderCS(){
+  renderCtrls();let h="";
+  h+=`<div class="cs-sec">⚖️ All Concepts, Formulas & Worked Examples</div>`;
+  CS.forEach(c=>{h+=`<div class="cs-card"><div class="cs-title">${c.title}</div><div class="cs-fm">${c.fm.join("<br>")}</div><div class="cs-lb">Key Points</div><div class="cs-vr">${c.vr.replace(/\n/g,"<br>")}</div><div class="cs-lb">Example</div><div class="cs-ex"><div style="font:400 12px/1.5 var(--f);color:var(--mut);margin-bottom:4px">${c.ex.q}</div>${c.ex.st.map(s=>`<div class="stp">${s}</div>`).join("")}</div></div>`});
+  h+=`<div class="cs-sec">📖 All ${VOCAB.length} Vocabulary Terms</div>`;
+  VOCAB.forEach((v,i)=>{h+=`<div class="cs-card" style="padding:10px 12px;margin-bottom:5px"><span style="font:700 10px var(--m);color:var(--pink);margin-right:6px">${i+1}.</span><b>${v.t}</b><span style="margin:0 6px;color:var(--dim)">—</span><span style="color:var(--mut);font-size:12px">${v.d}</span></div>`});
+  document.getElementById("main").innerHTML=h;
+}
+
+renderModes();renderCtrls();genP();genV();updS();
+</script>
+</body>
+</html>
