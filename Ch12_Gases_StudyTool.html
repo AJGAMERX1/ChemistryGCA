@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 12: Gases — Complete Study Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#090b10;--card:rgba(255,255,255,0.022);--bdr:rgba(255,255,255,0.055);--txt:#dfe6f0;--mut:#8a95a8;--dim:#5a6478;--prp:#7c6bf0;--pl:#b4a5fa;--pg:rgba(124,107,240,0.09);--grn:#2dd4a0;--gb:rgba(45,212,160,0.04);--gbd:rgba(45,212,160,0.18);--red:#f06b6b;--rb:rgba(240,107,107,0.04);--rbd:rgba(240,107,107,0.18);--ylw:#eab308;--blu:#58a6ff;--cyn:#20d3e8;--org:#f59e0b;--acc:#0ea5e9;--m:'JetBrains Mono',monospace;--s:'Instrument Serif',Georgia,serif;--f:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+input[type=text],textarea{-webkit-appearance:none;appearance:none}
+.hdr{padding:16px 22px 12px;border-bottom:1px solid var(--bdr);background:linear-gradient(180deg,rgba(14,165,233,0.025) 0%,transparent 100%)}
+.hdr-in{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-lab{font:700 9px/1 var(--m);letter-spacing:.2em;color:var(--acc);margin-bottom:2px;text-transform:uppercase}
+.hdr-t{font:400 22px/1.2 var(--s);color:var(--txt)}.hdr-t i{font-style:italic;color:var(--acc)}
+.hdr-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:12px;align-items:center}.stat-box{text-align:center}.stat-n{font:700 16px/1 var(--m);color:var(--txt)}.stat-l{font:500 8px/1 var(--m);color:var(--dim);margin-top:2px;letter-spacing:.08em;text-transform:uppercase}
+.streak-n{color:var(--ylw)}.pct-n{color:var(--cyn)}
+.btn-r{background:rgba(240,107,107,0.06);border:1px solid rgba(240,107,107,0.15);color:var(--red);padding:6px 12px;border-radius:8px;font:600 10px var(--f);cursor:pointer}
+.modes{display:flex;gap:4px;padding:10px 22px;border-bottom:1px solid rgba(255,255,255,0.03);max-width:900px;margin:0 auto;overflow-x:auto}
+.mode-btn{flex:1;min-width:100px;padding:10px 8px;border-radius:10px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.01);color:var(--dim);font:600 12px var(--f);cursor:pointer;transition:all .2s;outline:none;text-align:center}
+.mode-btn.on{border-color:rgba(14,165,233,0.35);background:rgba(14,165,233,0.06);color:var(--acc)}
+.toolbar{padding:8px 22px;border-bottom:1px solid rgba(255,255,255,0.02);max-width:900px;margin:0 auto;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.cl{font:600 9px var(--m);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-right:3px}
+.cb{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--bdr);background:rgba(255,255,255,0.012);color:var(--dim);font:600 11px var(--f);cursor:pointer;white-space:nowrap;transition:all .2s;outline:none}
+.cb:hover{border-color:rgba(14,165,233,0.15);color:var(--mut)}.cb.on{border-color:rgba(14,165,233,0.28);background:rgba(14,165,233,0.07);color:var(--acc)}
+.tg{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.015);color:var(--dim);font:600 10px var(--f);cursor:pointer;transition:all .2s;outline:none;user-select:none;-webkit-user-select:none}
+.tg:hover{border-color:rgba(255,255,255,0.1)}.tg.on{border-color:rgba(240,107,107,0.3);background:rgba(240,107,107,0.06);color:var(--org)}
+.tg-dot{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--dim);transition:all .2s;flex-shrink:0}.tg.on .tg-dot{background:var(--org);border-color:var(--org)}
+.cnt{max-width:740px;width:100%;margin:0 auto;padding:16px 22px 80px;flex:1}
+.pc{border-radius:14px;padding:24px;margin-bottom:16px;transition:all .3s;animation:fadeUp .3s ease;background:var(--card);border:1px solid var(--bdr)}.pc.ok{background:var(--gb);border-color:var(--gbd)}.pc.no{background:var(--rb);border-color:var(--rbd)}
+.pc-top{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.bg{font:700 10px var(--m);padding:4px 8px;border-radius:6px;letter-spacing:.05em}.bg-q{background:var(--pg);color:#9d8df5}.bg-ok{background:rgba(45,212,160,0.1);color:var(--grn)}.bg-no{background:rgba(240,107,107,0.1);color:var(--red)}.bg-ty{background:rgba(14,165,233,0.08);color:var(--acc);font-size:9px;letter-spacing:.08em}.bg-hard{background:rgba(240,107,107,0.08);color:var(--org);font-size:9px}
+.q-txt{color:var(--txt);font:400 15px/1.8 var(--s);margin-bottom:2px}.q-txt b{font-weight:700;color:#fff}
+.ir{display:flex;gap:6px;margin:12px 0 0;flex-wrap:wrap}
+.ib{flex:1;min-width:110px;padding:9px 12px;border-radius:8px;font:400 11px/1.7 var(--m)}.ib-g{background:rgba(124,107,240,0.05);border:1px solid rgba(124,107,240,0.09);color:var(--pl)}.ib-f{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.08);color:var(--cyn)}.ib-w{background:rgba(234,179,8,0.04);border:1px solid rgba(234,179,8,0.08);color:var(--ylw)}.ib-l{font:700 8px var(--m);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;display:block;opacity:.5}
+.aa{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}.aw{flex:1;min-width:160px;position:relative}
+.ai{width:100%;padding:12px 14px;padding-right:50px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:500 15px var(--m);outline:none;transition:all .25s}.ai:focus{border-color:rgba(14,165,233,0.45)}.ai.v-ok{border-color:var(--grn);background:rgba(45,212,160,0.05)}.ai.v-no{border-color:var(--red);background:rgba(240,107,107,0.05);animation:shake .35s}.ai::placeholder{color:rgba(255,255,255,0.12);font-weight:400;font-size:12px}
+.au{position:absolute;right:12px;top:50%;transform:translateY(-50%);font:500 11px var(--m);color:var(--dim);pointer-events:none}
+.ab{padding:12px 22px;border-radius:10px;border:1.5px solid rgba(14,165,233,0.25);background:rgba(14,165,233,0.08);color:var(--acc);font:700 13px var(--f);cursor:pointer;transition:all .2s;white-space:nowrap}.ab:hover{background:rgba(14,165,233,0.16)}
+.fb{margin-top:5px;font:600 12px var(--m)}.fb-ok{color:var(--grn)}.fb-no{color:var(--red)}.fb-v{font:400 11px var(--m);color:var(--dim);margin-top:2px}
+.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn-sh{padding:7px 14px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:500 11px var(--f);cursor:pointer;transition:all .2s}.btn-sh:hover{color:var(--txt)}
+.btn-nx{padding:8px 20px;border-radius:8px;border:1.5px solid rgba(14,165,233,0.25);background:rgba(14,165,233,0.08);color:var(--acc);font:700 12px var(--f);cursor:pointer;transition:all .2s}.btn-nx:hover{background:rgba(14,165,233,0.15)}
+.sol{margin-top:14px;padding:16px;border-radius:10px;animation:fadeUp .25s;border:1px solid rgba(14,165,233,0.1);background:rgba(14,165,233,0.02)}.sol-tag{font:700 9px var(--m);letter-spacing:.12em;color:var(--acc);margin-bottom:8px;text-transform:uppercase}
+.stp{font:400 12px/2 var(--m);color:var(--pl)}.stp .lb{color:rgba(180,165,250,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.stp .ans{color:var(--grn);font-weight:700;font-size:13px}
+.sol-note{margin-top:10px;padding:10px 12px;background:rgba(255,255,255,0.015);border:1px solid var(--bdr);border-radius:8px;font:400 12px/1.7 var(--f);color:var(--mut)}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;cursor:pointer;color:#b0bec5;font:400 13px/1.5 var(--f);transition:all .2s;outline:none;width:100%;text-align:left;margin-bottom:6px}.opt:not(.done):hover{background:rgba(14,165,233,0.06);border-color:rgba(14,165,233,0.25)}.opt.done{cursor:default}.opt.c-ok{background:rgba(45,212,160,0.08);border-color:rgba(45,212,160,0.3);color:var(--grn)}.opt.c-no{background:rgba(240,107,107,0.08);border-color:rgba(240,107,107,0.3);color:var(--red)}
+.opt-ltr{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font:700 11px var(--m);flex-shrink:0;background:rgba(255,255,255,0.04);color:var(--dim)}.opt.c-ok .opt-ltr{background:rgba(45,212,160,0.15);color:var(--grn)}.opt.c-no .opt-ltr{background:rgba(240,107,107,0.15);color:var(--red)}
+.opts{display:flex;flex-direction:column;margin-top:14px}
+textarea.v-ta{width:100%;padding:12px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:400 14px var(--f);outline:none;resize:vertical;min-height:70px;line-height:1.6}
+.cs-sec{font:700 11px var(--m);letter-spacing:.1em;color:var(--acc);text-transform:uppercase;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(14,165,233,0.15)}
+.cs-card{border-radius:10px;padding:16px;margin-bottom:10px;background:var(--card);border:1px solid var(--bdr);animation:fadeUp .3s}
+.cs-title{font:700 13px var(--f);color:var(--txt);margin-bottom:6px}
+.cs-fm{background:rgba(14,165,233,0.05);border:1px solid rgba(14,165,233,0.1);border-radius:8px;padding:10px 14px;font:500 12.5px/1.8 var(--m);color:var(--acc);margin-bottom:8px}
+.cs-lb{font:700 8px var(--m);letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin:8px 0 4px}
+.cs-vr{font:400 11.5px/1.8 var(--m);color:var(--mut);margin-bottom:6px}.cs-vr b{color:var(--cyn);font-weight:600}
+.cs-ex{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.1);border-radius:8px;padding:10px 12px;font:400 12px/1.9 var(--m);color:var(--grn)}.cs-ex .lb{color:rgba(45,212,160,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lesson-wrap{max-width:700px;margin:0 auto}
+.lesson-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;padding:12px 16px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;flex-wrap:wrap}
+.lesson-prog{font:700 11px var(--m);color:var(--dim);letter-spacing:.08em}
+.prog-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-top:6px;width:200px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--cyn));transition:width .4s ease}
+.lesson-card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:28px;animation:fadeUp .3s}
+.lesson-type{font:700 9px var(--m);letter-spacing:.15em;color:var(--acc);text-transform:uppercase;margin-bottom:14px}
+.lesson-body{font:400 15px/1.9 var(--s);color:var(--mut);margin-bottom:14px}.lesson-body b{color:#fff;font-weight:600}.lesson-body em{color:var(--cyn);font-style:italic;font-weight:500}
+.lesson-def{background:rgba(124,107,240,0.05);border-left:3px solid var(--prp);padding:14px 18px;margin:12px 0;border-radius:6px}
+.lesson-def-t{font:700 10px var(--m);letter-spacing:.1em;color:var(--prp);text-transform:uppercase;margin-bottom:4px}
+.lesson-def-b{font:400 14px/1.7 var(--s);color:var(--pl)}
+.lesson-eq{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.1);border-radius:8px;padding:14px 18px;margin:12px 0;font:500 14px/1.9 var(--m);color:var(--cyn);text-align:center}
+.lesson-worked{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.12);border-radius:10px;padding:14px 18px;margin:12px 0}
+.lesson-worked-t{font:700 10px var(--m);letter-spacing:.1em;color:var(--grn);text-transform:uppercase;margin-bottom:6px}
+.lesson-checkpoint{background:rgba(14,165,233,0.04);border:1.5px solid rgba(14,165,233,0.2);border-radius:12px;padding:20px 22px;margin:18px 0}
+.lesson-cp-t{font:700 10px var(--m);letter-spacing:.12em;color:var(--acc);text-transform:uppercase;margin-bottom:10px}
+.lesson-cp-q{font:400 15px/1.7 var(--s);color:var(--txt);margin-bottom:14px}.lesson-cp-q b{color:#fff}
+.hint-box{margin-top:10px;padding:12px 14px;background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.2);border-radius:8px;font:400 13px/1.7 var(--f);color:var(--ylw);animation:fadeUp .3s}
+.nav-btn{padding:9px 18px;border-radius:9px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:600 12px var(--f);cursor:pointer;transition:all .2s}
+.nav-btn:hover:not(:disabled){background:rgba(255,255,255,0.05);color:var(--txt)}.nav-btn:disabled{opacity:.3;cursor:default}
+.nav-btn.primary{border-color:rgba(14,165,233,0.3);background:rgba(14,165,233,0.08);color:var(--acc)}
+.topic-picker{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:500px;margin:0 auto}@media(max-width:500px){.topic-picker{grid-template-columns:1fr}}
+.topic-btn{padding:20px 14px;border-radius:12px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.02);color:var(--txt);font:400 15px var(--s);cursor:pointer;transition:all .2s;text-align:left}.topic-btn:hover{border-color:rgba(14,165,233,0.3);background:rgba(14,165,233,0.05)}
+.topic-sub{font:400 11px var(--f);color:var(--dim);margin-top:4px}
+.quiz-score{font:700 32px var(--m);color:var(--acc);margin:12px 0}.quiz-score.qok{color:var(--grn)}
+@media(max-width:600px){.hdr{padding:14px 12px 10px}.modes{padding:8px 12px}.toolbar{padding:6px 12px}.cnt{padding:12px 12px 70px}.pc{padding:18px 14px}.aa{flex-direction:column}.lesson-card{padding:20px 16px}.ir{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="hdr-in">
+<div><div class="hdr-lab">Chapter 12 · Complete Study Tool</div><h1 class="hdr-t"><i>Gases</i> — Practice & Review</h1></div>
+<div class="hdr-r"><div class="stats">
+<div class="stat-box"><div class="stat-n" id="sC">0</div><div class="stat-l">Correct</div></div>
+<div class="stat-box"><div class="stat-n" id="sA">0</div><div class="stat-l">Attempted</div></div>
+<div class="stat-box"><div class="stat-n pct-n" id="sP">—</div><div class="stat-l">Accuracy</div></div>
+<div class="stat-box"><div class="stat-n streak-n" id="sS"><span id="fire">🔥</span> 0</div><div class="stat-l">Streak</div></div>
+</div><button class="btn-r" onclick="resetStats()">Reset</button></div>
+</div></div>
+<div id="modeBar" class="modes"></div>
+<div id="ctrlBar" class="toolbar"></div>
+<div class="cnt" id="main"></div>
+<script>
+function R(a,b,d){d=d||0;const f=Math.pow(10,d);return Math.round((Math.random()*(b-a)+a)*f)/f}
+function rd(v,d){return Math.round(v*Math.pow(10,d))/Math.pow(10,d)}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+// ========== VOCAB (18 terms from PDF Chapter Review) ==========
+const VOCAB=[
+{t:"diffusion",d:"the process by which fluid matter and energy spread from a region of higher concentration to a region of lower concentration"},
+{t:"effusion",d:"the process by which particles pass through a tiny opening into an evacuated chamber"},
+{t:"Graham's law of effusion",d:"the rate of effusion for a gas is inversely proportional to the square root of its molar mass"},
+{t:"fluid",d:"a substance (gas or liquid) that has the ability to flow and take the shape of its container"},
+{t:"compressibility",d:"the ability of a substance to be squeezed into a smaller volume by applying pressure"},
+{t:"expansibility",d:"the ability of a substance to spontaneously fill its available space"},
+{t:"pressure",d:"the average force exerted per unit of area when particles collide against a boundary; measured in Pa (1 Pa = 1 N/m²)"},
+{t:"standard temperature and pressure (STP)",d:"a temperature of 0 °C (273.15 K) and a pressure of 101.325 kPa; used for comparison of research"},
+{t:"Boyle's law",d:"the volume of a gas is inversely related to its pressure if the temperature is held constant; P₁V₁ = P₂V₂"},
+{t:"Charles's law",d:"the temperature (in kelvins) and volume of a gas are directly proportional when pressure is constant; V₁/T₁ = V₂/T₂"},
+{t:"Gay-Lussac's law",d:"pressure is directly proportional to temperature (in kelvins) for a gas at a constant volume; P₁/T₁ = P₂/T₂"},
+{t:"combined gas law",d:"relates the pressure, volume, and kelvin temperature of a gas when all three can change; P₁V₁/T₁ = P₂V₂/T₂"},
+{t:"Dalton's law of partial pressures",d:"the total pressure of a mixture of gases equals the sum of the pressures of each individual gas (the partial pressures)"},
+{t:"law of combining volumes",d:"under equivalent conditions, the volumes of reacting gases and their gaseous products can be expressed in ratios of small whole numbers"},
+{t:"Avogadro's law",d:"the volume of a gas at a constant temperature and pressure is directly proportional to the number of moles of the gas"},
+{t:"standard molar volume",d:"a mole of any gas at STP occupies a volume of 22.4 L"},
+{t:"ideal gas",d:"a gas whose behavior is perfectly predicted by the kinetic-molecular theory"},
+{t:"ideal gas law",d:"the law that relates the pressure, temperature, volume, and number of moles of any gas sample; PV = nRT"}
+];
+
+const Rgas=8.314; // L·kPa/(mol·K)
+
+// ========== SECTIONS ==========
+const SEC=[
+{id:"boyle",title:"Boyle's Law",icon:"🫧",types:[{id:"boyle_v2",name:"Find V₂"},{id:"boyle_p2",name:"Find P₂"}]},
+{id:"charles",title:"Charles's Law",icon:"🌡️",types:[{id:"charles_v2",name:"Find V₂"},{id:"charles_t2",name:"Find T₂"}]},
+{id:"gaylussac",title:"Gay-Lussac's Law",icon:"🔥",types:[{id:"gl_p2",name:"Find P₂"},{id:"gl_t2",name:"Find T₂"}]},
+{id:"combined",title:"Combined Gas Law",icon:"🔄",types:[{id:"comb_v2",name:"Find V₂"},{id:"comb_p2",name:"Find P₂"},{id:"comb_t2",name:"Find T₂"}]},
+{id:"dalton",title:"Dalton's Law",icon:"🧪",types:[{id:"dalton_total",name:"Find P_total"},{id:"dalton_partial",name:"Find partial P"}]},
+{id:"ideal",title:"Ideal Gas Law",icon:"💨",types:[{id:"ideal_n",name:"Find n"},{id:"ideal_v",name:"Find V"},{id:"ideal_p",name:"Find P"},{id:"ideal_t",name:"Find T"},{id:"ideal_mm",name:"Find molar mass"},{id:"ideal_density",name:"Gas density at STP"}]}
+];
+
+// ========== GENERATORS ==========
+const G={
+// --- BOYLE'S LAW: P₁V₁ = P₂V₂ (constant T) ---
+boyle_v2(){
+  const p1=R(80,200,1),v1=R(100,900,0),p2=R(80,300,1);
+  const v2=rd((p1*v1)/p2,1);
+  return{ref:"Ex 12-2",q:`A gas occupies <b>${v1} mL</b> at <b>${p1} kPa</b>. What volume will it occupy at <b>${p2} kPa</b> if temperature stays constant?`,gv:`P₁ = ${p1} kPa\nV₁ = ${v1} mL\nP₂ = ${p2} kPa`,fm:`P₁V₁ = P₂V₂\nV₂ = P₁V₁ / P₂`,fi:`V₂ = ? mL`,u:"mL",a:v2,tol:Math.max(v2*0.02,0.5),
+  st:[`<span class='lb'>FORMULA</span> V₂ = P₁V₁ / P₂`,`<span class='lb'>SOLVE</span> V₂ = (${p1} × ${v1}) / ${p2}`,`<span class='lb'>CALC</span> V₂ = ${rd(p1*v1,0)} / ${p2}`,`<span class='lb'>ANSWER</span> <span class='ans'>V₂ = ${v2} mL</span>`],nt:`Boyle's law: P and V are inversely proportional at constant T. P₁V₁ = P₂V₂.`}
+},
+boyle_p2(){
+  const p1=R(80,200,1),v1=R(100,800,0),v2=R(50,600,0);
+  const p2=rd((p1*v1)/v2,1);
+  return{ref:"Ex 12-2",q:`A gas at <b>${p1} kPa</b> occupies <b>${v1} mL</b>. If it is compressed to <b>${v2} mL</b> at constant temperature, what is the new pressure?`,gv:`P₁ = ${p1} kPa\nV₁ = ${v1} mL\nV₂ = ${v2} mL`,fm:`P₁V₁ = P₂V₂\nP₂ = P₁V₁ / V₂`,fi:`P₂ = ? kPa`,u:"kPa",a:p2,tol:Math.max(p2*0.02,0.5),
+  st:[`<span class='lb'>FORMULA</span> P₂ = P₁V₁ / V₂`,`<span class='lb'>SOLVE</span> P₂ = (${p1} × ${v1}) / ${v2}`,`<span class='lb'>ANSWER</span> <span class='ans'>P₂ = ${p2} kPa</span>`],nt:`Inverse relationship: smaller volume → higher pressure.`}
+},
+// --- CHARLES'S LAW: V₁/T₁ = V₂/T₂ (constant P, T in K) ---
+charles_v2(){
+  const t1c=R(-20,80,0),v1=R(100,800,1),t2c=R(-30,200,0);
+  const t1k=rd(t1c+273.15,2),t2k=rd(t2c+273.15,2);
+  const v2=rd(v1*t2k/t1k,1);
+  return{ref:"Ex 12-3",q:`A gas occupies <b>${v1} mL</b> at <b>${t1c} °C</b>. What volume will it occupy at <b>${t2c} °C</b> at constant pressure?`,gv:`V₁ = ${v1} mL\nT₁ = ${t1c} °C = ${t1k} K\nT₂ = ${t2c} °C = ${t2k} K`,fm:`V₁/T₁ = V₂/T₂\nV₂ = V₁ × T₂ / T₁`,fi:`V₂ = ? mL`,u:"mL",a:v2,tol:Math.max(Math.abs(v2)*0.02,0.5),
+  st:[`<span class='lb'>CONVERT TO K</span> T₁ = ${t1c} + 273.15 = ${t1k} K`,`T₂ = ${t2c} + 273.15 = ${t2k} K`,`<span class='lb'>FORMULA</span> V₂ = V₁ × T₂ / T₁`,`<span class='lb'>SOLVE</span> V₂ = ${v1} × ${t2k} / ${t1k}`,`<span class='lb'>ANSWER</span> <span class='ans'>V₂ = ${v2} mL</span>`],nt:`Charles's law: V and T(K) are directly proportional. ALWAYS convert °C to K first!`}
+},
+charles_t2(){
+  const v1=R(100,600,1),t1c=R(10,50,0),v2=R(50,800,1);
+  const t1k=rd(t1c+273.15,2);
+  const t2k=rd(t1k*v2/v1,2),t2c=rd(t2k-273.15,1);
+  return{ref:"Ex 12-3",q:`A gas has a volume of <b>${v1} mL</b> at <b>${t1c} °C</b>. If it expands to <b>${v2} mL</b> at constant pressure, what is the new temperature in <b>°C</b>?`,gv:`V₁ = ${v1} mL, V₂ = ${v2} mL\nT₁ = ${t1c} °C = ${t1k} K`,fm:`V₁/T₁ = V₂/T₂\nT₂ = T₁ × V₂ / V₁`,fi:`T₂ = ? °C`,u:"°C",a:t2c,tol:Math.max(Math.abs(t2c)*0.02,0.5),
+  st:[`<span class='lb'>CONVERT</span> T₁ = ${t1c} + 273.15 = ${t1k} K`,`<span class='lb'>FORMULA</span> T₂ = T₁ × V₂ / V₁`,`<span class='lb'>SOLVE</span> T₂ = ${t1k} × ${v2} / ${v1} = ${t2k} K`,`<span class='lb'>CONVERT BACK</span> ${t2k} − 273.15 = <span class='ans'>${t2c} °C</span>`],nt:`Solve in Kelvin, then convert back to °C at the end.`}
+},
+// --- GAY-LUSSAC'S LAW: P₁/T₁ = P₂/T₂ (constant V, T in K) ---
+gl_p2(){
+  const p1=R(100,300,1),t1c=R(10,50,0),t2c=R(60,250,0);
+  const t1k=rd(t1c+273.15,2),t2k=rd(t2c+273.15,2);
+  const p2=rd(p1*t2k/t1k,1);
+  return{ref:"Ex 12-4",q:`A gas in a rigid container has a pressure of <b>${p1} kPa</b> at <b>${t1c} °C</b>. What is the pressure at <b>${t2c} °C</b>?`,gv:`P₁ = ${p1} kPa\nT₁ = ${t1c} °C = ${t1k} K\nT₂ = ${t2c} °C = ${t2k} K`,fm:`P₁/T₁ = P₂/T₂\nP₂ = P₁ × T₂ / T₁`,fi:`P₂ = ? kPa`,u:"kPa",a:p2,tol:Math.max(p2*0.02,0.5),
+  st:[`<span class='lb'>CONVERT</span> T₁ = ${t1k} K, T₂ = ${t2k} K`,`<span class='lb'>FORMULA</span> P₂ = P₁ × T₂ / T₁`,`<span class='lb'>SOLVE</span> P₂ = ${p1} × ${t2k} / ${t1k}`,`<span class='lb'>ANSWER</span> <span class='ans'>P₂ = ${p2} kPa</span>`],nt:`Gay-Lussac's law: P and T(K) are directly proportional at constant volume.`}
+},
+gl_t2(){
+  const p1=R(100,250,1),t1c=R(10,40,0),p2=R(150,400,1);
+  const t1k=rd(t1c+273.15,2);
+  const t2k=rd(t1k*p2/p1,2),t2c=rd(t2k-273.15,1);
+  return{ref:"Ex 12-4",q:`A gas at <b>${p1} kPa</b> and <b>${t1c} °C</b> is heated until the pressure is <b>${p2} kPa</b>. What is the new temperature in <b>°C</b>? (constant volume)`,gv:`P₁ = ${p1} kPa, P₂ = ${p2} kPa\nT₁ = ${t1c} °C = ${t1k} K`,fm:`P₁/T₁ = P₂/T₂\nT₂ = T₁ × P₂ / P₁`,fi:`T₂ = ? °C`,u:"°C",a:t2c,tol:Math.max(Math.abs(t2c)*0.02,0.5),
+  st:[`<span class='lb'>CONVERT</span> T₁ = ${t1k} K`,`<span class='lb'>FORMULA</span> T₂ = T₁ × P₂ / P₁`,`<span class='lb'>SOLVE</span> T₂ = ${t1k} × ${p2} / ${p1} = ${t2k} K`,`<span class='lb'>CONVERT BACK</span> ${t2k} − 273.15 = <span class='ans'>${t2c} °C</span>`],nt:`Solve in K, convert back to °C.`}
+},
+// --- COMBINED GAS LAW: P₁V₁/T₁ = P₂V₂/T₂ ---
+comb_v2(){
+  const p1=R(80,200,0),v1=R(1.0,10.0,1),t1c=R(-20,50,0),p2=R(90,120,0),t2c=R(-10,80,0);
+  const t1k=rd(t1c+273.15,2),t2k=rd(t2c+273.15,2);
+  const v2=rd((p1*v1*t2k)/(t1k*p2),1);
+  return{ref:"Ex 12-5",q:`A gas at <b>${v1} L</b>, <b>${p1} kPa</b>, <b>${t1c} °C</b> changes to <b>${p2} kPa</b> and <b>${t2c} °C</b>. What is the new volume?`,gv:`P₁=${p1} kPa, V₁=${v1} L\nT₁=${t1c} °C=${t1k} K\nP₂=${p2} kPa, T₂=${t2c} °C=${t2k} K`,fm:`P₁V₁/T₁ = P₂V₂/T₂\nV₂ = P₁V₁T₂ / (T₁P₂)`,fi:`V₂ = ? L`,u:"L",a:v2,tol:Math.max(Math.abs(v2)*0.02,0.1),
+  st:[`<span class='lb'>CONVERT</span> T₁=${t1k} K, T₂=${t2k} K`,`<span class='lb'>FORMULA</span> V₂ = (P₁ × V₁ × T₂) / (T₁ × P₂)`,`<span class='lb'>SOLVE</span> V₂ = (${p1} × ${v1} × ${t2k}) / (${t1k} × ${p2})`,`<span class='lb'>ANSWER</span> <span class='ans'>V₂ = ${v2} L</span>`],nt:`Combined gas law: all three variables can change. Always convert °C → K!`}
+},
+comb_p2(){
+  const p1=R(80,200,0),v1=R(1.0,8.0,1),t1c=R(10,40,0),v2=R(0.5,12.0,1),t2c=R(-20,80,0);
+  const t1k=rd(t1c+273.15,2),t2k=rd(t2c+273.15,2);
+  const p2=rd((p1*v1*t2k)/(t1k*v2),1);
+  return{ref:"Ex 12-5",q:`A gas at <b>${p1} kPa</b>, <b>${v1} L</b>, <b>${t1c} °C</b> is changed to <b>${v2} L</b> at <b>${t2c} °C</b>. What is the new pressure?`,gv:`P₁=${p1}, V₁=${v1} L, T₁=${t1c} °C\nV₂=${v2} L, T₂=${t2c} °C`,fm:`P₂ = P₁V₁T₂ / (T₁V₂)`,fi:`P₂ = ? kPa`,u:"kPa",a:p2,tol:Math.max(p2*0.02,0.5),
+  st:[`<span class='lb'>CONVERT</span> T₁=${t1k} K, T₂=${t2k} K`,`<span class='lb'>SOLVE</span> P₂ = (${p1}×${v1}×${t2k}) / (${t1k}×${v2})`,`<span class='lb'>ANSWER</span> <span class='ans'>P₂ = ${p2} kPa</span>`],nt:`Combined gas law rearranged for pressure.`}
+},
+comb_t2(){
+  const p1=R(90,200,0),v1=R(1.0,6.0,1),t1c=R(10,50,0),p2=R(80,250,0),v2=R(0.5,8.0,1);
+  const t1k=rd(t1c+273.15,2);
+  const t2k=rd((p2*v2*t1k)/(p1*v1),2),t2c=rd(t2k-273.15,1);
+  return{ref:"Ex 12-5",q:`A gas at <b>${p1} kPa</b>, <b>${v1} L</b>, <b>${t1c} °C</b> changes to <b>${p2} kPa</b> and <b>${v2} L</b>. What is the new temperature in <b>°C</b>?`,gv:`P₁=${p1}, V₁=${v1}, T₁=${t1c} °C\nP₂=${p2}, V₂=${v2}`,fm:`T₂ = T₁ × P₂V₂ / (P₁V₁)`,fi:`T₂ = ? °C`,u:"°C",a:t2c,tol:Math.max(Math.abs(t2c)*0.025,1),
+  st:[`<span class='lb'>CONVERT</span> T₁ = ${t1k} K`,`<span class='lb'>SOLVE</span> T₂ = ${t1k} × (${p2}×${v2}) / (${p1}×${v1}) = ${t2k} K`,`<span class='lb'>CONVERT</span> ${t2k} − 273.15 = <span class='ans'>${t2c} °C</span>`],nt:`Solve for T₂ in Kelvin, then convert back to °C.`}
+},
+// --- DALTON'S LAW ---
+dalton_total(){
+  const n=pick([2,3]);
+  const gases=n===2?["O₂","N₂"]:["O₂","N₂","Ar"];
+  const pp=gases.map(()=>R(10,120,1));
+  const total=rd(pp.reduce((s,v)=>s+v,0),1);
+  const ppStr=gases.map((g,i)=>`P(${g}) = ${pp[i]} kPa`).join(', ');
+  return{ref:"Dalton's Law",q:`A gas mixture contains ${ppStr}. What is the <b>total pressure</b>?`,gv:gases.map((g,i)=>`P(${g}) = ${pp[i]} kPa`).join('\n'),fm:`P_total = P₁ + P₂${n===3?" + P₃":""}`,fi:`P_total = ? kPa`,u:"kPa",a:total,tol:Math.max(total*0.015,0.3),
+  st:[`<span class='lb'>SUM</span> P_total = ${pp.join(' + ')}`,`<span class='lb'>ANSWER</span> <span class='ans'>P_total = ${total} kPa</span>`],nt:`Dalton's law: total pressure = sum of all partial pressures.`}
+},
+dalton_partial(){
+  const ptot=R(90,110,1),pknown=R(10,80,1);
+  const punknown=rd(ptot-pknown,1);
+  const gas1=pick(["O₂","N₂","H₂","CO₂"]),gas2=pick(["Ar","He","Ne","CH₄"]);
+  return{ref:"Dalton's Law",q:`A gas mixture has a total pressure of <b>${ptot} kPa</b>. If P(${gas1}) = <b>${pknown} kPa</b>, what is P(${gas2})?`,gv:`P_total = ${ptot} kPa\nP(${gas1}) = ${pknown} kPa`,fm:`P_total = P₁ + P₂\nP₂ = P_total − P₁`,fi:`P(${gas2}) = ? kPa`,u:"kPa",a:punknown,tol:Math.max(Math.abs(punknown)*0.015,0.3),
+  st:[`<span class='lb'>FORMULA</span> P(${gas2}) = P_total − P(${gas1})`,`<span class='lb'>SOLVE</span> P(${gas2}) = ${ptot} − ${pknown}`,`<span class='lb'>ANSWER</span> <span class='ans'>P(${gas2}) = ${punknown} kPa</span>`],nt:`Rearrange Dalton's law to isolate the unknown partial pressure.`}
+},
+// --- IDEAL GAS LAW: PV = nRT ---
+ideal_n(){
+  const v=R(1.0,20.0,2),p=R(80,300,0),tc=R(10,100,0);
+  const tk=rd(tc+273.15,2);
+  const n=rd((p*v)/(Rgas*tk),3);
+  return{ref:"Ex 12-8",q:`How many moles of gas are in <b>${v} L</b> at <b>${p} kPa</b> and <b>${tc} °C</b>?<br><span style="color:var(--dim);font-size:12px">(R = 8.314 L·kPa/mol·K)</span>`,gv:`V = ${v} L, P = ${p} kPa\nT = ${tc} °C = ${tk} K\nR = 8.314`,fm:`PV = nRT\nn = PV / (RT)`,fi:`n = ? mol`,u:"mol",a:n,tol:Math.max(n*0.02,0.005),
+  st:[`<span class='lb'>CONVERT</span> T = ${tc} + 273.15 = ${tk} K`,`<span class='lb'>FORMULA</span> n = PV / (RT)`,`<span class='lb'>SOLVE</span> n = (${p} × ${v}) / (8.314 × ${tk})`,`<span class='lb'>CALC</span> n = ${rd(p*v,1)} / ${rd(Rgas*tk,1)}`,`<span class='lb'>ANSWER</span> <span class='ans'>n = ${n} mol</span>`],nt:`PV = nRT. Use R = 8.314 when P is in kPa and V in L. Always convert T to Kelvin.`}
+},
+ideal_v(){
+  const n=R(0.10,5.00,2),p=R(80,200,0),tc=R(10,80,0);
+  const tk=rd(tc+273.15,2);
+  const v=rd((n*Rgas*tk)/p,2);
+  return{ref:"Ex 12-8",q:`What volume does <b>${n} mol</b> of gas occupy at <b>${p} kPa</b> and <b>${tc} °C</b>?`,gv:`n = ${n} mol, P = ${p} kPa\nT = ${tc} °C = ${tk} K\nR = 8.314`,fm:`PV = nRT\nV = nRT / P`,fi:`V = ? L`,u:"L",a:v,tol:Math.max(v*0.02,0.05),
+  st:[`<span class='lb'>CONVERT</span> T = ${tk} K`,`<span class='lb'>FORMULA</span> V = nRT / P`,`<span class='lb'>SOLVE</span> V = (${n} × 8.314 × ${tk}) / ${p}`,`<span class='lb'>ANSWER</span> <span class='ans'>V = ${v} L</span>`],nt:`Rearrange PV=nRT → V=nRT/P.`}
+},
+ideal_p(){
+  const n=R(0.20,3.00,2),v=R(1.0,20.0,1),tc=R(15,80,0);
+  const tk=rd(tc+273.15,2);
+  const p=rd((n*Rgas*tk)/v,1);
+  return{ref:"Review 6c",q:`What is the pressure of <b>${n} mol</b> of gas in <b>${v} L</b> at <b>${tc} °C</b>?`,gv:`n = ${n} mol, V = ${v} L\nT = ${tc} °C = ${tk} K\nR = 8.314`,fm:`PV = nRT\nP = nRT / V`,fi:`P = ? kPa`,u:"kPa",a:p,tol:Math.max(p*0.02,0.5),
+  st:[`<span class='lb'>CONVERT</span> T = ${tk} K`,`<span class='lb'>FORMULA</span> P = nRT / V`,`<span class='lb'>SOLVE</span> P = (${n} × 8.314 × ${tk}) / ${v}`,`<span class='lb'>ANSWER</span> <span class='ans'>P = ${p} kPa</span>`],nt:`Rearrange PV=nRT → P=nRT/V.`}
+},
+ideal_t(){
+  const n=R(0.10,3.00,2),v=R(2.0,15.0,1),p=R(80,200,0);
+  const tk=rd((p*v)/(n*Rgas),2),tc=rd(tk-273.15,1);
+  return{ref:"Review 6b",q:`What is the temperature (in <b>°C</b>) of <b>${n} mol</b> of gas at <b>${p} kPa</b> in <b>${v} L</b>?`,gv:`n = ${n} mol, V = ${v} L\nP = ${p} kPa, R = 8.314`,fm:`PV = nRT\nT = PV / (nR)`,fi:`T = ? °C`,u:"°C",a:tc,tol:Math.max(Math.abs(tc)*0.025,1),
+  st:[`<span class='lb'>FORMULA</span> T = PV / (nR)`,`<span class='lb'>SOLVE</span> T = (${p} × ${v}) / (${n} × 8.314) = ${tk} K`,`<span class='lb'>CONVERT</span> ${tk} − 273.15 = <span class='ans'>${tc} °C</span>`],nt:`Solve for T in Kelvin, then convert to °C.`}
+},
+ideal_mm(){
+  // Ex 12-9: find molar mass from mass, P, V, T
+  const gases=[{n:"unknown gas",mass:R(0.3,5.0,3),mm:R(16,80,1)},{n:"mystery gas",mass:R(1.0,10.0,2),mm:R(20,120,1)}];
+  const g=pick(gases);
+  const tc=R(15,40,0),p=R(90,110,0);
+  const tk=rd(tc+273.15,2);
+  const nMol=rd(g.mass/g.mm,4);
+  const v=rd((nMol*Rgas*tk)/p,4);
+  // Student gets mass, V, P, T and finds molar mass
+  return{ref:"Ex 12-9",q:`A <b>${g.mass} g</b> sample of gas occupies <b>${rd(v*1000,1)} mL</b> at <b>${p} kPa</b> and <b>${tc} °C</b>. What is the molar mass?`,gv:`m = ${g.mass} g\nV = ${rd(v*1000,1)} mL = ${rd(v,4)} L\nP = ${p} kPa, T = ${tc} °C`,fm:`Step 1: n = PV / (RT)\nStep 2: M = m / n`,fi:`M = ? g/mol`,u:"g/mol",a:g.mm,tol:Math.max(g.mm*0.03,0.5),
+  st:[`<span class='lb'>CONVERT</span> T = ${tk} K, V = ${rd(v,4)} L`,`<span class='lb'>STEP 1 — FIND n</span> n = PV/(RT) = (${p}×${rd(v,4)})/(8.314×${tk}) = ${rd(nMol,4)} mol`,`<span class='lb'>STEP 2 — FIND M</span> M = m/n = ${g.mass}/${rd(nMol,4)}`,`<span class='lb'>ANSWER</span> <span class='ans'>M = ${g.mm} g/mol</span>`],nt:`Two-step: (1) Use PV=nRT to find n, (2) M = mass/moles.`}
+},
+ideal_density(){
+  // Ex 12-12: density at STP = M / 22.4
+  const gases=[{n:"H₂",mm:2.02},{n:"O₂",mm:32.00},{n:"N₂",mm:28.02},{n:"CO₂",mm:44.01},{n:"He",mm:4.00},{n:"CH₄",mm:16.04},{n:"Ar",mm:39.95},{n:"Cl₂",mm:70.90},{n:"Ne",mm:20.18}];
+  const g=pick(gases);
+  const d=rd(g.mm/22.4,3);
+  return{ref:"Ex 12-12",q:`What is the density of <b>${g.n}</b> (M = ${g.mm} g/mol) at STP?`,gv:`M = ${g.mm} g/mol\nStandard molar volume = 22.4 L/mol`,fm:`d = M / 22.4 L/mol`,fi:`d = ? g/L`,u:"g/L",a:d,tol:Math.max(d*0.02,0.003),
+  st:[`<span class='lb'>FORMULA</span> d = molar mass / standard molar volume`,`<span class='lb'>SOLVE</span> d = ${g.mm} / 22.4`,`<span class='lb'>ANSWER</span> <span class='ans'>d = ${d} g/L</span>`],nt:`At STP, 1 mol of any gas = 22.4 L. Density = M/22.4.`}
+}
+};
+
+// ========== CHEATSHEET ==========
+const CS=[
+{title:"Boyle's Law (P₁V₁ = P₂V₂)",fm:["P₁V₁ = P₂V₂","V₂ = P₁V₁ / P₂","P₂ = P₁V₁ / V₂"],vr:"<b>Constant temperature</b>\nP and V are <b>inversely</b> proportional\nMore pressure → less volume, less pressure → more volume",ex:{q:"455 mL at 103.35 kPa → 113.48 kPa",st:["V₂ = (103.35 × 455) / 113.48","V₂ = 47024 / 113.48 = 414 mL"]}},
+{title:"Charles's Law (V₁/T₁ = V₂/T₂)",fm:["V₁/T₁ = V₂/T₂","V₂ = V₁ × T₂ / T₁","T₂ = T₁ × V₂ / V₁"],vr:"<b>Constant pressure, T in Kelvin</b>\nV and T are <b>directly</b> proportional\nHigher T → larger V, lower T → smaller V\n⚠️ ALWAYS convert °C → K (add 273.15)",ex:{q:"3.75 L at 25 °C → at STP (0 °C)",st:["T₁ = 25 + 273.15 = 298.15 K","T₂ = 273.15 K","V₂ = 3.75 × 273.15/298.15 = 3.44 L"]}},
+{title:"Gay-Lussac's Law (P₁/T₁ = P₂/T₂)",fm:["P₁/T₁ = P₂/T₂","P₂ = P₁ × T₂ / T₁","T₂ = T₁ × P₂ / P₁"],vr:"<b>Constant volume, T in Kelvin</b>\nP and T are <b>directly</b> proportional\nHigher T → higher P (tire pressure example)",ex:{q:"221 kPa at 18 °C → P at 54 °C?",st:["T₁ = 291.15 K, T₂ = 327.15 K","P₂ = 221 × 327.15/291.15 = 248 kPa"]}},
+{title:"Combined Gas Law",fm:["P₁V₁/T₁ = P₂V₂/T₂","Rearrange for any unknown","Reduces to Boyle's, Charles's, or GL when one variable is constant"],vr:"Use when <b>all three change</b> (P, V, T)\nAlways convert T to <b>Kelvin</b>\nIf T is constant: reduces to Boyle's law\nIf P is constant: reduces to Charles's law\nIf V is constant: reduces to Gay-Lussac's law",ex:{q:"3.6 L at 1.06×10⁵ Pa, −15 °C → STP?",st:["T₁ = 258.15 K, T₂ = 273.15 K","P₂ = 1.01×10⁵ Pa","V₂ = (1.06e5×3.6×273.15)/(258.15×1.01e5) = 4.0 L"]}},
+{title:"Dalton's Law of Partial Pressures",fm:["P_total = P₁ + P₂ + P₃ + …","Each partial pressure is independent","For gas collected over water: P_gas = P_total − P_water"],vr:"Each gas contributes its own pressure regardless of other gases\n<b>Water displacement</b>: subtract water vapor pressure from total",ex:{q:"Air: 78% N₂, 21% O₂, 1% Ar at 101.325 kPa",st:["P(N₂) = 0.78 × 101.325 = 79.0 kPa","P(O₂) = 0.21 × 101.325 = 21.3 kPa","P(Ar) = 0.01 × 101.325 = 1.01 kPa","Check: 79.0 + 21.3 + 1.01 = 101.3 ✓"]}},
+{title:"Ideal Gas Law (PV = nRT)",fm:["PV = nRT","n = PV/(RT)","V = nRT/P","P = nRT/V","T = PV/(nR)","R = 8.314 L·kPa/(mol·K)"],vr:"<b>P</b> = pressure (kPa)\n<b>V</b> = volume (L)\n<b>n</b> = moles\n<b>R</b> = 8.314 L·kPa/(mol·K)\n<b>T</b> = temperature (K)\nAlways convert °C → K!",ex:{q:"3.32 L at 154 kPa and 29 °C. Find n.",st:["T = 29 + 273.15 = 302.15 K","n = PV/(RT) = (154×3.32)/(8.314×302.15)","n = 511.28/2512.47 = 0.204 mol"]}},
+{title:"Finding Molar Mass from Ideal Gas Law",fm:["Step 1: n = PV / (RT)","Step 2: M = m / n"],vr:"Measure mass, volume, pressure, and temperature\nUse PV=nRT to find moles\nThen divide mass by moles to get molar mass",ex:{q:"0.481 g in 0.404 L at 97.1 kPa, 297 K",st:["n = (97.1×0.404)/(8.314×297) = 0.0159 mol","M = 0.481/0.0159 = 30.3 g/mol"]}},
+{title:"Gas Density at STP",fm:["d = M / 22.4 L/mol","Standard molar volume = 22.4 L/mol at STP","M = d × 22.4"],vr:"At STP, 1 mol of ANY gas = 22.4 L\nHeavier molar mass → denser gas\nCan reverse to find M from measured density",ex:{q:"Density of H₂ at STP?",st:["M = 2.02 g/mol","d = 2.02 / 22.4 = 0.0902 g/L"]}},
+{title:"Graham's Law of Effusion",fm:["rate₁/rate₂ = √(M₂/M₁)","Lighter gas effuses faster"],vr:"Effusion rate is inversely proportional to √(molar mass)\nLighter molecules move faster → effuse faster",ex:{q:"N₂ vs Ar effusion rate ratio",st:["rate(N₂)/rate(Ar) = √(39.95/28.02)","= √1.426 = 1.194","N₂ effuses 1.194× faster than Ar"]}},
+{title:"Temperature Conversions",fm:["K = °C + 273.15","°C = K − 273.15","STP: 0 °C = 273.15 K, 101.325 kPa"],vr:"EVERY gas law calculation requires <b>Kelvin</b>\nNever use °C in gas law formulas\nAbsolute zero = 0 K = −273.15 °C",ex:{q:"Convert −15 °C and 100 °C",st:["−15 + 273.15 = 258.15 K","100 + 273.15 = 373.15 K"]}}
+];
+
+// ========== LEARNING MODE ==========
+const LESSONS={
+gaslaws:{title:"Gas Laws (Boyle, Charles, Gay-Lussac)",icon:"🫧",
+cards:[
+{type:"teach",title:"Gases Under Pressure",body:"Gas behavior is governed by three variables: <b>pressure (P)</b>, <b>volume (V)</b>, and <b>temperature (T)</b>. Change one, and the others respond predictably.<br><br>We'll learn three laws that each hold one variable constant and show how the other two relate."},
+{type:"definition",term:"Boyle's law",def:"The volume of a gas is inversely related to its pressure if the temperature is held constant.",extra:"P₁V₁ = P₂V₂. Think of squeezing a balloon — more pressure, less volume."},
+{type:"equation",title:"Boyle's Law",eq:"P₁V₁ = P₂V₂<br><br>V₂ = P₁V₁ / P₂ &nbsp;&nbsp; P₂ = P₁V₁ / V₂",note:"<b>Inverse</b> relationship. Constant temperature."},
+{type:"checkpoint",q:"A gas at 200 kPa occupies 500 mL. If compressed to 400 kPa at constant T, the volume will be:",opts:[{t:"250 mL",ok:true},{t:"1000 mL",ok:false},{t:"500 mL",ok:false},{t:"100 mL",ok:false}],hint:"P₁V₁ = P₂V₂ → V₂ = (200×500)/400 = ?",expl:"V₂ = (200×500)/400 = 250 mL. Double the pressure → half the volume (inverse)."},
+{type:"definition",term:"Charles's law",def:"The temperature (in kelvins) and volume of a gas are directly proportional when pressure is constant.",extra:"V₁/T₁ = V₂/T₂. CRITICAL: T must be in Kelvin! °C will give wrong answers."},
+{type:"equation",title:"Charles's Law",eq:"V₁/T₁ = V₂/T₂<br><br>⚠️ T must be in KELVIN (K = °C + 273.15)",note:"<b>Direct</b> relationship. Constant pressure. Double T → double V."},
+{type:"checkpoint",q:"A gas at 300 K occupies 6.0 L. If heated to 600 K at constant pressure, what is V₂?",opts:[{t:"12.0 L",ok:true},{t:"3.0 L",ok:false},{t:"6.0 L",ok:false},{t:"1200 L",ok:false}],hint:"V₂ = V₁ × T₂/T₁ = 6.0 × 600/300 = ?",expl:"V₂ = 6.0 × (600/300) = 12.0 L. Direct proportion: double T → double V."},
+{type:"definition",term:"Gay-Lussac's law",def:"Pressure is directly proportional to temperature (in kelvins) for a gas at a constant volume.",extra:"P₁/T₁ = P₂/T₂. Think of heating an aerosol can — pressure increases (danger!)."},
+{type:"teach",title:"The Combined Gas Law",body:"What if ALL THREE variables change? Use the <b>combined gas law</b>:<br><br><b style='color:var(--cyn);font-size:16px'>P₁V₁/T₁ = P₂V₂/T₂</b><br><br>This is just Boyle's, Charles's, and Gay-Lussac's laws combined. If any variable stays constant, it cancels out and reduces to the simpler law."},
+{type:"checkpoint",q:"Which gas law should you use if BOTH pressure and temperature change, but you need to find the new volume?",opts:[{t:"Boyle's law",ok:false},{t:"Charles's law",ok:false},{t:"Combined gas law",ok:true},{t:"Ideal gas law",ok:false}],hint:"Boyle's requires constant T. Charles's requires constant P. When both change...",expl:"Correct! The combined gas law handles situations where P, V, and T all change."},
+{type:"teach",title:"Key Rule: Always Use Kelvin!",body:"Every gas law with temperature requires <b>Kelvin</b>. Using °C will give you the wrong answer.<br><br><b>K = °C + 273.15</b><br><br>0 °C = 273.15 K (ice point)<br>25 °C = 298.15 K (room temp)<br>100 °C = 373.15 K (boiling water)<br>−273.15 °C = 0 K (absolute zero — impossible to reach)<br><br>STP = 0 °C (273.15 K) and 101.325 kPa."}
+],
+quiz:[
+{q:"Boyle's law describes the relationship between:",opts:[{t:"P and V at constant T",ok:true},{t:"V and T at constant P",ok:false},{t:"P and T at constant V",ok:false},{t:"P, V, and T all changing",ok:false}]},
+{q:"A gas at 150 kPa occupies 400 mL. At 300 kPa (constant T), V₂ = ?",opts:[{t:"200 mL",ok:true},{t:"800 mL",ok:false},{t:"400 mL",ok:false},{t:"600 mL",ok:false}],expl:"V₂ = (150×400)/300 = 200 mL"},
+{q:"A gas at 250 K and 3.0 L is heated to 500 K at constant P. V₂ = ?",opts:[{t:"6.0 L",ok:true},{t:"1.5 L",ok:false},{t:"3.0 L",ok:false},{t:"9.0 L",ok:false}]},
+{q:"Why must temperature be in Kelvin for gas laws?",opts:[{t:"°C can be zero or negative, which breaks the proportional math",ok:true},{t:"Kelvin is more precise",ok:false},{t:"It doesn't matter, either works",ok:false},{t:"Kelvin is the SI unit",ok:false}]},
+{q:"The combined gas law reduces to Charles's law when:",opts:[{t:"Temperature is constant",ok:false},{t:"Pressure is constant",ok:true},{t:"Volume is constant",ok:false},{t:"All variables change",ok:false}]}
+]},
+idealgas:{title:"Ideal Gas Law & Gas Stoichiometry",icon:"💨",
+cards:[
+{type:"teach",title:"Beyond the Simple Laws",body:"Boyle's, Charles's, and Gay-Lussac's laws relate P, V, and T for a <em>fixed amount</em> of gas. But what if we want to bring in the <b>number of moles (n)</b>?<br><br>That's where the <b>ideal gas law</b> comes in — it relates ALL four variables at once."},
+{type:"equation",title:"The Ideal Gas Law",eq:"PV = nRT<br><br>R = 8.314 L·kPa/(mol·K)",note:"<b>P</b> = pressure (kPa) &nbsp; <b>V</b> = volume (L) &nbsp; <b>n</b> = moles<br><b>R</b> = universal gas constant &nbsp; <b>T</b> = temperature (K)"},
+{type:"teach",title:"Rearranging PV = nRT",body:"Solve for any variable:<br><br><b>n = PV / (RT)</b> — find moles<br><b>V = nRT / P</b> — find volume<br><b>P = nRT / V</b> — find pressure<br><b>T = PV / (nR)</b> — find temperature<br><br>The key: match your units to R. If R = 8.314 L·kPa/(mol·K), then P must be in kPa, V in L, T in K."},
+{type:"checkpoint",q:"A gas at 200 kPa, 5.0 L, and 300 K. How many moles? (R = 8.314)",opts:[{t:"n = 0.40 mol",ok:true},{t:"n = 4.0 mol",ok:false},{t:"n = 40 mol",ok:false},{t:"n = 0.04 mol",ok:false}],hint:"n = PV/(RT) = (200 × 5.0) / (8.314 × 300) = 1000 / 2494 = ?",expl:"n = (200×5.0)/(8.314×300) = 1000/2494.2 = 0.40 mol."},
+{type:"teach",title:"Finding Molar Mass from a Gas Sample",body:"If you know the <b>mass</b> of a gas sample plus its P, V, and T, you can find its <b>molar mass</b> in two steps:<br><br><b>Step 1:</b> Use PV = nRT to find n<br><b>Step 2:</b> M = mass / n<br><br>This is how chemists identify unknown gases!"},
+{type:"definition",term:"standard molar volume",def:"a mole of any gas at STP occupies a volume of 22.4 L",extra:"This means at STP: d = M / 22.4 L/mol. Heavier gas → denser."},
+{type:"teach",title:"Gas Density at STP",body:"Since 1 mol of any gas at STP = 22.4 L, the density is simply:<br><br><b style='color:var(--cyn)'>d = M / 22.4</b><br><br>H₂: d = 2.02 / 22.4 = 0.090 g/L (very light — floats in air)<br>O₂: d = 32.00 / 22.4 = 1.43 g/L<br>CO₂: d = 44.01 / 22.4 = 1.96 g/L (heavier than air — sinks)"},
+{type:"checkpoint",q:"The density of an unknown gas at STP is 1.25 g/L. What is its molar mass?",opts:[{t:"28.0 g/mol",ok:true},{t:"1.25 g/mol",ok:false},{t:"22.4 g/mol",ok:false},{t:"56.0 g/mol",ok:false}],hint:"M = d × 22.4 = 1.25 × 22.4 = ?",expl:"M = d × 22.4 = 1.25 × 22.4 = 28.0 g/mol. This is N₂!"},
+{type:"teach",title:"Chapter 12 Summary",body:"You've learned all the gas laws:<br><br>✓ Boyle's: P₁V₁ = P₂V₂ (constant T, inverse)<br>✓ Charles's: V₁/T₁ = V₂/T₂ (constant P, direct)<br>✓ Gay-Lussac's: P₁/T₁ = P₂/T₂ (constant V, direct)<br>✓ Combined: P₁V₁/T₁ = P₂V₂/T₂ (all change)<br>✓ Dalton's: P_total = ΣP_i (partial pressures)<br>✓ Ideal Gas: PV = nRT (R = 8.314)<br>✓ Density at STP: d = M / 22.4<br><br>⚠️ ALWAYS convert °C to Kelvin!"}
+],
+quiz:[
+{q:"In PV = nRT, what does R equal?",opts:[{t:"8.314 L·kPa/(mol·K)",ok:true},{t:"22.4 L/mol",ok:false},{t:"273.15 K",ok:false},{t:"101.325 kPa",ok:false}]},
+{q:"To find molar mass of an unknown gas, you need:",opts:[{t:"Only its density",ok:false},{t:"Its mass, volume, pressure, and temperature",ok:true},{t:"Only PV = nRT",ok:false},{t:"Its color and smell",ok:false}]},
+{q:"Standard molar volume (22.4 L/mol) applies at:",opts:[{t:"STP only (0 °C, 101.325 kPa)",ok:true},{t:"Any temperature and pressure",ok:false},{t:"Room temperature only",ok:false},{t:"High pressure only",ok:false}]},
+{q:"What is the density of O₂ (M = 32.00) at STP?",opts:[{t:"1.43 g/L",ok:true},{t:"0.714 g/L",ok:false},{t:"32.0 g/L",ok:false},{t:"22.4 g/L",ok:false}],expl:"d = 32.00/22.4 = 1.43 g/L"},
+{q:"When do real gases behave most like ideal gases?",opts:[{t:"High pressure, low temperature",ok:false},{t:"Low pressure, high temperature",ok:true},{t:"High pressure, high temperature",ok:false},{t:"Low pressure, low temperature",ok:false}]}
+]}
+};
+
+// ========== STATE ==========
+let mode="problems",active="boyle",subType=null,prob=null,answered=false,solShown=false,userVal="";
+let nC=0,nA=0,streak=0;
+let hide={given:false,formula:false,find:false};
+let vMode="mc",vQ=null,vAns=false,vUA=null;
+let lTopic=null,lIdx=0,lCPA=false,lCPU=null,lCPH=false;
+let qzMode=false,qzIdx=0,qzA=false,qzU=null,qzS=0;
+
+function updS(){document.getElementById("sC").textContent=nC;document.getElementById("sA").textContent=nA;document.getElementById("sP").textContent=nA>0?rd(nC/nA*100,0)+"%":"—";document.getElementById("sS").innerHTML='<span id="fire">🔥</span> '+streak}
+function resetStats(){nC=0;nA=0;streak=0;updS();if(mode==="problems")genP();else if(mode==="vocab")genV();else if(mode==="learn"){lTopic=null;renderL()}else renderCS()}
+function syncToggles(){["given","formula","find"].forEach(function(k){var b=document.getElementById("tg-"+k);if(!b)return;if(hide[k])b.classList.add("on");else b.classList.remove("on")});var a=document.getElementById("tg-all");if(a){if(hide.given&&hide.formula&&hide.find)a.classList.add("on");else a.classList.remove("on")}}
+function tglH(k){hide[k]=!hide[k];syncToggles();renderProb()}
+function tglAll(){var a=hide.given&&hide.formula&&hide.find;hide.given=hide.formula=hide.find=!a;syncToggles();renderProb()}
+function renderModes(){document.getElementById("modeBar").innerHTML=[{id:"problems",l:"⚡ Problems"},{id:"learn",l:"🎓 Learn"},{id:"vocab",l:"📖 Vocab"},{id:"cheatsheet",l:"📋 Cheatsheet"}].map(m=>`<button class="mode-btn${mode===m.id?" on":""}" onclick="switchMode('${m.id}')">${m.l}</button>`).join("")}
+function switchMode(m){mode=m;renderModes();renderCtrls();if(m==="problems")genP();else if(m==="vocab")genV();else if(m==="learn"){lTopic=null;renderL()}else renderCS()}
+function renderCtrls(){
+  const el=document.getElementById("ctrlBar");
+  if(mode==="problems"){
+    let h=SEC.map(s=>`<button class="cb${active===s.id?" on":""}" onclick="active='${s.id}';subType=null;genP()">${s.icon} ${s.title}</button>`).join("");
+    h+=`<span style="width:6px;display:inline-block"></span><span class="cl">Hide:</span>`;
+    h+=`<button class="tg" id="tg-given" onclick="tglH('given')"><span class="tg-dot"></span>Givens</button>`;
+    h+=`<button class="tg" id="tg-formula" onclick="tglH('formula')"><span class="tg-dot"></span>Formulas</button>`;
+    h+=`<button class="tg" id="tg-find" onclick="tglH('find')"><span class="tg-dot"></span>Solve-For</button>`;
+    h+=`<button class="tg" id="tg-all" onclick="tglAll()"><span class="tg-dot"></span>Exam</button>`;
+    el.innerHTML=h;syncToggles();
+  } else if(mode==="vocab")el.innerHTML=`<span class="cl">Format:</span><button class="cb${vMode==="mc"?" on":""}" onclick="vMode='mc';genV()">MC</button><button class="cb${vMode==="written"?" on":""}" onclick="vMode='written';genV()">Written</button><button class="cb${vMode==="tf"?" on":""}" onclick="vMode='tf';genV()">T/F</button>`;
+  else if(mode==="learn")el.innerHTML=`<span class="cl">Guided lessons with checkpoints and end-of-lesson quiz</span>`;
+  else el.innerHTML=`<span class="cl">All gas law formulas, worked examples, and vocab</span>`;
+}
+
+// ========== PROBLEMS ==========
+function genP(){const sec=SEC.find(s=>s.id===active),tid=subType||pick(sec.types).id;prob=G[tid]();answered=false;solShown=false;userVal="";renderCtrls();renderProb()}
+function chkP(){if(answered)return;const inp=document.getElementById("inp");if(!inp)return;const raw=inp.value.trim();if(!raw)return;const v=parseFloat(raw.replace(/,/g,""));if(isNaN(v)){inp.classList.add("v-no");setTimeout(()=>{const e=document.getElementById("inp");if(e)e.classList.remove("v-no")},400);return}userVal=raw;answered=true;nA++;if(Math.abs(v-prob.a)<=prob.tol){nC++;streak++}else streak=0;updS();renderProb()}
+function showPS(){userVal=document.getElementById("inp")?document.getElementById("inp").value:"";solShown=true;if(!answered){answered=true;nA++;streak=0;updS()}renderProb()}
+function renderProb(){const el=document.getElementById("main"),p=prob;if(!p){el.innerHTML="";return}let isOk=false;if(answered){const v=parseFloat(String(userVal).replace(/,/g,""));isOk=!isNaN(v)&&Math.abs(v-p.a)<=p.tol}const cc=answered?(isOk?"ok":"no"):"",bc=answered?(isOk?"bg-ok":"bg-no"):"bg-q",sec=SEC.find(s=>s.id===active);const hc=(hide.given?1:0)+(hide.formula?1:0)+(hide.find?1:0),dl=hc===3?"EXAM MODE":hc>=2?"HARD+":hc===1?"HARD":"";let h=`<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px"><button class="cb${!subType?" on":""}" onclick="subType=null;genP()">Random</button>`;sec.types.forEach(t=>{h+=`<button class="cb${subType===t.id?" on":""}" onclick="subType='${t.id}';genP()">${t.name}</button>`});h+=`</div>`;h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${bc}">${answered?(isOk?"✓ Correct":"✗ Incorrect"):"Problem"}</span><span class="bg bg-ty">${p.ref}</span>${dl?`<span class="bg bg-hard">${dl}</span>`:""}</div><div class="q-txt">${p.q}</div>`;const gH=hide.given&&!answered&&!solShown,fH=hide.formula&&!answered&&!solShown,wH=hide.find&&!answered&&!solShown;if(p.gv&&(!gH||!fH||!wH)){h+=`<div class="ir">`;if(!gH)h+=`<div class="ib ib-g"><span class="ib-l">Given</span>${p.gv.replace(/\n/g,"<br>")}</div>`;if(p.fm&&!fH)h+=`<div class="ib ib-f"><span class="ib-l">Formula</span>${p.fm.replace(/\n/g,"<br>")}</div>`;if(p.fi&&!wH)h+=`<div class="ib ib-w"><span class="ib-l">Solve For</span>${p.fi.replace(/\n/g,"<br>")}</div>`;h+=`</div>`}if(!answered)h+=`<div class="aa"><div class="aw"><input class="ai" id="inp" type="text" inputmode="decimal" placeholder="Type answer…" value="${userVal}" onkeydown="if(event.key==='Enter')chkP()"><span class="au">${p.u}</span></div><button class="ab" onclick="chkP()">Check</button></div><div class="btn-row"><button class="btn-sh" onclick="showPS()">Show Solution</button></div>`;else{h+=`<div class="aa"><div class="aw"><input class="ai ${isOk?"v-ok":"v-no"}" value="${userVal}" disabled><span class="au">${p.u}</span></div></div><div class="fb ${isOk?"fb-ok":"fb-no"}">${isOk?`✓ Correct! Streak: ${streak} 🔥`:"✗ Not quite"}</div>`;if(!isOk)h+=`<div class="fb-v">Answer: ${p.a} ${p.u}</div>`}if(answered||solShown){h+=`<div class="sol"><div class="sol-tag">Solution</div>`;p.st.forEach(s=>{h+=`<div class="stp">${s}</div>`});h+=`<div class="sol-note">${p.nt}</div></div>`}if(answered)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genP()">Next →</button></div>`;h+=`</div>`;el.innerHTML=h;if(!answered){const i=document.getElementById("inp");if(i)setTimeout(()=>i.focus(),50)}}
+
+// ========== VOCAB ==========
+function genV(){vAns=false;vUA=null;if(vMode==="mc")genVMC();else if(vMode==="tf")genVTF();else genVW();renderCtrls();renderVocab()}
+function genVMC(){const c=pick(VOCAB),wr=shuffle(VOCAB.filter(v=>v.t!==c.t)).slice(0,3),askT=Math.random()<0.5,opts=shuffle([c,...wr]);vQ={type:"mc",c,opts,askT,ci:opts.indexOf(c)}}
+function genVTF(){const c=pick(VOCAB),isT=Math.random()<0.5;vQ={type:"tf",t:c.t,sd:isT?c.d:pick(VOCAB.filter(v=>v.t!==c.t)).d,isT,cd:c.d}}
+function genVW(){vQ={type:"written",c:pick(VOCAB),askT:Math.random()<0.5}}
+function chkVM(i){if(vAns)return;vAns=true;vUA=i;nA++;if(i===vQ.ci){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVT(a){if(vAns)return;vAns=true;vUA=a;nA++;if(a===vQ.isT){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVW(){if(vAns)return;const inp=document.getElementById("vi");if(!inp||!inp.value.trim())return;vAns=true;const u=inp.value.trim().toLowerCase(),tgt=vQ.askT?vQ.c.d.toLowerCase():vQ.c.t.toLowerCase(),tw=tgt.split(/\s+/).filter(w=>w.length>3),mc=tw.filter(w=>u.includes(w)).length;vUA=tw.length>0&&(mc/tw.length>=0.4);nA++;if(vUA){nC++;streak++}else streak=0;updS();renderVocab()}
+function renderVocab(){const el=document.getElementById("main"),q=vQ;if(!q){el.innerHTML="";return}let h="";if(q.type==="mc"){const ok=vAns&&vUA===q.ci,cc=vAns?(ok?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div>`;if(q.askT)h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}return`<button class="${c}" onclick="chkVM(${i})"><span class="opt-ltr">${vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i)}</span><span>${o.d}</span></button>`}).join("")}</div>`;else h+=`<div class="q-txt">Which term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}return`<button class="${c}" onclick="chkVM(${i})"><span class="opt-ltr">${vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i)}</span><span>${o.t}</span></button>`}).join("")}</div>`;if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`}else if(q.type==="tf"){const ok=vAns&&vUA===q.isT,cc=vAns?(ok?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div><div class="q-txt"><b>${q.t}</b> — <span style="color:var(--cyn);font-style:italic">"${q.sd}"</span></div><div class="opts" style="flex-direction:row;gap:8px;margin-top:10px">`;["True","False"].forEach(l=>{const v=l==="True";let c="opt";if(vAns){c+=" done";if(v===q.isT)c+=" c-ok";else if(v===vUA)c+=" c-no"}h+=`<button class="${c}" style="flex:1;justify-content:center" onclick="chkVT(${v})">${l}</button>`});h+=`</div>`;if(vAns&&!ok)h+=`<div class="sol" style="margin-top:12px"><div class="sol-tag">Correct</div><div class="stp">${q.cd}</div></div>`;if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`}else{const cc=vAns?(vUA?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(vUA?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div>`;h+=q.askT?`<div class="q-txt">Define: <b>${q.c.t}</b></div>`:`<div class="q-txt">What term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div>`;if(!vAns)h+=`<div style="margin-top:12px"><textarea class="v-ta" id="vi" placeholder="${q.askT?"Type definition…":"Type the term…"}" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chkVW()}"></textarea></div><div class="btn-row"><button class="ab" onclick="chkVW()">Check</button></div>`;else{h+=`<div class="fb ${vUA?"fb-ok":"fb-no"}" style="margin-top:8px">${vUA?"✓ Matched!":"✗ Review below"}</div><div class="sol" style="margin-top:10px"><div class="sol-tag">Answer</div>`;h+=q.askT?`<div class="stp">${q.c.d}</div>`:`<div class="stp" style="font-size:14px;font-weight:600">${q.c.t}</div>`;h+=`</div><div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`}h+=`</div>`}el.innerHTML=h}
+
+// ========== LEARNING MODE ==========
+function startL(t){lTopic=t;lIdx=0;lCPA=false;lCPU=null;lCPH=false;qzMode=false;qzIdx=0;qzS=0;qzA=false;qzU=null;renderL()}
+function exitL(){lTopic=null;qzMode=false;renderL()}
+function nextC(){lIdx++;lCPA=false;lCPU=null;lCPH=false;if(lIdx>=LESSONS[lTopic].cards.length){qzMode=true;qzIdx=0;qzS=0;qzA=false;qzU=null}renderL()}
+function prevC(){if(lIdx>0){lIdx--;lCPA=false;lCPU=null;lCPH=false}renderL()}
+function chkCP(i){const c=LESSONS[lTopic].cards[lIdx];if(lCPA)return;lCPU=i;if(c.opts[i].ok){lCPA=true;lCPH=false;nA++;nC++;streak++}else{lCPH=true;nA++;streak=0}updS();renderL()}
+function retryCP(){lCPH=false;lCPU=null;renderL()}
+function chkQz(i){if(qzA)return;qzA=true;qzU=i;nA++;const q=LESSONS[lTopic].quiz[qzIdx];if(q.opts[i].ok){qzS++;nC++;streak++}else streak=0;updS();renderL()}
+function nextQz(){qzIdx++;qzA=false;qzU=null;renderL()}
+function renderL(){const el=document.getElementById("main");if(!lTopic){el.innerHTML=`<div style="text-align:center;padding:40px 24px"><div style="font-size:44px;margin-bottom:12px">🎓</div><div style="font:400 24px/1.3 var(--s);margin-bottom:8px">Welcome to Learning Mode</div><div style="font:400 14px/1.6 var(--f);color:var(--mut);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto">Guided walkthrough with checkpoints and end-of-lesson quiz.</div><div class="topic-picker">${Object.entries(LESSONS).map(([k,l])=>`<button class="topic-btn" onclick="startL('${k}')"><span style="font-size:24px;display:block;margin-bottom:6px">${l.icon}</span><b>${l.title}</b><div class="topic-sub">${l.cards.length} cards + ${l.quiz.length}-Q quiz</div></button>`).join("")}</div></div>`;return}if(qzMode){const quiz=LESSONS[lTopic].quiz;if(qzIdx>=quiz.length){const pct=Math.round(qzS/quiz.length*100);el.innerHTML=`<div class="lesson-wrap"><div class="lesson-card" style="text-align:center"><div style="font:700 10px var(--m);letter-spacing:.15em;color:var(--acc);text-transform:uppercase">Complete</div><div class="quiz-score ${pct>=70?"qok":""}">${qzS}/${quiz.length}</div><div style="font:400 14px var(--f);color:var(--mut)">${pct}% · ${pct>=70?"Great! 🎉":"Keep studying 💪"}</div><div class="btn-row" style="justify-content:center;margin-top:20px"><button class="nav-btn" onclick="startL(lTopic)">🔁 Restart</button><button class="nav-btn primary" onclick="exitL()">← Topics</button></div></div></div>`;return}const q=quiz[qzIdx],prog=((qzIdx+(qzA?1:0))/quiz.length)*100;let h=`<div class="lesson-wrap"><div class="lesson-nav"><button class="nav-btn" onclick="exitL()">← Exit</button><div><div class="lesson-prog">Quiz · ${qzIdx+1}/${quiz.length}</div><div class="prog-bar"><div class="prog-fill" style="width:${prog}%"></div></div></div></div><div class="lesson-card"><div class="lesson-type">🎯 Quiz</div><div class="lesson-cp-q">${q.q}</div><div class="opts">`;q.opts.forEach((o,i)=>{let c="opt";if(qzA){c+=" done";if(o.ok)c+=" c-ok";else if(i===qzU)c+=" c-no"}h+=`<button class="${c}" onclick="chkQz(${i})"><span class="opt-ltr">${qzA&&o.ok?"✓":qzA&&i===qzU?"✗":String.fromCharCode(65+i)}</span><span>${o.t}</span></button>`});h+=`</div>`;if(qzA){h+=`<div class="fb ${q.opts[qzU].ok?"fb-ok":"fb-no"}" style="margin-top:10px">${q.opts[qzU].ok?"✓ Correct!":"✗ See above"}</div>`;if(q.expl)h+=`<div class="sol" style="margin-top:10px"><div class="sol-tag">Why</div><div class="stp">${q.expl}</div></div>`;h+=`<div class="btn-row" style="margin-top:12px;justify-content:flex-end"><button class="nav-btn primary" onclick="nextQz()">${qzIdx+1>=quiz.length?"Results →":"Next →"}</button></div>`}h+=`</div></div>`;el.innerHTML=h;return}const lesson=LESSONS[lTopic],card=lesson.cards[lIdx],prog=((lIdx+1)/lesson.cards.length)*100;let h=`<div class="lesson-wrap"><div class="lesson-nav"><button class="nav-btn" onclick="exitL()">← Exit</button><div style="text-align:center"><div class="lesson-prog">${lesson.icon} ${lesson.title}</div><div class="prog-bar"><div class="prog-fill" style="width:${prog}%"></div></div></div><div style="min-width:50px;text-align:right"><span class="lesson-prog">${lIdx+1}/${lesson.cards.length}</span></div></div><div class="lesson-card">`;if(card.type==="teach")h+=`<div class="lesson-type">📖 Lesson</div><div style="font:400 20px/1.3 var(--s);color:var(--txt);margin-bottom:14px">${card.title}</div><div class="lesson-body">${card.body}</div>`;else if(card.type==="definition")h+=`<div class="lesson-type">📚 Definition</div><div class="lesson-def"><div class="lesson-def-t">${card.term}</div><div class="lesson-def-b">${card.def}</div></div>${card.extra?`<div class="lesson-body">${card.extra}</div>`:""}`;else if(card.type==="equation")h+=`<div class="lesson-type">🔢 Key Equation</div><div style="font:400 18px/1.3 var(--s);color:var(--txt);margin-bottom:10px">${card.title}</div><div class="lesson-eq">${card.eq}</div>${card.note?`<div class="lesson-body">${card.note}</div>`:""}`;else if(card.type==="checkpoint"){h+=`<div class="lesson-checkpoint"><div class="lesson-cp-t">✓ Checkpoint</div><div class="lesson-cp-q">${card.q}</div><div class="opts">`;card.opts.forEach((o,i)=>{let c="opt";if(lCPA&&o.ok)c+=" done c-ok";else if(lCPU===i&&!o.ok&&lCPH)c+=" c-no";else if(lCPA)c+=" done";h+=`<button class="${c}" onclick="chkCP(${i})"><span class="opt-ltr">${lCPA&&o.ok?"✓":lCPU===i&&!o.ok&&lCPH?"✗":String.fromCharCode(65+i)}</span><span>${o.t}</span></button>`});h+=`</div>`;if(lCPH&&!lCPA)h+=`<div class="hint-box"><div style="font:700 9px var(--m);letter-spacing:.12em;color:var(--ylw);text-transform:uppercase;margin-bottom:4px">💡 Hint</div>${card.hint}</div><div class="btn-row"><button class="nav-btn" onclick="retryCP()">Try Again</button></div>`;if(lCPA)h+=`<div class="fb fb-ok" style="margin-top:12px">✓ Nice!</div>${card.expl?`<div class="sol" style="margin-top:8px"><div class="sol-tag">Why</div><div class="stp">${card.expl}</div></div>`:""}`;h+=`</div>`}h+=`<div class="btn-row" style="justify-content:space-between;margin-top:20px"><button class="nav-btn" onclick="prevC()" ${lIdx===0?"disabled":""}>← Prev</button>`;if(card.type==="checkpoint"&&!lCPA)h+=`<span style="font:400 11px var(--f);color:var(--dim)">Answer to continue</span>`;else h+=`<button class="nav-btn primary" onclick="nextC()">${lIdx+1>=lesson.cards.length?"Start Quiz →":"Continue →"}</button>`;h+=`</div></div></div>`;el.innerHTML=h}
+
+// ========== CHEATSHEET ==========
+function renderCS(){renderCtrls();let h=`<div class="cs-sec">💨 All Gas Law Formulas & Worked Examples</div>`;CS.forEach(c=>{h+=`<div class="cs-card"><div class="cs-title">${c.title}</div><div class="cs-fm">${c.fm.join("<br>")}</div><div class="cs-lb">Key Points</div><div class="cs-vr">${c.vr.replace(/\n/g,"<br>")}</div><div class="cs-lb">Example</div><div class="cs-ex"><div style="font:400 12px/1.5 var(--f);color:var(--mut);margin-bottom:4px">${c.ex.q}</div>${c.ex.st.map(s=>`<div class="stp">${s}</div>`).join("")}</div></div>`});h+=`<div class="cs-sec">📖 All ${VOCAB.length} Vocabulary Terms</div>`;VOCAB.forEach((v,i)=>{h+=`<div class="cs-card" style="padding:10px 12px;margin-bottom:5px"><span style="font:700 10px var(--m);color:var(--acc);margin-right:6px">${i+1}.</span><b>${v.t}</b><span style="margin:0 6px;color:var(--dim)">—</span><span style="color:var(--mut);font-size:12px">${v.d}</span></div>`});document.getElementById("main").innerHTML=h}
+
+renderModes();renderCtrls();genP();genV();updS();
+</script>
+</body>
+</html>
