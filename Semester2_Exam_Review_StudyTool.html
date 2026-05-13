@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semester 2 Exam Review — Complete Study Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#090b10;--card:rgba(255,255,255,0.022);--bdr:rgba(255,255,255,0.055);--txt:#dfe6f0;--mut:#8a95a8;--dim:#5a6478;--prp:#7c6bf0;--pl:#b4a5fa;--pg:rgba(124,107,240,0.09);--grn:#2dd4a0;--gb:rgba(45,212,160,0.04);--gbd:rgba(45,212,160,0.18);--red:#f06b6b;--rb:rgba(240,107,107,0.04);--rbd:rgba(240,107,107,0.18);--ylw:#eab308;--blu:#58a6ff;--cyn:#20d3e8;--org:#f59e0b;--acc:#a855f7;--m:'JetBrains Mono',monospace;--s:'Instrument Serif',Georgia,serif;--f:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+input[type=text],textarea{-webkit-appearance:none;appearance:none}
+.hdr{padding:16px 22px 12px;border-bottom:1px solid var(--bdr);background:linear-gradient(180deg,rgba(168,85,247,0.03) 0%,transparent 100%)}
+.hdr-in{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-lab{font:700 9px/1 var(--m);letter-spacing:.2em;color:var(--acc);margin-bottom:2px;text-transform:uppercase}
+.hdr-t{font:400 22px/1.2 var(--s);color:var(--txt)}.hdr-t i{font-style:italic;color:var(--acc)}
+.hdr-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:12px;align-items:center}.stat-box{text-align:center}.stat-n{font:700 16px/1 var(--m);color:var(--txt)}.stat-l{font:500 8px/1 var(--m);color:var(--dim);margin-top:2px;letter-spacing:.08em;text-transform:uppercase}
+.streak-n{color:var(--ylw)}.pct-n{color:var(--cyn)}
+.btn-r{background:rgba(240,107,107,0.06);border:1px solid rgba(240,107,107,0.15);color:var(--red);padding:6px 12px;border-radius:8px;font:600 10px var(--f);cursor:pointer}
+.modes{display:flex;gap:4px;padding:10px 22px;border-bottom:1px solid rgba(255,255,255,0.03);max-width:900px;margin:0 auto;overflow-x:auto}
+.mode-btn{flex:1;min-width:90px;padding:10px 6px;border-radius:10px;border:1.5px solid var(--bdr);background:rgba(255,255,255,0.01);color:var(--dim);font:600 11px var(--f);cursor:pointer;transition:all .2s;outline:none;text-align:center}
+.mode-btn.on{border-color:rgba(168,85,247,0.35);background:rgba(168,85,247,0.06);color:var(--acc)}
+.toolbar{padding:8px 22px;border-bottom:1px solid rgba(255,255,255,0.02);max-width:900px;margin:0 auto;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.cl{font:600 9px var(--m);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-right:3px}
+.cb{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--bdr);background:rgba(255,255,255,0.012);color:var(--dim);font:600 11px var(--f);cursor:pointer;white-space:nowrap;transition:all .2s;outline:none}
+.cb:hover{border-color:rgba(168,85,247,0.15);color:var(--mut)}.cb.on{border-color:rgba(168,85,247,0.28);background:rgba(168,85,247,0.07);color:var(--acc)}
+.tg{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.015);color:var(--dim);font:600 10px var(--f);cursor:pointer;transition:all .2s;outline:none;user-select:none;-webkit-user-select:none}.tg.on{border-color:rgba(240,107,107,0.3);background:rgba(240,107,107,0.06);color:var(--org)}
+.tg-dot{width:7px;height:7px;border-radius:50%;border:1.5px solid var(--dim);transition:all .2s;flex-shrink:0}.tg.on .tg-dot{background:var(--org);border-color:var(--org)}
+.cnt{max-width:740px;width:100%;margin:0 auto;padding:16px 22px 80px;flex:1}
+.pc{border-radius:14px;padding:24px;margin-bottom:16px;transition:all .3s;animation:fadeUp .3s ease;background:var(--card);border:1px solid var(--bdr)}.pc.ok{background:var(--gb);border-color:var(--gbd)}.pc.no{background:var(--rb);border-color:var(--rbd)}
+.pc-top{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.bg{font:700 10px var(--m);padding:4px 8px;border-radius:6px;letter-spacing:.05em}.bg-q{background:var(--pg);color:#9d8df5}.bg-ok{background:rgba(45,212,160,0.1);color:var(--grn)}.bg-no{background:rgba(240,107,107,0.1);color:var(--red)}.bg-ty{background:rgba(168,85,247,0.08);color:var(--acc);font-size:9px;letter-spacing:.08em}.bg-hard{background:rgba(240,107,107,0.08);color:var(--org);font-size:9px}
+.q-txt{color:var(--txt);font:400 15px/1.8 var(--s);margin-bottom:2px}.q-txt b{font-weight:700;color:#fff}
+.ir{display:flex;gap:6px;margin:12px 0 0;flex-wrap:wrap}
+.ib{flex:1;min-width:110px;padding:9px 12px;border-radius:8px;font:400 11px/1.7 var(--m)}.ib-g{background:rgba(124,107,240,0.05);border:1px solid rgba(124,107,240,0.09);color:var(--pl)}.ib-f{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.08);color:var(--cyn)}.ib-w{background:rgba(234,179,8,0.04);border:1px solid rgba(234,179,8,0.08);color:var(--ylw)}.ib-l{font:700 8px var(--m);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;display:block;opacity:.5}
+.aa{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}.aw{flex:1;min-width:160px;position:relative}
+.ai{width:100%;padding:12px 14px;padding-right:50px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:500 15px var(--m);outline:none;transition:all .25s}.ai:focus{border-color:rgba(168,85,247,0.45)}.ai.v-ok{border-color:var(--grn);background:rgba(45,212,160,0.05)}.ai.v-no{border-color:var(--red);background:rgba(240,107,107,0.05);animation:shake .35s}.ai::placeholder{color:rgba(255,255,255,0.12);font-weight:400;font-size:12px}
+.au{position:absolute;right:12px;top:50%;transform:translateY(-50%);font:500 11px var(--m);color:var(--dim);pointer-events:none}
+.ab{padding:12px 22px;border-radius:10px;border:1.5px solid rgba(168,85,247,0.25);background:rgba(168,85,247,0.08);color:var(--acc);font:700 13px var(--f);cursor:pointer;transition:all .2s;white-space:nowrap}.ab:hover{background:rgba(168,85,247,0.16)}
+.fb{margin-top:5px;font:600 12px var(--m)}.fb-ok{color:var(--grn)}.fb-no{color:var(--red)}.fb-v{font:400 11px var(--m);color:var(--dim);margin-top:2px}
+.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn-sh{padding:7px 14px;border-radius:7px;border:1px solid var(--bdr);background:rgba(255,255,255,0.025);color:var(--mut);font:500 11px var(--f);cursor:pointer;transition:all .2s}.btn-sh:hover{color:var(--txt)}
+.btn-nx{padding:8px 20px;border-radius:8px;border:1.5px solid rgba(168,85,247,0.25);background:rgba(168,85,247,0.08);color:var(--acc);font:700 12px var(--f);cursor:pointer;transition:all .2s}.btn-nx:hover{background:rgba(168,85,247,0.15)}
+.sol{margin-top:14px;padding:16px;border-radius:10px;animation:fadeUp .25s;border:1px solid rgba(168,85,247,0.1);background:rgba(168,85,247,0.02)}.sol-tag{font:700 9px var(--m);letter-spacing:.12em;color:var(--acc);margin-bottom:8px;text-transform:uppercase}
+.stp{font:400 12px/2 var(--m);color:var(--pl)}.stp .lb{color:rgba(180,165,250,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.stp .ans{color:var(--grn);font-weight:700;font-size:13px}
+.sol-note{margin-top:10px;padding:10px 12px;background:rgba(255,255,255,0.015);border:1px solid var(--bdr);border-radius:8px;font:400 12px/1.7 var(--f);color:var(--mut)}
+.opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;cursor:pointer;color:#b0bec5;font:400 13px/1.5 var(--f);transition:all .2s;outline:none;width:100%;text-align:left;margin-bottom:6px}.opt:not(.done):hover{background:rgba(168,85,247,0.06);border-color:rgba(168,85,247,0.25)}.opt.done{cursor:default}.opt.c-ok{background:rgba(45,212,160,0.08);border-color:rgba(45,212,160,0.3);color:var(--grn)}.opt.c-no{background:rgba(240,107,107,0.08);border-color:rgba(240,107,107,0.3);color:var(--red)}
+.opt-ltr{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font:700 11px var(--m);flex-shrink:0;background:rgba(255,255,255,0.04);color:var(--dim)}.opt.c-ok .opt-ltr{background:rgba(45,212,160,0.15);color:var(--grn)}.opt.c-no .opt-ltr{background:rgba(240,107,107,0.15);color:var(--red)}
+.opts{display:flex;flex-direction:column;margin-top:14px}
+textarea.v-ta{width:100%;padding:12px;background:rgba(255,255,255,0.035);border:1.5px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--txt);font:400 14px var(--f);outline:none;resize:vertical;min-height:70px;line-height:1.6}
+.cs-sec{font:700 11px var(--m);letter-spacing:.1em;color:var(--acc);text-transform:uppercase;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(168,85,247,0.15)}
+.cs-card{border-radius:10px;padding:16px;margin-bottom:10px;background:var(--card);border:1px solid var(--bdr);animation:fadeUp .3s}
+.cs-title{font:700 13px var(--f);color:var(--txt);margin-bottom:6px}
+.cs-fm{background:rgba(168,85,247,0.05);border:1px solid rgba(168,85,247,0.1);border-radius:8px;padding:10px 14px;font:500 12.5px/1.8 var(--m);color:var(--acc);margin-bottom:8px}
+.cs-vr{font:400 11.5px/1.8 var(--m);color:var(--mut);margin-bottom:6px}.cs-vr b{color:var(--cyn);font-weight:600}
+.cs-ex{background:rgba(45,212,160,0.03);border:1px solid rgba(45,212,160,0.1);border-radius:8px;padding:10px 12px;font:400 12px/1.9 var(--m);color:var(--grn)}.cs-ex .lb{color:rgba(45,212,160,0.4);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lesson-wrap{max-width:700px;margin:0 auto}
+.lesson-card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:28px;animation:fadeUp .3s;margin-bottom:16px}
+.lesson-type{font:700 9px var(--m);letter-spacing:.15em;color:var(--acc);text-transform:uppercase;margin-bottom:14px}
+.lesson-body{font:400 15px/1.9 var(--s);color:var(--mut);margin-bottom:14px}.lesson-body b{color:#fff;font-weight:600}.lesson-body em{color:var(--cyn);font-style:italic;font-weight:500}
+.lesson-eq{background:rgba(32,211,232,0.04);border:1px solid rgba(32,211,232,0.1);border-radius:8px;padding:14px 18px;margin:12px 0;font:500 14px/1.9 var(--m);color:var(--cyn);text-align:center}
+@media(max-width:600px){.hdr{padding:14px 12px 10px}.modes{padding:8px 12px}.toolbar{padding:6px 12px}.cnt{padding:12px 12px 70px}.pc{padding:18px 14px}.aa{flex-direction:column}.lesson-card{padding:20px 16px}.ir{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="hdr-in">
+<div><div class="hdr-lab">Semester 2 · Exam Review</div><h1 class="hdr-t"><i>Final Exam</i> — Complete Study Tool</h1></div>
+<div class="hdr-r"><div class="stats">
+<div class="stat-box"><div class="stat-n" id="sC">0</div><div class="stat-l">Correct</div></div>
+<div class="stat-box"><div class="stat-n" id="sA">0</div><div class="stat-l">Attempted</div></div>
+<div class="stat-box"><div class="stat-n pct-n" id="sP">—</div><div class="stat-l">Accuracy</div></div>
+<div class="stat-box"><div class="stat-n streak-n" id="sS"><span id="fire">🔥</span> 0</div><div class="stat-l">Streak</div></div>
+</div><button class="btn-r" onclick="resetStats()">Reset</button></div>
+</div></div>
+<div id="modeBar" class="modes"></div>
+<div id="ctrlBar" class="toolbar"></div>
+<div class="cnt" id="main"></div>
+<script>
+function R(a,b,d){d=d||0;const f=Math.pow(10,d);return Math.round((Math.random()*(b-a)+a)*f)/f}
+function rd(v,d){return Math.round(v*Math.pow(10,d))/Math.pow(10,d)}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+// ========== I. KEY TERMS (26 from review sheet) ==========
+const VOCAB=[
+{t:"anode",d:"the electrode where oxidation occurs (AN OX)"},
+{t:"Avogadro's number",d:"the number of particles in one mole: 6.022 × 10²³"},
+{t:"catalyst",d:"a substance that changes a reaction's rate without being consumed; lowers activation energy"},
+{t:"cathode",d:"the electrode where reduction occurs (RED CAT)"},
+{t:"diffusion",d:"the process by which fluid matter spreads from a region of higher concentration to a region of lower concentration"},
+{t:"empirical formula",d:"a formula that gives the simplest whole-number ratio of atoms in a compound"},
+{t:"endothermic",d:"a reaction that absorbs energy from its surroundings; ΔH is positive (+)"},
+{t:"enthalpy",d:"the thermal energy content of a system at constant pressure; symbol H"},
+{t:"entropy",d:"a measure of the dispersal of energy in a system; symbol S; positive ΔS = more favorable"},
+{t:"exothermic",d:"a reaction that releases energy to its surroundings; ΔH is negative (−)"},
+{t:"kinetics",d:"the study of the rates of chemical reactions and the steps by which they occur"},
+{t:"molality",d:"moles of solute per kilogram of solvent (mol/kg); symbol b; not affected by temperature"},
+{t:"molar mass",d:"the mass of one mole of any pure substance, measured in g/mol; calculated from the formula using atomic masses"},
+{t:"molarity",d:"moles of solute per liter of solution (mol/L); symbol c; also called amount concentration"},
+{t:"molecular formula",d:"a formula that indicates the actual types and numbers of atoms in a molecule"},
+{t:"oxidation",d:"the process by which an atom loses electrons; its oxidation number becomes more positive (OIL)"},
+{t:"percent yield",d:"the percentage of the theoretical yield that is actually produced; (actual / theoretical) × 100%"},
+{t:"rate law",d:"a mathematical expression relating the concentration of reactants to the rate of a reaction; rate = k[A]ᵐ[B]ⁿ"},
+{t:"reduction",d:"the process by which an atom gains electrons; its oxidation number becomes more negative (RIG)"},
+{t:"reversible reaction",d:"a reaction that can occur in both the forward and reverse directions; shown with ⇌"},
+{t:"saturated solution",d:"a solution containing the maximum amount of solute it can hold at current conditions"},
+{t:"specific heat",d:"the amount of thermal energy required to raise the temperature of 1 g of a substance by 1 °C; symbol csp"},
+{t:"stoichiometry",d:"the mathematical relationship between the quantities of substances in a chemical reaction; uses mole ratios from balanced equations"},
+{t:"supersaturated solution",d:"a solution containing more than the maximum amount of solute it can normally hold at current conditions"},
+{t:"thermochemistry",d:"the branch of science that studies the transfer of energy during phase or chemical changes"},
+{t:"theoretical yield",d:"the maximum amount of product that could be produced from a given amount of reactant"}
+];
+
+// ========== IV. SYMBOLS ==========
+const SYMBOLS=[
+{sym:"→",meaning:"yields; indicates products are formed from reactants (irreversible)"},
+{sym:"(g)",meaning:"gas phase"},
+{sym:"(s)",meaning:"solid phase"},
+{sym:"|",meaning:"a single bond or separator in notation"},
+{sym:"Δ",meaning:"heat is applied; or 'change in' (e.g., ΔT = change in temperature)"},
+{sym:"(aq)",meaning:"aqueous; dissolved in water"},
+{sym:"⇌",meaning:"reversible reaction; both forward and reverse reactions occur"},
+{sym:"(l)",meaning:"liquid phase"},
+{sym:"ΔH",meaning:"change in enthalpy (heat content); negative = exothermic, positive = endothermic"},
+{sym:"ΔS",meaning:"change in entropy (energy dispersal); positive = more disorder, favorable"},
+{sym:"STP",meaning:"standard temperature and pressure: 0 °C (273.15 K) and 101.325 kPa"},
+{sym:"Q",meaning:"thermal energy transferred (in joules); Q = csp × m × ΔT"},
+{sym:"ΔT",meaning:"change in temperature; T_final − T_initial"},
+{sym:"Keq",meaning:"equilibrium constant; ratio of product concentrations to reactant concentrations at equilibrium"}
+];
+
+// ========== II. KEY CONCEPTS (MC questions) ==========
+const CONCEPTS=[
+{q:"According to collision theory, what three conditions must be met for a reaction to occur?",opts:["Particles must collide, in proper orientation, with enough energy (≥ Ea)","Particles must be heated, dissolved, and compressed","Reactants must be in the gas phase, at high pressure, with a catalyst","Atoms must be broken apart, recombined, and cooled"],correct:0,expl:"Collision theory: (1) particles must collide, (2) in the correct orientation, (3) with energy equal to or greater than the activation energy."},
+{q:"Which of the following does NOT affect reaction rate?",opts:["Temperature","Concentration","Color of the reactant","Catalyst"],correct:2,expl:"Color is a physical property that does not affect reaction rate. Temperature, concentration, catalysts, surface area, and the nature of reactants all affect rate."},
+{q:"Which factors affect how fast a solute dissolves?",opts:["Stirring, temperature, and particle size","Color, mass, and shape","Only temperature","Only stirring"],correct:0,expl:"Three factors: (1) agitation/stirring, (2) higher temperature, (3) smaller particle size (more surface area)."},
+{q:"To convert moles of substance A to moles of substance B, you use:",opts:["Molar mass","The mole ratio from the balanced equation","Avogadro's number","Density"],correct:1,expl:"The mole ratio (from coefficients in the balanced equation) is the bridge between different substances."},
+{q:"The stoichiometry roadmap for mass-to-mass conversion is:",opts:["grams A → moles A → moles B → grams B","grams A → grams B directly","moles A → grams A → grams B → moles B","grams A → particles → grams B"],correct:0,expl:"You MUST go through moles. g→mol (÷M), mol→mol (mole ratio), mol→g (×M)."},
+{q:"To convert moles to grams, you use:",opts:["n = m / M","m = n × M","N = n × Nₐ","c = n / V"],correct:1,expl:"m = n × M. Multiply moles by molar mass to get grams."},
+{q:"To find moles from grams, you use:",opts:["m = n × M","n = m / M","N = n × Nₐ","b = n / m_solvent"],correct:1,expl:"n = m / M. Divide mass by molar mass to get moles."},
+{q:"An exothermic reaction has ΔH that is:",opts:["Positive","Negative","Zero","Undefined"],correct:1,expl:"Exothermic releases heat → ΔH is negative. Endothermic absorbs heat → ΔH is positive."},
+{q:"Le Châtelier's principle states that when a stress is applied to an equilibrium system:",opts:["The reaction stops","The system shifts to relieve the stress","Keq always changes","The temperature must increase"],correct:1,expl:"The system adjusts by shifting in the direction that relieves the applied stress (concentration, pressure, or temperature change)."},
+{q:"Which is the only stress that changes the VALUE of Keq?",opts:["Concentration","Pressure","Temperature","Catalyst"],correct:2,expl:"Only temperature changes Keq. Concentration and pressure shift the position but don't change Keq's value. Catalysts don't affect Keq at all."},
+{q:"In a redox reaction, the reducing agent is the substance that:",opts:["Gets reduced","Gets oxidized (donates electrons to reduce another substance)","Stays the same","Acts as a catalyst"],correct:1,expl:"The reducing agent IS oxidized — it gives up electrons, which causes the other substance to be reduced."}
+];
+
+// ========== III. CALCULATIONS (generators matching review problems) ==========
+// Compounds for molar mass / percent composition
+const COMPS=[
+{f:"CaCO₃",elems:[{e:"Ca",n:1,m:40.08},{e:"C",n:1,m:12.01},{e:"O",n:3,m:16.00}]},
+{f:"H₂O",elems:[{e:"H",n:2,m:1.008},{e:"O",n:1,m:16.00}]},
+{f:"KOH",elems:[{e:"K",n:1,m:39.10},{e:"O",n:1,m:16.00},{e:"H",n:1,m:1.008}]},
+{f:"NaCl",elems:[{e:"Na",n:1,m:22.99},{e:"Cl",n:1,m:35.45}]},
+{f:"Al₂(SO₄)₃",elems:[{e:"Al",n:2,m:26.98},{e:"S",n:3,m:32.06},{e:"O",n:12,m:16.00}]},
+{f:"Fe₂O₃",elems:[{e:"Fe",n:2,m:55.85},{e:"O",n:3,m:16.00}]},
+{f:"C₆H₁₂O₆",elems:[{e:"C",n:6,m:12.01},{e:"H",n:12,m:1.008},{e:"O",n:6,m:16.00}]},
+{f:"NH₃",elems:[{e:"N",n:1,m:14.01},{e:"H",n:3,m:1.008}]},
+{f:"H₂SO₄",elems:[{e:"H",n:2,m:1.008},{e:"S",n:1,m:32.06},{e:"O",n:4,m:16.00}]}
+];
+function compMM(c){return rd(c.elems.reduce((s,el)=>s+el.n*el.m,0),2)}
+
+// Oxidation number database
+const OX_DB=[
+{compound:"PH₃",element:"P",answer:-3,work:"H = +1 (×3 = +3). P + 3 = 0 → P = −3"},
+{compound:"Na₂B₄O₇",element:"B",answer:3,work:"Na = +1 (×2 = +2), O = −2 (×7 = −14). +2 + 4B + (−14) = 0 → 4B = +12 → B = +3"},
+{compound:"KMnO₄",element:"Mn",answer:7,work:"K = +1, O = −2 (×4 = −8). +1 + Mn − 8 = 0 → Mn = +7"},
+{compound:"H₂SO₄",element:"S",answer:6,work:"H = +1 (×2 = +2), O = −2 (×4 = −8). +2 + S − 8 = 0 → S = +6"},
+{compound:"Fe₂O₃",element:"Fe",answer:3,work:"O = −2 (×3 = −6). 2Fe − 6 = 0 → Fe = +3"},
+{compound:"CO₂",element:"C",answer:4,work:"O = −2 (×2 = −4). C − 4 = 0 → C = +4"},
+{compound:"NH₃",element:"N",answer:-3,work:"H = +1 (×3 = +3). N + 3 = 0 → N = −3"},
+{compound:"HNO₃",element:"N",answer:5,work:"H = +1, O = −2 (×3 = −6). 1 + N − 6 = 0 → N = +5"},
+{compound:"MnO₂",element:"Mn",answer:4,work:"O = −2 (×2 = −4). Mn − 4 = 0 → Mn = +4"},
+{compound:"Na₂CO₃",element:"C",answer:4,work:"Na = +1 (×2 = +2), O = −2 (×3 = −6). +2 + C − 6 = 0 → C = +4"},
+{compound:"PCl₅",element:"P",answer:5,work:"Cl = −1 (×5 = −5). P − 5 = 0 → P = +5"},
+{compound:"CuSO₄",element:"Cu",answer:2,work:"SO₄ = −2. Cu + (−2) = 0 → Cu = +2"}
+];
+
+// Stoichiometry reactions
+const RXNS=[
+{eq:"4Fe + 3O₂ → 2Fe₂O₃",gN:"Fe",pN:"Fe₂O₃",gc:4,pc:2,gM:55.85,pM:159.70},
+{eq:"2H₂ + O₂ → 2H₂O",gN:"H₂",pN:"H₂O",gc:2,pc:2,gM:2.02,pM:18.02},
+{eq:"N₂ + 3H₂ → 2NH₃",gN:"N₂",pN:"NH₃",gc:1,pc:2,gM:28.02,pM:17.03},
+{eq:"2KClO₃ → 2KCl + 3O₂",gN:"KClO₃",pN:"O₂",gc:2,pc:3,gM:122.55,pM:32.00},
+{eq:"CaCO₃ → CaO + CO₂",gN:"CaCO₃",pN:"CaO",gc:1,pc:1,gM:100.09,pM:56.08}
+];
+
+// Keq reactions (homo + hetero)
+const KEQ_RXNS=[
+{eq:"HC₂H₃O₂(aq) + H₂O(l) ⇌ C₂H₃O₂⁻(aq) + H₃O⁺(aq)",keq:"[C₂H₃O₂⁻][H₃O⁺] / [HC₂H₃O₂]",note:"H₂O(l) excluded — pure liquid"},
+{eq:"2SO₂(g) + O₂(g) ⇌ 2SO₃(g)",keq:"[SO₃]² / ([SO₂]²[O₂])",note:"All gases — all included"},
+{eq:"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",keq:"[NH₃]² / ([N₂][H₂]³)",note:"All gases"},
+{eq:"KClO₃(s) → KCl(s) + O₂(g)",keq:"[O₂]",note:"Both solids excluded — only gas remains"},
+{eq:"CaCO₃(s) ⇌ CaO(s) + CO₂(g)",keq:"[CO₂]",note:"Both solids excluded"}
+];
+
+// Thermodynamic data for ΔH°, ΔS°, ΔG
+const Rgas=8.314;
+
+const SEC=[
+{id:"calc",title:"Calculations",icon:"🧮",types:[{id:"pct_yield",name:"% Yield"},{id:"pct_comp",name:"% Composition"},{id:"molarity",name:"Molarity"},{id:"molality",name:"Molality"},{id:"spec_heat",name:"Q = csp×m×ΔT"},{id:"hess",name:"ΔH° from ΔH°f"},{id:"entropy",name:"ΔS°"},{id:"gibbs",name:"ΔG"},{id:"mass_mol",name:"Mass ↔ Moles"},{id:"ox_num",name:"Oxidation #"},{id:"stoich",name:"Stoichiometry"},{id:"charles",name:"Charles's Law"},{id:"combined",name:"Combined Gas"},{id:"keq_write",name:"Write Keq"}]},
+{id:"naming",title:"Naming",icon:"🏷️",types:[{id:"naming_mc",name:"Name ↔ Formula"}]},
+{id:"concepts",title:"Key Concepts",icon:"💡",types:[{id:"concept_mc",name:"Conceptual MC"}]},
+{id:"symbols",title:"Symbols",icon:"🔣",types:[{id:"symbol_mc",name:"Symbol Matching"}]}
+];
+
+const G={
+pct_yield(){const theo=R(8,50,2),actual=rd(theo*R(0.55,0.99,2),2),pct=rd((actual/theo)*100,1);return{ref:"Review III-A",q:`A reaction produces <b>${actual} g</b> of product. The theoretical yield is <b>${theo} g</b>. What is the percent yield?`,gv:`Actual = ${actual} g\nTheoretical = ${theo} g`,fm:`% yield = (actual / theoretical) × 100`,fi:`% yield = ?`,u:"%",a:pct,tol:Math.max(pct*0.02,0.2),st:[`<span class='lb'>FORMULA</span> % yield = (actual / theoretical) × 100`,`<span class='lb'>SOLVE</span> (${actual} / ${theo}) × 100`,`<span class='lb'>ANSWER</span> <span class='ans'>${pct}%</span>`],nt:`Percent yield tells you how efficient the reaction was. Always ≤ 100%.`}},
+pct_comp(){const c=pick(COMPS),mm=compMM(c),el=pick(c.elems),elM=rd(el.n*el.m,2),pct=rd((elM/mm)*100,2);return{ref:"Review III-B",q:`What is the percent composition of <b>${el.e}</b> in <b>${c.f}</b>?`,gv:`${c.f}\nElement: ${el.e}`,fm:`% = (mass of element / molar mass) × 100`,fi:`% ${el.e} = ?`,u:"%",a:pct,tol:Math.max(pct*0.02,0.1),st:[`<span class='lb'>MOLAR MASS</span> ${c.f} = ${mm} g/mol`,`<span class='lb'>ELEMENT</span> ${el.n} × ${el.m} = ${elM} g`,`<span class='lb'>PERCENT</span> (${elM}/${mm}) × 100 = <span class='ans'>${pct}%</span>`],nt:`% composition = (mass of element in 1 mol / molar mass of compound) × 100.`}},
+molarity(){const c=pick(COMPS),mm=compMM(c),mass=R(5,50,1),vl=R(0.50,5.00,2),n=rd(mass/mm,4),mol=rd(n/vl,3);return{ref:"Review III-C",q:`Calculate the molarity of a solution with <b>${mass} g ${c.f}</b> in <b>${vl} L</b> of solution. (M = ${mm} g/mol)`,gv:`m = ${mass} g, V = ${vl} L\nM = ${mm} g/mol`,fm:`n = m / M\nc = n / V`,fi:`c = ? M`,u:"M",a:mol,tol:Math.max(mol*0.02,0.005),st:[`<span class='lb'>MOLES</span> n = ${mass} / ${mm} = ${rd(n,4)} mol`,`<span class='lb'>MOLARITY</span> c = ${rd(n,4)} / ${vl} = <span class='ans'>${mol} M</span>`],nt:`Step 1: n = m/M (grams to moles). Step 2: c = n/V (moles per liter).`}},
+molality(){const n=R(0.50,5.00,2),mkg=R(0.30,3.00,2),b=rd(n/mkg,3);return{ref:"Review III-D",q:`Calculate the molality of a solution containing <b>${n} mol</b> of solute dissolved in <b>${mkg} kg</b> of water.`,gv:`n = ${n} mol\nm_solvent = ${mkg} kg`,fm:`b = n / m_solvent (kg)`,fi:`b = ? mol/kg`,u:"mol/kg",a:b,tol:Math.max(b*0.02,0.005),st:[`<span class='lb'>FORMULA</span> b = n / m_solvent`,`<span class='lb'>SOLVE</span> b = ${n} / ${mkg} = <span class='ans'>${b} mol/kg</span>`],nt:`Molality = moles of solute divided by kilograms of SOLVENT (not solution!).`}},
+spec_heat(){const m=R(50,500,1),ti=R(10,40,1),tf=R(50,95,1),csp=4.18,dt=rd(tf-ti,1),Q=rd(csp*m*dt,1);return{ref:"Review III-E",q:`Calculate Q for heating <b>${m} g</b> of water from <b>${ti} °C</b> to <b>${tf} °C</b>. (csp = 4.18 J/g·°C)`,gv:`m = ${m} g, csp = 4.18\nT_i = ${ti}, T_f = ${tf} °C`,fm:`Q = csp × m × ΔT`,fi:`Q = ? J`,u:"J",a:Q,tol:Math.max(Q*0.02,1),st:[`<span class='lb'>ΔT</span> = ${tf} − ${ti} = ${dt} °C`,`<span class='lb'>Q</span> = 4.18 × ${m} × ${dt}`,`<span class='lb'>ANSWER</span> <span class='ans'>Q = ${Q} J</span>`],nt:`Q = csp × m × ΔT. Positive Q = heat absorbed.`}},
+hess(){const dHf=R(-200,-280,1),coef=2,sum=rd(coef*dHf,1);return{ref:"Review III-F",q:`Find ΔH° for: <b>2H₂(g) + O₂(g) → 2H₂O(g)</b><br>ΔH°f(H₂) = 0, ΔH°f(O₂) = 0, ΔH°f(H₂O) = <b>${dHf}</b> kJ/mol`,gv:`ΔH°f(H₂O) = ${dHf} kJ/mol\nΔH°f elements = 0`,fm:`ΔH° = ΣΔH°f(products) − ΣΔH°f(reactants)`,fi:`ΔH° = ? kJ`,u:"kJ",a:sum,tol:Math.max(Math.abs(sum)*0.02,0.5),st:[`<span class='lb'>PRODUCTS</span> 2 × (${dHf}) = ${sum} kJ`,`<span class='lb'>REACTANTS</span> 2(0) + 1(0) = 0 kJ`,`<span class='lb'>ΔH°</span> = ${sum} − 0 = <span class='ans'>${sum} kJ</span>`],nt:`Elements in standard state have ΔH°f = 0. Multiply each ΔH°f by its coefficient.`}},
+entropy(){const sp=[R(60,220,1)],sr=[R(100,200,1)],cp=2,cr=2;const sumP=rd(cp*sp[0],1),sumR=rd(cr*sr[0],1),ds=rd(sumP-sumR,1);return{ref:"Review III-G",q:`Calculate ΔS° for a reaction where:<br>S°(product) = ${sp[0]} J/mol·K (coef ${cp})<br>S°(reactant) = ${sr[0]} J/mol·K (coef ${cr})`,gv:`S°(product) = ${sp[0]}\nS°(reactant) = ${sr[0]}\nCoefficients: ${cp} and ${cr}`,fm:`ΔS° = ΣS°(products) − ΣS°(reactants)`,fi:`ΔS° = ? J/K`,u:"J/K",a:ds,tol:Math.max(Math.abs(ds)*0.02,0.5),st:[`<span class='lb'>PRODUCTS</span> ${cp} × ${sp[0]} = ${sumP}`,`<span class='lb'>REACTANTS</span> ${cr} × ${sr[0]} = ${sumR}`,`<span class='lb'>ΔS°</span> = ${sumP} − ${sumR} = <span class='ans'>${ds} J/K</span>`],nt:`ΔS = products − reactants. Positive ΔS = favorable (more disorder).`}},
+gibbs(){const dH=R(-2000,-100,1),dS=R(-1.00,1.00,2),T=298;const tds=rd(T*dS,1),dG=rd(dH-tds,1);return{ref:"Review III-H",q:`Find ΔG at <b>${T} K</b> given ΔH = <b>${dH} kJ</b> and ΔS = <b>${dS} kJ/K</b>.`,gv:`ΔH = ${dH} kJ\nΔS = ${dS} kJ/K\nT = ${T} K`,fm:`ΔG = ΔH − TΔS`,fi:`ΔG = ? kJ`,u:"kJ",a:dG,tol:Math.max(Math.abs(dG)*0.02,1),st:[`<span class='lb'>TΔS</span> = ${T} × (${dS}) = ${tds} kJ`,`<span class='lb'>ΔG</span> = ${dH} − (${tds})`,`<span class='lb'>ANSWER</span> <span class='ans'>ΔG = ${dG} kJ</span>`,`<span class='lb'>RESULT</span> ${dG<0?"Spontaneous (−ΔG)":"Nonspontaneous (+ΔG)"}`],nt:`ΔG = ΔH − TΔS. Negative ΔG = spontaneous. Make sure ΔH and TΔS have matching units!`}},
+mass_mol(){const c=pick(COMPS),mm=compMM(c),isToMass=Math.random()<0.5;if(isToMass){const n=R(0.50,10.00,2),mass=rd(n*mm,1);return{ref:"Review III-I",q:`Calculate the mass of <b>${n} mol</b> of <b>${c.f}</b>.`,gv:`n = ${n} mol\n${c.f}`,fm:`m = n × M`,fi:`m = ? g`,u:"g",a:mass,tol:Math.max(mass*0.02,0.3),st:[`<span class='lb'>MOLAR MASS</span> ${c.f} = ${mm} g/mol`,`<span class='lb'>MASS</span> m = ${n} × ${mm} = <span class='ans'>${mass} g</span>`],nt:`m = n × M. Multiply moles by molar mass.`}}else{const mass=R(10,300,1),n=rd(mass/mm,3);return{ref:"Review III-I",q:`How many moles are in <b>${mass} g</b> of <b>${c.f}</b>?`,gv:`m = ${mass} g\n${c.f}`,fm:`n = m / M`,fi:`n = ? mol`,u:"mol",a:n,tol:Math.max(n*0.02,0.005),st:[`<span class='lb'>MOLAR MASS</span> M = ${mm} g/mol`,`<span class='lb'>MOLES</span> n = ${mass} / ${mm} = <span class='ans'>${n} mol</span>`],nt:`n = m / M. Divide mass by molar mass.`}}},
+ox_num(){const q=pick(OX_DB),sa=(q.answer>0?"+":"")+q.answer;return{ref:"Review III-K",q:`What is the oxidation number of <b>${q.element}</b> in <b>${q.compound}</b>?`,gv:`Compound: ${q.compound}\nFind: ${q.element}`,fm:`Rules: O=−2, H=+1, halogens=−1\nSum = total charge (0 for neutral)`,fi:`Ox # = ?`,u:"",a:q.answer,tol:0.01,st:[`<span class='lb'>STEP 1</span> Assign known ox #s`,`<span class='lb'>STEP 2</span> Set up equation: sum = total charge`,`<span class='lb'>STEP 3</span> ${q.work}`,`<span class='lb'>ANSWER</span> <span class='ans'>${sa}</span>`],nt:`Assign O=−2, H=+1, halogens=−1, alkali metals=+1. Sum all ox #s = charge of formula (0 for neutral compounds).`}},
+stoich(){const r=pick(RXNS),mG=R(10,200,1),nG=rd(mG/r.gM,4),nP=rd(nG*(r.pc/r.gc),4),mP=rd(nP*r.pM,1);return{ref:"Review III-M",q:`Given: <b>${r.eq}</b><br><br>What mass of <b>${r.pN}</b> is produced from <b>${mG} g ${r.gN}</b>?`,gv:`m(${r.gN}) = ${mG} g\nM(${r.gN}) = ${r.gM}\nM(${r.pN}) = ${r.pM}`,fm:`g → mol → mol → g\n(stoichiometry roadmap)`,fi:`m(${r.pN}) = ? g`,u:"g",a:mP,tol:Math.max(mP*0.025,0.3),st:[`<span class='lb'>STEP 1 — g→mol</span> n(${r.gN}) = ${mG}/${r.gM} = ${rd(nG,4)} mol`,`<span class='lb'>STEP 2 — MOLE RATIO</span> ${rd(nG,4)} × (${r.pc}/${r.gc}) = ${rd(nP,4)} mol ${r.pN}`,`<span class='lb'>STEP 3 — mol→g</span> ${rd(nP,4)} × ${r.pM} = <span class='ans'>${mP} g</span>`],nt:`The stoichiometry roadmap: grams A → moles A → moles B → grams B. Always go through moles!`}},
+charles(){const v1=R(200,900,1),t1c=R(-30,80,0),t2c=R(-30,120,0);const t1k=rd(t1c+273.15,2),t2k=rd(t2c+273.15,2),v2=rd(v1*t2k/t1k,1);return{ref:"Review III-N",q:`A gas occupies <b>${v1} mL</b> at <b>${t1c} °C</b>. What volume at <b>${t2c} °C</b>? (constant P)`,gv:`V₁ = ${v1} mL\nT₁ = ${t1c} °C = ${t1k} K\nT₂ = ${t2c} °C = ${t2k} K`,fm:`V₁/T₁ = V₂/T₂\nV₂ = V₁ × T₂/T₁`,fi:`V₂ = ? mL`,u:"mL",a:v2,tol:Math.max(Math.abs(v2)*0.02,0.5),st:[`<span class='lb'>CONVERT</span> T₁ = ${t1k} K, T₂ = ${t2k} K`,`<span class='lb'>SOLVE</span> V₂ = ${v1} × ${t2k}/${t1k}`,`<span class='lb'>ANSWER</span> <span class='ans'>V₂ = ${v2} mL</span>`],nt:`Charles's law: V₁/T₁ = V₂/T₂. ALWAYS convert °C to Kelvin first!`}},
+combined(){const v1=R(100,500,1),t1c=R(10,50,0),p1=R(200,900,1),t2c=0,p2=101.325;const t1k=rd(t1c+273.15,2),t2k=273.15,v2=rd((p1*v1*t2k)/(t1k*p2),1);return{ref:"Review III-O",q:`<b>${v1} mL</b> of gas at <b>${t1c} °C</b> and <b>${p1} kPa</b>. What volume at STP?`,gv:`V₁=${v1} mL, T₁=${t1c} °C\nP₁=${p1} kPa\nSTP: 0 °C, 101.325 kPa`,fm:`P₁V₁/T₁ = P₂V₂/T₂\nV₂ = P₁V₁T₂/(T₁P₂)`,fi:`V₂ = ? mL`,u:"mL",a:v2,tol:Math.max(Math.abs(v2)*0.025,1),st:[`<span class='lb'>CONVERT</span> T₁=${t1k} K, T₂=273.15 K`,`<span class='lb'>SOLVE</span> V₂ = (${p1}×${v1}×273.15)/(${t1k}×101.325)`,`<span class='lb'>ANSWER</span> <span class='ans'>V₂ = ${v2} mL</span>`],nt:`Combined gas law for changing P, V, and T. Convert to Kelvin!`}},
+keq_write(){const r=pick(KEQ_RXNS);return{ref:"Review III-P/Q",q:`Write the equilibrium constant expression (Keq) for:<br><b>${r.eq}</b><br><br><span style="color:var(--dim);font-size:12px">Type using bracket notation, e.g. [NH3]2/[N2][H2]3 — use plain numbers for exponents, no spaces</span>`,gv:`Equation shown above`,fm:`Keq = [products]^coef / [reactants]^coef\nExclude pure solids (s) and liquids (l)`,fi:`Keq = ?`,u:"",a:r.keq,tol:0,isText:true,st:[`<span class='lb'>EXPRESSION</span> <span class='ans'>Keq = ${r.keq}</span>`,`<span class='lb'>NOTE</span> ${r.note}`],nt:`Products over reactants, coefficients become exponents. Exclude pure solids (s) and pure liquids (l) — they have constant activity.`}},
+naming_mc(){
+  const db=[
+    {f:"NaCl",n:"sodium chloride",type:"ionic",rule:"Na⁺ + Cl⁻ → sodium + chloride (-ide)"},
+    {f:"KBr",n:"potassium bromide",type:"ionic",rule:"K⁺ + Br⁻ → potassium + bromide"},
+    {f:"MgO",n:"magnesium oxide",type:"ionic",rule:"Mg²⁺ + O²⁻ → magnesium + oxide"},
+    {f:"CaF₂",n:"calcium fluoride",type:"ionic",rule:"Ca²⁺ + 2F⁻ → calcium + fluoride"},
+    {f:"Al₂O₃",n:"aluminum oxide",type:"ionic",rule:"Al³⁺ + O²⁻ → aluminum + oxide"},
+    {f:"K₂S",n:"potassium sulfide",type:"ionic",rule:"K⁺ + S²⁻ → potassium + sulfide"},
+    {f:"Na₂O",n:"sodium oxide",type:"ionic",rule:"Na⁺ + O²⁻ → sodium + oxide"},
+    {f:"CaCl₂",n:"calcium chloride",type:"ionic",rule:"Ca²⁺ + 2Cl⁻ → calcium + chloride"},
+    {f:"AlCl₃",n:"aluminum chloride",type:"ionic",rule:"Al³⁺ + 3Cl⁻ → aluminum + chloride"},
+    {f:"FeCl₂",n:"iron(II) chloride",type:"ionic-var",rule:"Fe²⁺ + 2Cl⁻. Fe can be +2 or +3 — use Roman numerals: iron(II)"},
+    {f:"FeCl₃",n:"iron(III) chloride",type:"ionic-var",rule:"Fe³⁺ + 3Cl⁻. Check charge: 3 × (−1) = −3, so Fe = +3 → iron(III)"},
+    {f:"Fe₂O₃",n:"iron(III) oxide",type:"ionic-var",rule:"3 × O²⁻ = −6, split over 2 Fe → each Fe = +3 → iron(III)"},
+    {f:"FeO",n:"iron(II) oxide",type:"ionic-var",rule:"1 × O²⁻ = −2, 1 Fe = +2 → iron(II) oxide"},
+    {f:"CuO",n:"copper(II) oxide",type:"ionic-var",rule:"Cu²⁺ + O²⁻ → copper(II) oxide"},
+    {f:"Cu₂O",n:"copper(I) oxide",type:"ionic-var",rule:"2Cu⁺ + O²⁻ → copper(I) oxide"},
+    {f:"PbO₂",n:"lead(IV) oxide",type:"ionic-var",rule:"2 × O²⁻ = −4, Pb = +4 → lead(IV) oxide"},
+    {f:"SnCl₂",n:"tin(II) chloride",type:"ionic-var",rule:"2Cl⁻ = −2, Sn = +2 → tin(II) chloride"},
+    {f:"NaNO₃",n:"sodium nitrate",type:"ionic-poly",rule:"Na⁺ + NO₃⁻. NO₃⁻ is nitrate → sodium nitrate"},
+    {f:"CaCO₃",n:"calcium carbonate",type:"ionic-poly",rule:"Ca²⁺ + CO₃²⁻. CO₃²⁻ is carbonate → calcium carbonate"},
+    {f:"Na₂SO₄",n:"sodium sulfate",type:"ionic-poly",rule:"2Na⁺ + SO₄²⁻. SO₄²⁻ is sulfate → sodium sulfate"},
+    {f:"NH₄Cl",n:"ammonium chloride",type:"ionic-poly",rule:"NH₄⁺ is ammonium + Cl⁻ chloride → ammonium chloride"},
+    {f:"Ca(OH)₂",n:"calcium hydroxide",type:"ionic-poly",rule:"Ca²⁺ + 2OH⁻. OH⁻ is hydroxide → calcium hydroxide"},
+    {f:"NaOH",n:"sodium hydroxide",type:"ionic-poly",rule:"Na⁺ + OH⁻. OH⁻ is hydroxide → sodium hydroxide"},
+    {f:"CO₂",n:"carbon dioxide",type:"molecular",rule:"Prefix system: C=carbon, O₂=di+oxide → carbon dioxide"},
+    {f:"CO",n:"carbon monoxide",type:"molecular",rule:"C=carbon, O₁=mono+oxide → carbon monoxide"},
+    {f:"N₂O",n:"dinitrogen monoxide",type:"molecular",rule:"N₂=di+nitrogen, O=mono+oxide → dinitrogen monoxide"},
+    {f:"NO₂",n:"nitrogen dioxide",type:"molecular",rule:"N=nitrogen, O₂=di+oxide → nitrogen dioxide"},
+    {f:"SO₂",n:"sulfur dioxide",type:"molecular",rule:"S=sulfur, O₂=di+oxide → sulfur dioxide"},
+    {f:"SO₃",n:"sulfur trioxide",type:"molecular",rule:"S=sulfur, O₃=tri+oxide → sulfur trioxide"},
+    {f:"PCl₃",n:"phosphorus trichloride",type:"molecular",rule:"P=phosphorus, Cl₃=tri+chloride → phosphorus trichloride"},
+    {f:"PCl₅",n:"phosphorus pentachloride",type:"molecular",rule:"P=phosphorus, Cl₅=penta+chloride → phosphorus pentachloride"},
+    {f:"N₂O₄",n:"dinitrogen tetroxide",type:"molecular",rule:"N₂=di+nitrogen, O₄=tetr(a)+oxide → dinitrogen tetroxide"},
+    {f:"CCl₄",n:"carbon tetrachloride",type:"molecular",rule:"C=carbon, Cl₄=tetra+chloride → carbon tetrachloride"}
+  ];
+  const item=pick(db);
+  const askName=Math.random()<0.5;
+  const pool=shuffle(db.filter(x=>x.n!==item.n));
+  const wrongs=pool.slice(0,3);
+  const typeLabel={"ionic":"Ionic (simple)","ionic-var":"Ionic (variable metal — needs Roman numerals)","ionic-poly":"Ionic (with polyatomic ion)","molecular":"Molecular (nonmetal+nonmetal — use prefixes)"}[item.type];
+  if(askName){
+    const opts=shuffle([{t:item.n,ok:true},...wrongs.map(w=>({t:w.n,ok:false}))]);
+    const ci=opts.findIndex(o=>o.ok);
+    return{ref:"Naming Compounds",q:`What is the name of <b style="font-size:17px">${item.f}</b>?<br><br><span style="color:var(--dim);font-size:12px">Type: ${typeLabel}</span>`,opts,ci,isMC:true,st:[`<span class='lb'>TYPE</span> ${typeLabel}`,`<span class='lb'>RULE APPLIED</span> ${item.rule}`,`<span class='lb'>NAME</span> <span class='ans'>${item.n}</span>`],nt:item.rule};
+  } else {
+    const opts=shuffle([{t:item.f,ok:true},...wrongs.map(w=>({t:w.f,ok:false}))]);
+    const ci=opts.findIndex(o=>o.ok);
+    return{ref:"Naming Compounds",q:`What is the formula for <b>${item.n}</b>?`,opts,ci,isMC:true,st:[`<span class='lb'>TYPE</span> ${typeLabel}`,`<span class='lb'>RULE APPLIED</span> ${item.rule}`,`<span class='lb'>FORMULA</span> <span class='ans'>${item.f}</span>`],nt:item.rule};
+  }
+},
+concept_mc(){const c=pick(CONCEPTS);const opts=c.opts.map((o,i)=>({t:o,ok:i===c.correct}));return{ref:"Key Concept",q:c.q,opts,ci:c.correct,isMC:true,st:[`<span class='ans'>${c.opts[c.correct]}</span>`],nt:c.expl}},
+symbol_mc(){const s=pick(SYMBOLS);const wrongs=shuffle(SYMBOLS.filter(x=>x.sym!==s.sym)).slice(0,3);const opts=shuffle([{t:s.meaning,ok:true},...wrongs.map(w=>({t:w.meaning,ok:false}))]);return{ref:"Symbol IV",q:`What does the symbol <b style="font-size:20px;color:var(--cyn)">${s.sym}</b> mean in chemistry?`,opts,ci:opts.findIndex(o=>o.ok),isMC:true,st:[`<span class='ans'>${s.sym} = ${s.meaning}</span>`],nt:`This symbol appears frequently in chemical equations and thermodynamic expressions.`}}
+};
+
+// ========== CHEATSHEET ==========
+const CS=[
+{title:"Stoichiometry Roadmap ⭐",fm:["grams A → moles A → moles B → grams B","Step 1: n = m / M","Step 2: mole ratio (from balanced equation)","Step 3: m = n × M"],vr:"You <b>MUST</b> go through moles — never skip!\nMole ratio comes from <b>coefficients</b>",ex:{q:"100.0 g Fe → ? g Fe₂O₃ (4Fe + 3O₂ → 2Fe₂O₃)",st:["n(Fe)=100.0/55.85=1.790 mol","Ratio: ×(2/4) = 0.895 mol Fe₂O₃","m=0.895×159.70 = 143.0 g"]}},
+{title:"Molarity & Molality",fm:["c = n / V (molarity, mol/L)","b = n / m_solvent (molality, mol/kg)","n = m / M (moles from mass)"],vr:"<b>Molarity</b>: moles per liter of SOLUTION\n<b>Molality</b>: moles per kg of SOLVENT\nMolality not affected by temperature",ex:{q:"10.0 g KOH (M=56.1) in 4.0 L",st:["n = 10.0/56.1 = 0.178 mol","c = 0.178/4.0 = 0.045 M"]}},
+{title:"Q = csp × m × ΔT (Specific Heat)",fm:["Q = csp × m × ΔT","ΔT = T_final − T_initial","csp(water) = 4.18 J/g·°C"],vr:"<b>Q</b> = energy (J)\n<b>csp</b> = specific heat\n<b>m</b> = mass (g)\nPositive Q = heat absorbed",ex:{q:"200 g water, 20→50 °C",st:["ΔT = 50 − 20 = 30 °C","Q = 4.18 × 200 × 30 = 25,080 J"]}},
+{title:"Hess's Law (ΔH°r)",fm:["ΔH°r = ΣΔH°f(products) − ΣΔH°f(reactants)","Elements in standard state: ΔH°f = 0","Multiply by coefficients!"],vr:"Exothermic: ΔH < 0 (releases heat)\nEndothermic: ΔH > 0 (absorbs heat)",ex:{q:"2H₂ + O₂ → 2H₂O, ΔH°f(H₂O) = −241.8",st:["Products: 2(−241.8) = −483.6","Reactants: 0","ΔH° = −483.6 kJ"]}},
+{title:"ΔS° and ΔG",fm:["ΔS° = ΣS°(products) − ΣS°(reactants)","ΔG = ΔH − TΔS","−ΔG = spontaneous, +ΔG = nonspontaneous"],vr:"⚠️ Match units: if ΔH in kJ, convert ΔS to kJ/K\n+ΔS = more disorder (favorable)\nOnly T changes Keq",ex:{q:"ΔH=−1648.4 kJ, ΔS=−0.55 kJ/K, T=298",st:["TΔS = 298×(−0.55) = −163.9","ΔG = −1648.4−(−163.9) = −1484.5 kJ","Spontaneous ✓"]}},
+{title:"Gas Laws",fm:["Boyle's: P₁V₁ = P₂V₂ (constant T)","Charles's: V₁/T₁ = V₂/T₂ (constant P)","Gay-Lussac's: P₁/T₁ = P₂/T₂ (constant V)","Combined: P₁V₁/T₁ = P₂V₂/T₂","⚠️ T must be in KELVIN (K = °C + 273.15)"],vr:"STP = 0 °C (273.15 K), 101.325 kPa\nPV=nRT (R = 8.314 L·kPa/mol·K)",ex:{q:"680 mL at 35°C → −25°C (constant P)",st:["T₁=308.15 K, T₂=248.15 K","V₂ = 680 × 248.15/308.15 = 547.6 mL"]}},
+{title:"Oxidation Numbers",fm:["Free elements = 0","Monatomic ions = charge","O = −2, H = +1, halogens = −1","Sum of all ox #s = total charge","OIL RIG: Oxidation Is Loss, Reduction Is Gain"],vr:"Reducing agent = gets oxidized\nOxidizing agent = gets reduced\nAnode = oxidation (AN OX)\nCathode = reduction (RED CAT)",ex:{q:"PH₃: find P",st:["H = +1 (×3 = +3)","P + 3 = 0 → P = −3"]}},
+{title:"Keq Expressions",fm:["Keq = [products]^coef / [reactants]^coef","Exclude pure solids (s) and liquids (l)","Keq > 1: products favored","Keq < 1: reactants favored"],vr:"Only <b>temperature</b> changes Keq value\nConcentration/pressure shift position but NOT Keq\nCatalysts: no effect on Keq",ex:{q:"KClO₃(s) → KCl(s) + O₂(g)",st:["Both solids excluded","Keq = [O₂]"]}},
+{title:"Percent Yield & Composition",fm:["% yield = (actual / theoretical) × 100%","% element = (mass of element / molar mass) × 100%"],vr:"% yield always ≤ 100%\nTheoretical yield from stoichiometry\n% composition: use molar mass of compound",ex:{q:"Actual=10.08 g, Theoretical=12.00 g",st:["% yield = (10.08/12.00)×100 = 84.0%"]}},
+{title:"Le Châtelier's Principle",fm:["Stress → system shifts to relieve it","Add reactant → shift RIGHT","Add product → shift LEFT","↑ Pressure → fewer gas moles side","Only temperature changes Keq"],vr:"Concentration changes: Keq unchanged\nPressure changes: Keq unchanged\nCatalyst: no shift, no Keq change\nTemperature: shifts AND changes Keq",ex:{q:"N₂+3H₂⇌2NH₃ (exo), increase T?",st:["Heat is a product (exo)","Adding heat → shift LEFT","Keq DECREASES"]}},
+{title:"Naming Compounds — All Rules",fm:["IONIC (metal+nonmetal): metal name + nonmetal-ide","Variable metal: add Roman numeral for charge, e.g. iron(III)","Polyatomic ions: use ion name as-is (nitrate, sulfate, etc.)","MOLECULAR (nonmetal+nonmetal): use prefixes (di, tri...) + -ide","Skip mono- on the FIRST element only"],vr:"<b>Common polyatomic ions:</b>\nNO₃⁻=nitrate, SO₄²⁻=sulfate, CO₃²⁻=carbonate\nOH⁻=hydroxide, NH₄⁺=ammonium, PO₄³⁻=phosphate\n<b>Prefixes:</b> 1=mono, 2=di, 3=tri, 4=tetra, 5=penta\n<b>Variable metals:</b> Fe, Cu, Pb, Sn, Mn, Cr, Co, Ni",ex:{q:"Name FeCl₃, Cu₂O, N₂O₄, CaCO₃",st:["FeCl₃: 3Cl⁻=−3, Fe=+3 → iron(III) chloride","Cu₂O: O²⁻=−2, 2Cu=+2, each Cu=+1 → copper(I) oxide","N₂O₄: di+nitrogen, tetra+oxide → dinitrogen tetroxide","CaCO₃: Ca²⁺ + CO₃²⁻ → calcium carbonate"]}}
+];
+
+// ========== LEARNING MODE (brief chapter skims) ==========
+const LEARN_TOPICS=[
+{title:"Ch.11 — Stoichiometry Essentials",icon:"⚖️",cards:[
+"<b>The Mole</b> — 1 mol = 6.022 × 10²³ particles (Avogadro's number). Molar mass = mass of 1 mol in g/mol, found from the periodic table.",
+"<b>Mole Conversions</b> — n = m/M (mass to moles), m = n×M (moles to mass), N = n×Nₐ (moles to particles).",
+"<b>% Composition</b> — % of element = (mass of element in 1 mol / molar mass) × 100%. Empirical formula = simplest ratio. Molecular formula = actual count.",
+"<b>Stoichiometry Roadmap</b> — <em>grams A → moles A → moles B → grams B</em>. The mole ratio (from balanced equation coefficients) is the bridge between substances. You MUST go through moles.",
+"<b>Limiting Reactant</b> — The reactant that runs out first, limiting how much product forms. Calculate product from each reactant; the one giving less product is limiting.",
+"<b>Percent Yield</b> — % yield = (actual/theoretical) × 100%. Always ≤ 100%."
+]},
+{title:"Ch.12 — Gas Laws",icon:"💨",cards:[
+"<b>Boyle's</b>: P₁V₁ = P₂V₂ (constant T, inverse). <b>Charles's</b>: V₁/T₁ = V₂/T₂ (constant P, direct). <b>Gay-Lussac's</b>: P₁/T₁ = P₂/T₂ (constant V, direct).",
+"<b>Combined</b>: P₁V₁/T₁ = P₂V₂/T₂. <b>Ideal Gas</b>: PV = nRT (R = 8.314). ⚠️ ALWAYS convert °C to K (add 273.15).",
+"<b>STP</b> = 0 °C (273.15 K) and 101.325 kPa. Standard molar volume = 22.4 L/mol at STP."
+]},
+{title:"Ch.14 — Solutions",icon:"🧪",cards:[
+"<b>Molarity</b> (c) = n/V = moles of solute per liter of solution. <b>Molality</b> (b) = n/m_solvent(kg) = moles per kg of solvent.",
+"<b>Saturated</b> = maximum solute dissolved. <b>Supersaturated</b> = more than maximum (unstable). <b>Unsaturated</b> = less than maximum.",
+"<b>Factors affecting dissolution rate</b>: stirring/agitation, temperature (higher = faster), particle size (smaller = faster, more surface area)."
+]},
+{title:"Ch.15 — Thermochemistry",icon:"🔥",cards:[
+"<b>Q = csp × m × ΔT</b> — specific heat equation. Water's csp = 4.18 J/g·°C.",
+"<b>Enthalpy (ΔH)</b>: negative = exothermic (releases heat), positive = endothermic (absorbs heat).",
+"<b>Hess's Law</b>: ΔH°r = ΣΔH°f(products) − ΣΔH°f(reactants). Elements = 0.",
+"<b>Entropy (ΔS)</b>: +ΔS = more disorder (favorable). <b>Gibbs (ΔG)</b>: ΔG = ΔH − TΔS. Negative ΔG = spontaneous. ⚠️ Match units!"
+]},
+{title:"Ch.16 — Kinetics",icon:"⚡",cards:[
+"<b>Collision theory</b>: 3 conditions — particles must collide, in proper orientation, with enough energy (≥ Ea).",
+"<b>Factors affecting rate</b>: nature of reactants, concentration, temperature, catalysts, surface area.",
+"<b>Rate law</b>: rate = k[A]ᵐ[B]ⁿ. Orders (m, n) determined experimentally from data tables, NOT from balanced equation coefficients."
+]},
+{title:"Ch.17 — Equilibrium",icon:"⚖️",cards:[
+"<b>Keq</b> = [products]^coef / [reactants]^coef. Exclude solids and liquids. Keq > 1 = products favored. Keq < 1 = reactants favored.",
+"<b>Le Châtelier</b>: system shifts to relieve stress. Add substance → shift away. Remove → shift toward. ↑Pressure → fewer moles side.",
+"<b>Temperature is the ONLY stress that changes Keq</b>. Concentration, pressure, catalysts change position but NOT Keq's value."
+]},
+{title:"Ch.19 — Redox & Electrochemistry",icon:"🔋",cards:[
+"<b>OIL RIG</b>: Oxidation Is Loss, Reduction Is Gain (of electrons). They always occur together.",
+"<b>Oxidation numbers</b>: free elements = 0, monatomic ions = charge, O = −2, H = +1, sum = total charge.",
+"<b>Reducing agent</b> = gets oxidized. <b>Oxidizing agent</b> = gets reduced. The name describes what it does to the OTHER substance.",
+"<b>Anode</b> = oxidation (AN OX). <b>Cathode</b> = reduction (RED CAT). Voltaic cell = spontaneous → electricity. Electrolytic = electricity → nonspontaneous."
+]},
+{title:"Naming Compounds — How To",icon:"🏷️",cards:[
+`<b>Step 1 — Identify the type:</b><br>
+Metal + nonmetal? → <em>Ionic</em><br>
+Two nonmetals? → <em>Molecular</em><br>
+Starts with H, dissolved? → <em>Acid</em>`,
+
+`<b>Ionic — Simple (metal with fixed charge):</b><br>
+Name the metal first, then change the nonmetal ending to <b>-ide</b><br>
+NaCl → sodium chlor<b>ide</b><br>
+MgO → magnesium ox<b>ide</b><br>
+CaF₂ → calcium fluor<b>ide</b><br>
+Al₂O₃ → aluminum ox<b>ide</b>`,
+
+`<b>Ionic — Variable charge metals (Fe, Cu, Pb, Sn, Mn, Cr...):</b><br>
+Must use <b>Roman numerals</b> in parentheses to show the charge<br>
+<em>How to find the charge:</em> Use the nonmetal's charge × count, set to zero<br>
+FeCl₃ → 3(−1) = −3, so Fe = +3 → <b>iron(III) chloride</b><br>
+FeCl₂ → 2(−1) = −2, so Fe = +2 → <b>iron(II) chloride</b><br>
+CuO → O = −2, Cu = +2 → <b>copper(II) oxide</b><br>
+Cu₂O → O = −2, 2Cu = +2, each Cu = +1 → <b>copper(I) oxide</b>`,
+
+`<b>Ionic — Polyatomic ions (memorize these!):</b><br>
+The ion keeps its name — just add the metal name in front<br>
+NO₃⁻ = nitrate &nbsp;&nbsp; SO₄²⁻ = sulfate &nbsp;&nbsp; CO₃²⁻ = carbonate<br>
+OH⁻ = hydroxide &nbsp;&nbsp; NH₄⁺ = ammonium &nbsp;&nbsp; PO₄³⁻ = phosphate<br>
+NaNO₃ → <b>sodium nitrate</b><br>
+CaCO₃ → <b>calcium carbonate</b><br>
+NH₄Cl → <b>ammonium chloride</b>`,
+
+`<b>Molecular — Prefix System (nonmetal + nonmetal):</b><br>
+Use Greek number prefixes before each element name, then <b>-ide</b> on the second<br>
+1=mono, 2=di, 3=tri, 4=tetra, 5=penta, 6=hexa<br>
+<em>Skip "mono" on the FIRST element</em><br>
+CO₂ → carbon <b>di</b>oxide (not monocarbon dioxide)<br>
+CO → carbon <b>mono</b>oxide (DO use mono on second)<br>
+N₂O₄ → <b>di</b>nitrogen <b>tetr</b>oxide<br>
+SO₃ → sulfur <b>tri</b>oxide<br>
+PCl₅ → phosphorus <b>penta</b>chloride`
+]}
+];
+
+// ========== STATE ==========
+let mode="problems",active="calc",subType=null,prob=null,answered=false,solShown=false,userVal="";
+let nC=0,nA=0,streak=0;
+let hide={given:false,formula:false,find:false};
+let vMode="mc",vQ=null,vAns=false,vUA=null;
+
+function updS(){document.getElementById("sC").textContent=nC;document.getElementById("sA").textContent=nA;document.getElementById("sP").textContent=nA>0?rd(nC/nA*100,0)+"%":"—";document.getElementById("sS").innerHTML='<span id="fire">🔥</span> '+streak}
+function resetStats(){nC=0;nA=0;streak=0;updS();if(mode==="problems")genP();else if(mode==="vocab")genV();else if(mode==="learn")renderLearn();else renderCS()}
+function syncToggles(){["given","formula","find"].forEach(function(k){var b=document.getElementById("tg-"+k);if(!b)return;if(hide[k])b.classList.add("on");else b.classList.remove("on")});var a=document.getElementById("tg-all");if(a){if(hide.given&&hide.formula&&hide.find)a.classList.add("on");else a.classList.remove("on")}}
+function tglH(k){hide[k]=!hide[k];syncToggles();renderProb()}
+function tglAll(){var a=hide.given&&hide.formula&&hide.find;hide.given=hide.formula=hide.find=!a;syncToggles();renderProb()}
+function renderModes(){document.getElementById("modeBar").innerHTML=[{id:"problems",l:"⚡ Problems"},{id:"learn",l:"🎓 Learn"},{id:"vocab",l:"📖 Vocab"},{id:"cheatsheet",l:"📋 Cheatsheet"}].map(m=>`<button class="mode-btn${mode===m.id?" on":""}" onclick="switchMode('${m.id}')">${m.l}</button>`).join("")}
+function switchMode(m){mode=m;renderModes();renderCtrls();if(m==="problems")genP();else if(m==="vocab")genV();else if(m==="learn")renderLearn();else renderCS()}
+function renderCtrls(){const el=document.getElementById("ctrlBar");if(mode==="problems"){let h=SEC.map(s=>`<button class="cb${active===s.id?" on":""}" onclick="active='${s.id}';subType=null;genP()">${s.icon} ${s.title}</button>`).join("");h+=`<span style="width:6px;display:inline-block"></span><span class="cl">Hide:</span><button class="tg" id="tg-given" onclick="tglH('given')"><span class="tg-dot"></span>Givens</button><button class="tg" id="tg-formula" onclick="tglH('formula')"><span class="tg-dot"></span>Formulas</button><button class="tg" id="tg-find" onclick="tglH('find')"><span class="tg-dot"></span>Solve-For</button><button class="tg" id="tg-all" onclick="tglAll()"><span class="tg-dot"></span>Exam</button>`;el.innerHTML=h;syncToggles()}else if(mode==="vocab")el.innerHTML=`<span class="cl">Format:</span><button class="cb${vMode==="mc"?" on":""}" onclick="vMode='mc';genV()">MC</button><button class="cb${vMode==="written"?" on":""}" onclick="vMode='written';genV()">Written</button><button class="cb${vMode==="tf"?" on":""}" onclick="vMode='tf';genV()">T/F</button>`;else if(mode==="learn")el.innerHTML=`<span class="cl">Brief chapter skims — key concepts from Ch.11 through Ch.19</span>`;else el.innerHTML=`<span class="cl">All formulas, vocab, and symbols from the semester 2 review</span>`}
+
+// ========== PROBLEMS ==========
+function genP(){const sec=SEC.find(s=>s.id===active),tid=subType||pick(sec.types).id;prob=G[tid]();answered=false;solShown=false;userVal="";renderCtrls();renderProb()}
+function chkP(){if(answered)return;if(prob.isMC)return;const inp=document.getElementById("inp");if(!inp)return;const raw=inp.value.trim();if(!raw)return;userVal=raw;answered=true;nA++;let ok=false;if(prob.isText){const norm=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[²³⁻⁺₂₃₄]/g,c=>({'²':'2','³':'3','⁻':'-','⁺':'+','₂':'2','₃':'3','₄':'4'}[c]||c)).replace(/×/g,'').replace(/·/g,'');ok=norm(raw)===norm(prob.a)}else{const v=parseFloat(raw.replace(/[+,]/g,""));if(isNaN(v)){inp.classList.add("v-no");setTimeout(()=>{const e=document.getElementById("inp");if(e)e.classList.remove("v-no")},400);answered=false;nA--;return}ok=Math.abs(v-prob.a)<=prob.tol}if(ok){nC++;streak++}else streak=0;updS();renderProb()}
+function chkMC(i){if(answered)return;answered=true;userVal=i;nA++;if(i===prob.ci){nC++;streak++}else streak=0;updS();renderProb()}
+function showPS(){userVal=document.getElementById("inp")?document.getElementById("inp").value:"";solShown=true;if(!answered){answered=true;nA++;streak=0;updS()}renderProb()}
+function renderProb(){const el=document.getElementById("main"),p=prob;if(!p){el.innerHTML="";return}let isOk=false;if(answered){if(p.isMC)isOk=userVal===p.ci;else if(p.isText){const norm=s=>s.toLowerCase().replace(/\s+/g,'').replace(/[²³⁻⁺₂₃₄]/g,c=>({'²':'2','³':'3','⁻':'-','⁺':'+','₂':'2','₃':'3','₄':'4'}[c]||c));isOk=norm(String(userVal))===norm(p.a)}else{const v=parseFloat(String(userVal).replace(/[+,]/g,""));isOk=!isNaN(v)&&Math.abs(v-p.a)<=p.tol}}const cc=answered?(isOk?"ok":"no"):"",bc=answered?(isOk?"bg-ok":"bg-no"):"bg-q",sec=SEC.find(s=>s.id===active);const hc=(hide.given?1:0)+(hide.formula?1:0)+(hide.find?1:0),dl=hc===3?"EXAM MODE":hc>=2?"HARD+":hc===1?"HARD":"";let h=`<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px"><button class="cb${!subType?" on":""}" onclick="subType=null;genP()">Random</button>`;sec.types.forEach(t=>{h+=`<button class="cb${subType===t.id?" on":""}" onclick="subType='${t.id}';genP()">${t.name}</button>`});h+=`</div>`;h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${bc}">${answered?(isOk?"✓ Correct":"✗ Incorrect"):"Problem"}</span><span class="bg bg-ty">${p.ref}</span>${dl?`<span class="bg bg-hard">${dl}</span>`:""}</div><div class="q-txt">${p.q}</div>`;if(p.isMC){h+=`<div class="opts">`;p.opts.forEach((o,i)=>{let cls="opt";if(answered){cls+=" done";if(i===p.ci)cls+=" c-ok";else if(i===userVal)cls+=" c-no"}h+=`<button class="${cls}" onclick="chkMC(${i})"><span class="opt-ltr">${answered&&i===p.ci?"✓":answered&&i===userVal?"✗":String.fromCharCode(65+i)}</span><span>${o.t}</span></button>`});h+=`</div>`}else{const gH=hide.given&&!answered&&!solShown,fH=hide.formula&&!answered&&!solShown,wH=hide.find&&!answered&&!solShown;if(p.gv&&(!gH||!fH||!wH)){h+=`<div class="ir">`;if(!gH)h+=`<div class="ib ib-g"><span class="ib-l">Given</span>${p.gv.replace(/\n/g,"<br>")}</div>`;if(p.fm&&!fH)h+=`<div class="ib ib-f"><span class="ib-l">Formula</span>${p.fm.replace(/\n/g,"<br>")}</div>`;if(p.fi&&!wH)h+=`<div class="ib ib-w"><span class="ib-l">Solve For</span>${p.fi.replace(/\n/g,"<br>")}</div>`;h+=`</div>`}if(!answered)h+=`<div class="aa"><div class="aw"><input class="ai" id="inp" type="text" inputmode="decimal" placeholder="Type answer…" value="${userVal}" onkeydown="if(event.key==='Enter')chkP()"><span class="au">${p.u}</span></div><button class="ab" onclick="chkP()">Check</button></div><div class="btn-row"><button class="btn-sh" onclick="showPS()">Show Solution</button></div>`;else{h+=`<div class="aa"><div class="aw"><input class="ai ${isOk?"v-ok":"v-no"}" value="${userVal}" disabled><span class="au">${p.u||""}</span></div></div><div class="fb ${isOk?"fb-ok":"fb-no"}">${isOk?`✓ Correct! Streak: ${streak} 🔥`:"✗ Not quite"}</div>`;if(!isOk)h+=`<div class="fb-v">Answer: ${p.a} ${p.u||""}</div>`}}if(answered||solShown){h+=`<div class="sol"><div class="sol-tag">Solution</div>`;p.st.forEach(s=>{h+=`<div class="stp">${s}</div>`});h+=`<div class="sol-note">${p.nt}</div></div>`}if(answered)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genP()">Next →</button></div>`;h+=`</div>`;el.innerHTML=h;if(!answered&&!p.isMC){const i=document.getElementById("inp");if(i)setTimeout(()=>i.focus(),50)}}
+
+// ========== VOCAB ==========
+function genV(){vAns=false;vUA=null;if(vMode==="mc")genVMC();else if(vMode==="tf")genVTF();else genVW();renderCtrls();renderVocab()}
+function genVMC(){const c=pick(VOCAB),wr=shuffle(VOCAB.filter(v=>v.t!==c.t)).slice(0,3),askT=Math.random()<0.5,opts=shuffle([c,...wr]);vQ={type:"mc",c,opts,askT,ci:opts.indexOf(c)}}
+function genVTF(){const c=pick(VOCAB),isT=Math.random()<0.5;vQ={type:"tf",t:c.t,sd:isT?c.d:pick(VOCAB.filter(v=>v.t!==c.t)).d,isT,cd:c.d}}
+function genVW(){vQ={type:"written",c:pick(VOCAB),askT:Math.random()<0.5}}
+function chkVM(i){if(vAns)return;vAns=true;vUA=i;nA++;if(i===vQ.ci){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVT(a){if(vAns)return;vAns=true;vUA=a;nA++;if(a===vQ.isT){nC++;streak++}else streak=0;updS();renderVocab()}
+function chkVW(){if(vAns)return;const inp=document.getElementById("vi");if(!inp||!inp.value.trim())return;vAns=true;const u=inp.value.trim().toLowerCase(),tgt=vQ.askT?vQ.c.d.toLowerCase():vQ.c.t.toLowerCase(),tw=tgt.split(/\s+/).filter(w=>w.length>3),mc=tw.filter(w=>u.includes(w)).length;vUA=tw.length>0&&(mc/tw.length>=0.4);nA++;if(vUA){nC++;streak++}else streak=0;updS();renderVocab()}
+function renderVocab(){const el=document.getElementById("main"),q=vQ;if(!q){el.innerHTML="";return}let h="";if(q.type==="mc"){const ok=vAns&&vUA===q.ci,cc=vAns?(ok?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div>`;if(q.askT)h+=`<div class="q-txt">Define: <b>${q.c.t}</b></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}return`<button class="${c}" onclick="chkVM(${i})"><span class="opt-ltr">${vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i)}</span><span>${o.d}</span></button>`}).join("")}</div>`;else h+=`<div class="q-txt">Which term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div><div class="opts">${q.opts.map((o,i)=>{let c="opt";if(vAns){c+=" done";if(i===q.ci)c+=" c-ok";else if(i===vUA)c+=" c-no"}return`<button class="${c}" onclick="chkVM(${i})"><span class="opt-ltr">${vAns&&i===q.ci?"✓":vAns&&i===vUA?"✗":String.fromCharCode(65+i)}</span><span>${o.t}</span></button>`}).join("")}</div>`;if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`}else if(q.type==="tf"){const ok=vAns&&vUA===q.isT,cc=vAns?(ok?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(ok?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div><div class="q-txt"><b>${q.t}</b> — <span style="color:var(--cyn);font-style:italic">"${q.sd}"</span></div><div class="opts" style="flex-direction:row;gap:8px;margin-top:10px">`;["True","False"].forEach(l=>{const v=l==="True";let c="opt";if(vAns){c+=" done";if(v===q.isT)c+=" c-ok";else if(v===vUA)c+=" c-no"}h+=`<button class="${c}" style="flex:1;justify-content:center" onclick="chkVT(${v})">${l}</button>`});h+=`</div>`;if(vAns&&!ok)h+=`<div class="sol" style="margin-top:12px"><div class="sol-tag">Correct</div><div class="stp">${q.cd}</div></div>`;if(vAns)h+=`<div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`;h+=`</div>`}else{const cc=vAns?(vUA?"ok":"no"):"";h+=`<div class="pc ${cc}"><div class="pc-top"><span class="bg ${vAns?(vUA?"bg-ok":"bg-no"):"bg-q"}">Vocab</span></div>`;h+=q.askT?`<div class="q-txt">Define: <b>${q.c.t}</b></div>`:`<div class="q-txt">Which term?<br><br><span style="color:var(--cyn);font-style:italic">"${q.c.d}"</span></div>`;if(!vAns)h+=`<div style="margin-top:12px"><textarea class="v-ta" id="vi" placeholder="${q.askT?"Type definition…":"Type the term…"}" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chkVW()}"></textarea></div><div class="btn-row"><button class="ab" onclick="chkVW()">Check</button></div>`;else{h+=`<div class="fb ${vUA?"fb-ok":"fb-no"}" style="margin-top:8px">${vUA?"✓ Matched!":"✗ Review below"}</div><div class="sol" style="margin-top:10px"><div class="sol-tag">Answer</div>`;h+=q.askT?`<div class="stp">${q.c.d}</div>`:`<div class="stp" style="font-size:14px;font-weight:600">${q.c.t}</div>`;h+=`</div><div class="btn-row" style="margin-top:10px"><button class="btn-nx" onclick="genV()">Next →</button></div>`}h+=`</div>`}el.innerHTML=h}
+
+// ========== LEARN MODE ==========
+function renderLearn(){renderCtrls();let h=`<div class="lesson-wrap">`;h+=`<div style="text-align:center;padding:20px 0 16px"><div style="font-size:36px;margin-bottom:8px">🎓</div><div style="font:400 22px/1.3 var(--s);margin-bottom:6px">Semester 2 Quick Review</div><div style="font:400 13px var(--f);color:var(--dim)">Key concepts from every chapter — read through before the exam</div></div>`;
+LEARN_TOPICS.forEach(topic=>{h+=`<div class="lesson-card"><div class="lesson-type">${topic.icon} ${topic.title}</div>`;topic.cards.forEach(card=>{h+=`<div class="lesson-body" style="margin-bottom:10px">${card}</div>`});h+=`</div>`});
+h+=`<div class="cs-sec" style="margin-top:30px">🔣 Symbols You Must Know</div>`;
+SYMBOLS.forEach(s=>{h+=`<div class="cs-card" style="padding:10px 14px;margin-bottom:5px;display:flex;align-items:center;gap:12px"><span style="font:700 18px var(--m);color:var(--cyn);min-width:40px;text-align:center">${s.sym}</span><span style="color:var(--mut);font-size:12px">${s.meaning}</span></div>`});
+h+=`</div>`;document.getElementById("main").innerHTML=h}
+
+// ========== CHEATSHEET ==========
+function renderCS(){renderCtrls();let h=`<div class="cs-sec">📐 All Formulas from the Review</div>`;CS.forEach(c=>{h+=`<div class="cs-card"><div class="cs-title">${c.title}</div><div class="cs-fm">${c.fm.join("<br>")}</div><div class="cs-vr">${c.vr.replace(/\n/g,"<br>")}</div><div class="cs-ex"><div style="font:400 12px/1.5 var(--f);color:var(--mut);margin-bottom:4px">${c.ex.q}</div>${c.ex.st.map(s=>`<div class="stp">${s}</div>`).join("")}</div></div>`});h+=`<div class="cs-sec">📖 All 26 Key Terms</div>`;VOCAB.forEach((v,i)=>{h+=`<div class="cs-card" style="padding:10px 12px;margin-bottom:5px"><span style="font:700 10px var(--m);color:var(--acc);margin-right:6px">${String.fromCharCode(65+i)}.</span><b>${v.t}</b><span style="margin:0 6px;color:var(--dim)">—</span><span style="color:var(--mut);font-size:12px">${v.d}</span></div>`});h+=`<div class="cs-sec">🔣 All 14 Symbols</div>`;SYMBOLS.forEach(s=>{h+=`<div class="cs-card" style="padding:10px 14px;margin-bottom:5px;display:flex;align-items:center;gap:12px"><span style="font:700 18px var(--m);color:var(--cyn);min-width:40px;text-align:center">${s.sym}</span><span style="color:var(--mut);font-size:12px">${s.meaning}</span></div>`});document.getElementById("main").innerHTML=h}
+
+renderModes();renderCtrls();genP();genV();updS();
+</script>
+</body>
+</html>
